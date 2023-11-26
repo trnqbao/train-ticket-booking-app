@@ -1,3 +1,41 @@
 <resources>
-    <string name="app_name">TrainTicketBookingApp</string>
+    <string name="app_name">Train Ticket Booking</string>
+
+    <string name="txtWelcome">Welcome Back!</string>
+    <string name="txtForget">Forgot password?</string>
+    <string name="notifyRegister">Do not have an account?</string>
+    <string name="txtRegister">Register Now</string>
+
+    <string name="notifyLogin">I Already Have an Account</string>
+    <string name="txtLogin">Login Now</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnRegister">Create Account</string>
+
+    <string name="txtReset">Reset Password</string>
+    <string name="btnNext">Next</string>
+    <string name="btnBack">Back</string>
+
+    <string name="aboutUs">Tran Quoc Bao - Le Nguyen Viet Hiep</string>
+    <string name="email">Email</string>
+    <string name="confirm_email">Confirm Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New password</string>
+    <string name="reset">Reset</string>
+    <string name="find_train">Find Train</string>
+    <string name="home_title">Book a train ticket</string>
+    <string name="start">From</string>
+    <string name="destination">To</string>
+    <string name="passenger">Passenger</string>
+    <string name="type">Type</string>
+    <string name="departure">Departure</string>
+    <string name="pick_travel_date">Pick Travel Date</string>
+    <string name="hi">Hi,</string>
+    <string name="time">Time</string>
+    <string name="btn_book_ticket">Book Ticket</string>
+    <string name="price">Price</string>
+    <string name="back">Back</string>
+
 </resources>
