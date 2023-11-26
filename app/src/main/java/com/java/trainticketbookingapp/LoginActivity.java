@@ -125,55 +125,55 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-//           String email, password;
-//           email = String.valueOf(etEmail.getText());
-//           password = String.valueOf(etPassword.getText());
-//
-//            if (TextUtils.isEmpty(email)) {
-//                etEmail.setError("Please enter your email");
-//                return;
-//            }
-//
-//            if (TextUtils.isEmpty(password)) {
-//                etPassword.setError("Please enter your password");
-//                return;
-//            }
-//
-//           //Put email into a login
-//            boolean rememberm = rememberMe.isChecked();
-//            SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
-//            if (rememberm) {
-//                loginPrefsEditor.putBoolean("remember", true);
-//                loginPrefsEditor.putString(PREF_EMAIL, email);
-//                loginPrefsEditor.apply();
-//            } else {
-//                loginPrefsEditor.clear();
-//                loginPrefsEditor.apply();
-//            }
-//
-//
-//            mAuth.signInWithEmailAndPassword(email, password)
-//                   .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                       @Override
-//                       public void onComplete(@NonNull Task<AuthResult> task) {
-//                           if (task.isSuccessful()) {
-//                               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                               startActivity(intent);
-//                               finish();
-//                           } else {
-//                               Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
-//                               snackbar.setAction("Retry", new View.OnClickListener() {
-//                                   @Override
-//                                   public void onClick(View v) {
-//                                       mAuth.signInWithEmailAndPassword(email, password);
-//                                   }
-//                               });
-//                               snackbar.show();
-//                           }
-//                       }
-//                   });
+//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(intent);
+           String email, password;
+           email = String.valueOf(etEmail.getText());
+           password = String.valueOf(etPassword.getText());
+
+            if (TextUtils.isEmpty(email)) {
+                etEmail.setError("Please enter your email");
+                return;
+            }
+
+            if (TextUtils.isEmpty(password)) {
+                etPassword.setError("Please enter your password");
+                return;
+            }
+
+           //Put email into a login
+            boolean rememberm = rememberMe.isChecked();
+            SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+            if (rememberm) {
+                loginPrefsEditor.putBoolean("remember", true);
+                loginPrefsEditor.putString(PREF_EMAIL, email);
+                loginPrefsEditor.apply();
+            } else {
+                loginPrefsEditor.clear();
+                loginPrefsEditor.apply();
+            }
+
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                   .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                       @Override
+                       public void onComplete(@NonNull Task<AuthResult> task) {
+                           if (task.isSuccessful()) {
+                               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                               startActivity(intent);
+                               finish();
+                           } else {
+                               Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
+                               snackbar.setAction("Retry", new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View v) {
+                                       mAuth.signInWithEmailAndPassword(email, password);
+                                   }
+                               });
+                               snackbar.show();
+                           }
+                       }
+                   });
        });
         
     }
