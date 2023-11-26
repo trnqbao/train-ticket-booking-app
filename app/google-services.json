@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "475747323717",
+    "project_id": "trainbooking-154cf",
+    "storage_bucket": "trainbooking-154cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475747323717:android:bdad4c399fe923f626f82c",
+        "android_client_info": {
+          "package_name": "com.java.trainbookingticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA09IRucEKwcNnBRQcHw6yLuAvF6U6BpvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475747323717:android:ca9dacdb0b8559f926f82c",
+        "android_client_info": {
+          "package_name": "com.java.trainticketbookingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA09IRucEKwcNnBRQcHw6yLuAvF6U6BpvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

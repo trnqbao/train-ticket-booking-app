@@ -1,6 +1,6 @@
 package com.java.trainticketbookingapp;
 
-import static com.java.trainbookingticket.ConfirmEmail.CODE;
+import static com.java.trainticketbookingapp.ConfirmEmail.CODE;
 
 import android.content.Intent;
 import android.os.Bundle;

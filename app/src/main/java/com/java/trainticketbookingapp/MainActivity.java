@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.java.trainbookingticket.databinding.ActivityHomeBinding;
+import com.java.trainticketbookingapp.databinding.ActivityHomeBinding;
 
 public class MainActivity extends AppCompatActivity {
 
