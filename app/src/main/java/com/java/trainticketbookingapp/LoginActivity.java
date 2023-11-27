@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         tvSignUp = findViewById(R.id.tvSignup);
         ImageView ivEye = findViewById(R.id.iv_eye);
         mAuth = FirebaseAuth.getInstance();
-//        Log.e("TAG", "mAuth: " + mAuth.getCurrentUser().getEmail().toString() );
+
         //View and UnView password
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,8 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         ivEye.setOnClickListener(v -> {
             // If the eye icon is not selected, show the password and change the icon to open eye
             if (!ivEye.isSelected()) {
@@ -102,13 +100,10 @@ public class LoginActivity extends AppCompatActivity {
                 etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
-
-
         tvSignUp.setOnClickListener(v -> {
            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
            startActivity(intent);
         });
-
         tvForget.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ConfirmEmail.class);
             startActivity(intent);
@@ -125,8 +120,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnLogin.setOnClickListener(v -> {
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
            String email, password;
            email = String.valueOf(etEmail.getText());
            password = String.valueOf(etPassword.getText());
@@ -141,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+
            //Put email into a login
             boolean rememberm = rememberMe.isChecked();
             SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
@@ -153,27 +147,58 @@ public class LoginActivity extends AppCompatActivity {
                 loginPrefsEditor.apply();
             }
 
-
             mAuth.signInWithEmailAndPassword(email, password)
-                   .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                       @Override
-                       public void onComplete(@NonNull Task<AuthResult> task) {
-                           if (task.isSuccessful()) {
-                               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                               startActivity(intent);
-                               finish();
-                           } else {
-                               Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
-                               snackbar.setAction("Retry", new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       mAuth.signInWithEmailAndPassword(email, password);
-                                   }
-                               });
-                               snackbar.show();
-                           }
-                       }
-                   });
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                if (user != null) {
+                                    if (user.isEmailVerified()) {
+                                        // Email is verified, proceed to main activity
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        // Email is not verified, display message and sign out
+                                        Toast.makeText(LoginActivity.this, "Email is not verified. Please verify your email.", Toast.LENGTH_SHORT).show();
+                                        mAuth.signOut();
+                                    }
+                                }
+                            } else {
+                                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
+                                snackbar.setAction("Retry", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mAuth.signInWithEmailAndPassword(email, password);
+                                    }
+                                });
+                                snackbar.show();
+                            }
+                        }
+                    });
+
+//            mAuth.signInWithEmailAndPassword(email, password)
+//                   .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                       @Override
+//                       public void onComplete(@NonNull Task<AuthResult> task) {
+//                           if (task.isSuccessful()) {
+//                               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                               startActivity(intent);
+//                               finish();
+//                           } else {
+//                               Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
+//                               snackbar.setAction("Retry", new View.OnClickListener() {
+//                                   @Override
+//                                   public void onClick(View v) {
+//                                       mAuth.signInWithEmailAndPassword(email, password);
+//                                   }
+//                               });
+//                               snackbar.show();
+//                           }
+//                       }
+//                   });
+//
        });
         
     }

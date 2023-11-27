@@ -25,6 +25,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
+
+import java.util.UUID;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText etEmail, etPassword, etPasswordCf;
@@ -67,11 +70,9 @@ public class RegisterActivity extends AppCompatActivity {
             password = String.valueOf(etPassword.getText());
             passwordCf = String.valueOf(etPasswordCf.getText());
 
+
             if (TextUtils.isEmpty(email)) {
                 etEmail.setError("Please enter your email");
-                return;
-            } else if (!email.contains("@gmail")) {
-                etEmail.setError("Email should contains '@gmail'");
                 return;
             }
 
@@ -85,31 +86,57 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
+            registerUserWithEmailVerification(email, password);
 
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-                            if (task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "Account created",
-                                        Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-
-                            } else {
-                                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Email or Password is invalid, please try again", Snackbar.LENGTH_INDEFINITE);
-                                snackbar.setAction("Retry", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        mAuth.signInWithEmailAndPassword(email, password);
-                                    }
-                                });
-                                snackbar.show();
-                            }
-                        }
-                    });
         });
     }
+
+
+    //Register with Check Email and Verification
+    private void registerUserWithEmailVerification(String email, String password) {
+        mAuth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+                        if (isNewUser) {
+                            // The email is not used yet
+                            mAuth.createUserWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                FirebaseUser user = mAuth.getCurrentUser();
+                                                if (user != null) {
+                                                    user.sendEmailVerification()
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        Toast.makeText(RegisterActivity.this, "Registration successful. Verification email sent.", Toast.LENGTH_SHORT).show();
+                                                                        mAuth.signOut(); // Sign out the user
+                                                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                                                        startActivity(intent);
+                                                                        finish();
+                                                                    } else {
+                                                                        Toast.makeText(RegisterActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                }
+                                                            });
+                                                }
+                                            } else {
+                                                Toast.makeText(RegisterActivity.this, "Email has been used", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                                } else {
+                            // The email is already in use
+                            Toast.makeText(RegisterActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+
 }

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "499680241584",
-    "project_id": "trainticketbooking-fed5a",
-    "storage_bucket": "trainticketbooking-fed5a.appspot.com"
+    "project_number": "414808323068",
+    "project_id": "useraccount-2e947",
+    "storage_bucket": "useraccount-2e947.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:499680241584:android:fff4a11b4e250cc8a31875",
+        "mobilesdk_app_id": "1:414808323068:android:3c916dc08d71d1d9afb879",
         "android_client_info": {
           "package_name": "com.java.trainticketbookingapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBrijM_Fv4OE5zRrEv_KSPRjfiKp8_NLW4"
+          "current_key": "AIzaSyBML8n5Z3omyx0-iZVRp7j_5L5wh2F8dhQ"
         }
       ],
       "services": {
