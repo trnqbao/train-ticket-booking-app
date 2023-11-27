@@ -62,7 +62,7 @@ public class ConfirmEmail extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(ConfirmEmail.this, "Verification link has been sent to your email.", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(ConfirmEmail.this, ResetPassword.class);
+                                                Intent intent = new Intent(ConfirmEmail.this, LoginActivity.class);
                                                 intent.putExtra("email", email);
                                                 startActivityForResult(intent, CODE);
                                             } else {
