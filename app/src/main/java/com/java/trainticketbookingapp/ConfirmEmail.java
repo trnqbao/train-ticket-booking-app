@@ -50,30 +50,24 @@ public class ConfirmEmail extends AppCompatActivity {
 
     private void checkEmail(String email) {
         auth.fetchSignInMethodsForEmail(email)
-                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
-                        if (!isNewUser) {
-                            // The email exists
-                            auth.sendPasswordResetEmail(email)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(ConfirmEmail.this, "Verification link has been sent to your email.", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(ConfirmEmail.this, LoginActivity.class);
-                                                intent.putExtra("email", email);
-                                                startActivityForResult(intent, CODE);
-                                            } else {
-                                                Toast.makeText(ConfirmEmail.this, "Failed to send verification link.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                        } else {
-                            // The email does not exist
-                            Toast.makeText(ConfirmEmail.this, "Email does not exist.", Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(task -> {
+                    boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+                    if (!isNewUser) {
+                        // The email exists
+                        auth.sendPasswordResetEmail(email)
+                                .addOnCompleteListener(task1 -> {
+                                    if (task1.isSuccessful()) {
+                                        Toast.makeText(ConfirmEmail.this, "Verification link has been sent to your email.", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(ConfirmEmail.this, LoginActivity.class);
+                                        intent.putExtra("email", email);
+                                        startActivityForResult(intent, CODE);
+                                    } else {
+                                        Toast.makeText(ConfirmEmail.this, "Failed to send verification link.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        // The email does not exist
+                        Toast.makeText(ConfirmEmail.this, "Email does not exist.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

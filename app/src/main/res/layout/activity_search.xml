@@ -225,12 +225,13 @@
         android:src="@drawable/transfer"/>
 
     <LinearLayout
-        android:layout_width="345dp"
-        android:layout_height="361dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:background="@drawable/shape_from_to"
         android:orientation="vertical"
         android:translationY="350dp"
         android:weightSum="3"
+
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -297,12 +298,12 @@
                     tools:ignore="RtlHardcoded">
 
                     <ImageButton
-                        android:id="@+id/btn_plus"
+                        android:id="@+id/btn_minus"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:background="@color/default_color"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/plus" />
+                        android:src="@drawable/minus" />
 
                     <TextView
                         android:id="@+id/tv_count"
@@ -318,12 +319,12 @@
                         android:textStyle="bold" />
 
                     <ImageButton
-                        android:id="@+id/btn_minus"
+                        android:id="@+id/btn_plus"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:background="@color/default_color"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/minus" />
+                        android:src="@drawable/plus" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -449,7 +450,8 @@
                 android:text="@string/find_train"
                 android:textAllCaps="false"
                 android:textSize="25sp"
-                app:cornerRadius="10dp" />
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="30dp"/>
         </LinearLayout>
     </LinearLayout>
 

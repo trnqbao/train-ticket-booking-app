@@ -7,6 +7,7 @@
     tools:context=".ProfileFragment"
     android:padding="8dp">
 
+
     <Button
         android:id="@+id/logout"
         android:layout_width="match_parent"

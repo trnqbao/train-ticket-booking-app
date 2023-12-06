@@ -134,11 +134,10 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-
            //Put email into a login
-            boolean rememberm = rememberMe.isChecked();
+            boolean remember1 = rememberMe.isChecked();
             SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
-            if (rememberm) {
+            if (remember1) {
                 loginPrefsEditor.putBoolean("remember", true);
                 loginPrefsEditor.putString(PREF_EMAIL, email);
                 loginPrefsEditor.apply();
@@ -148,33 +147,25 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                if (user != null) {
-                                    if (user.isEmailVerified()) {
-                                        // Email is verified, proceed to main activity
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        // Email is not verified, display message and sign out
-                                        Toast.makeText(LoginActivity.this, "Email is not verified. Please verify your email.", Toast.LENGTH_SHORT).show();
-                                        mAuth.signOut();
-                                    }
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                if (user.isEmailVerified()) {
+                                    // Email is verified, proceed to main activity
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // Email is not verified, display message and sign out
+                                    Toast.makeText(LoginActivity.this, "Email is not verified. Please verify your email.", Toast.LENGTH_SHORT).show();
+                                    mAuth.signOut();
                                 }
-                            } else {
-                                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
-                                snackbar.setAction("Retry", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        mAuth.signInWithEmailAndPassword(email, password);
-                                    }
-                                });
-                                snackbar.show();
                             }
+                        } else {
+                            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
+                            snackbar.setAction("Retry", v1 -> mAuth.signInWithEmailAndPassword(email, password));
+                            snackbar.show();
                         }
                     });
 
