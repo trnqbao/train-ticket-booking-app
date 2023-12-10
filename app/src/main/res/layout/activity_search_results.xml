@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:weightSum="2"
-    tools:context=".Booking">
+    tools:context=".TicketManagement.Booking">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,20 +132,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_bookingPassID"
+                    android:id="@+id/tv_bookingPass"
                     android:text="0"
                     android:textAllCaps="false"
                     android:textColor="@color/default_color"
                     android:textSize="17sp"
                     android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Passenger"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-                    android:textSize="17sp"
-                    android:textColor="@color/default_color"/>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

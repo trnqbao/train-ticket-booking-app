@@ -15,7 +15,7 @@
         android:theme="@style/Theme.TrainTicketBookingApp"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".AccountManagement.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ConfirmEmail"/>
-        <activity android:name=".ResetPassword"/>
-        <activity android:name=".TicketList"/>
+        <activity android:name=".AccountManagement.RegisterActivity"/>
+        <activity android:name=".AccountManagement.MainActivity"/>
+        <activity android:name=".AccountManagement.ConfirmEmail"/>
+        <activity android:name=".Fragment.HomeFragment"/>
+        <activity android:name=".TicketManagement.TicketList"/>
     </application>
 
 </manifest>

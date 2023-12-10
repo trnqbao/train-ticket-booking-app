@@ -1,17 +1,10 @@
-package com.java.trainticketbookingapp;
-
-import static android.content.ContentValues.TAG;
+package com.java.trainticketbookingapp.AccountManagement;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,16 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
-
-import java.util.UUID;
+import com.java.trainticketbookingapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText etEmail, etPassword, etPasswordCf;
+    private EditText etName, etEmail, etPassword, etPasswordCf;
     private Button btnSignUp;
     private TextView tvLogin;
     FirebaseAuth mAuth;
@@ -54,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         tvLogin = findViewById(R.id.tvLogin);
         btnSignUp = findViewById(R.id.btnLogin);
+        etName = findViewById(R.id.et_name);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etPasswordCf = findViewById(R.id.et_password_cf);
@@ -65,11 +57,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         btnSignUp.setOnClickListener(view -> {
-            String email, password, passwordCf;
+            String name, email, password, passwordCf;
+            name = String.valueOf(etName.getText());
             email = String.valueOf(etEmail.getText());
             password = String.valueOf(etPassword.getText());
             passwordCf = String.valueOf(etPasswordCf.getText());
 
+            if (TextUtils.isEmpty(name)) {
+                etName.setError("Please enter your name");
+                return;
+            }
 
             if (TextUtils.isEmpty(email)) {
                 etEmail.setError("Please enter your email");

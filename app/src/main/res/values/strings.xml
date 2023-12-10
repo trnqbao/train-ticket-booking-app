@@ -37,5 +37,7 @@
     <string name="btn_book_ticket">Book Ticket</string>
     <string name="price">Price</string>
     <string name="back">Back</string>
+    <string name="change_password">Change Password</string>
+    <string name="log_out">Log Out</string>
 
 </resources>

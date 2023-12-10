@@ -1,4 +1,4 @@
-package com.java.trainticketbookingapp;
+package com.java.trainticketbookingapp.AccountManagement;
 
 import android.os.Bundle;
 
@@ -10,6 +10,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.java.trainticketbookingapp.Fragment.BookingFragment;
+import com.java.trainticketbookingapp.Fragment.HomeFragment;
+import com.java.trainticketbookingapp.Fragment.InboxFragment;
+import com.java.trainticketbookingapp.Fragment.ProfileFragment;
+import com.java.trainticketbookingapp.R;
 import com.java.trainticketbookingapp.databinding.ActivityHomeBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,24 +35,6 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNav.setBackground(null);
 
         binding.bottomNav.setOnItemSelectedListener(item -> {
-//            switch (item.getItemId()) {
-//                case R.id.home:
-//                    replaceFragment(new HomeFragment());
-//                    break;
-//
-//                case R.id.booking:
-//                    replaceFragment(new BookingFragment());
-//                    break;
-//
-//                case R.id.inbox:
-//                    replaceFragment(new InboxFragment());
-//                    break;
-//
-//                case R.id.profile:
-//                    replaceFragment(new ProfileFragment());
-//                    break;
-
-//            }
             if (item.getItemId() == R.id.home) {
                 replaceFragment(new HomeFragment());
             } else if (item.getItemId() == R.id.booking) {
