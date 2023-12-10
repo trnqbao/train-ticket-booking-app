@@ -372,11 +372,30 @@ public class HomeFragment extends Fragment {
 
 
         // On find train click create intent with updated values and start TicketList activity
+//        btnFindTrain.setOnClickListener(v -> {
+//            savedDepartureName = locations[spinnerFromID.getSelectedItemPosition()];
+//            savedDestination = locations[spinnerToID.getSelectedItemPosition()];
+//            savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
+//            savedDateText = sharedPreferences.getString("DATE_TEXT", "");
+//
+//            Intent intent = new Intent(getActivity(), TicketList.class);
+//            intent.putExtra("bookingFromID", savedDepartureName);
+//            intent.putExtra("bookingToID", savedDestination);
+//            intent.putExtra("passenger", savedPassengerText);
+//            intent.putExtra("date", savedDateText);
+//
+//            startActivity(intent);
+//        });
+
         btnFindTrain.setOnClickListener(v -> {
             savedDepartureName = locations[spinnerFromID.getSelectedItemPosition()];
             savedDestination = locations[spinnerToID.getSelectedItemPosition()];
             savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
             savedDateText = sharedPreferences.getString("DATE_TEXT", "");
+            if (savedDepartureName.equals(savedDestination)) {
+                Toast.makeText(getActivity(), "Departure and destination cannot be the same.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             Intent intent = new Intent(getActivity(), TicketList.class);
             intent.putExtra("bookingFromID", savedDepartureName);
