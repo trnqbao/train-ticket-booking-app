@@ -24,11 +24,19 @@
             </intent-filter>
         </activity>
 
+<<<<<<< Updated upstream
         <activity android:name=".AccountManagement.RegisterActivity"/>
         <activity android:name=".AccountManagement.MainActivity"/>
         <activity android:name=".AccountManagement.ConfirmEmail"/>
         <activity android:name=".Fragment.HomeFragment"/>
         <activity android:name=".TicketManagement.TicketList"/>
+=======
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".HomeFragment"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ConfirmEmail"/>
+        <activity android:name=".TicketList"/>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

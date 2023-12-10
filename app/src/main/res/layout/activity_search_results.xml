@@ -54,7 +54,7 @@
                     android:text="Saigon"
                     android:textStyle="bold"
                     android:textAllCaps="false"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textColor="@color/default_color"/>
             </LinearLayout>
             <LinearLayout
@@ -64,7 +64,7 @@
                 android:gravity="center|bottom">
                 <ImageView
                     android:layout_width="50dp"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/baseline_arrow_right_alt_24"/>
             </LinearLayout>
@@ -76,12 +76,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/id_bookingToID"
+                    android:id="@+id/tv_bookingToID"
                     android:layout_marginLeft="7dp"
                     android:text="Hanoi"
                     android:textStyle="bold"
                     android:textAllCaps="false"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textColor="@color/default_color"/>
             </LinearLayout>
         </LinearLayout>
@@ -117,9 +117,7 @@
                     android:src="@drawable/baseline_remove_24"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-
-                    />
+                    android:scaleType="fitCenter" />
 
             </LinearLayout>
 

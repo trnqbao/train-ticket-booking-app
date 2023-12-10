@@ -1,6 +1,7 @@
 package com.java.trainticketbookingapp.TicketManagement;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,9 +9,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.java.trainticketbookingapp.R;
 
 public class Booking extends AppCompatActivity {
+
+    TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< Updated upstream:app/src/main/java/com/java/trainticketbookingapp/TicketManagement/Booking.java
         setContentView(R.layout.activity_choose_seat);
+=======
+        setContentView(R.layout.activity_search_results);
+
+        tv_bookingFromID = findViewById(R.id.tv_bookingFromID);
+        tv_bookingToID = findViewById(R.id.tv_bookingToID);
+        tv_bookingDateID = findViewById(R.id.tv_bookingDateID);
+        tv_bookingPassID = findViewById(R.id.tv_bookingPassID);
+
+        int savedDeparture = getIntent().getIntExtra("departure", 0);
+        int savedDestination = getIntent().getIntExtra("destination", 0);
+        String savedPassenger = getIntent().getStringExtra("passenger");
+        String savedDate = getIntent().getStringExtra("date");
+
+        // Set the saved values to the text views
+        tv_bookingFromID.setText(savedDeparture); // replace with actual data
+        tv_bookingToID.setText(savedDestination); // replace with actual data
+        tv_bookingPassID.setText(savedPassenger);
+        tv_bookingDateID.setText(savedDate);
+>>>>>>> Stashed changes:app/src/main/java/com/java/trainticketbookingapp/Booking.java
     }
 }

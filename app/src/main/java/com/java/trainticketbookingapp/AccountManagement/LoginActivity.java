@@ -162,28 +162,6 @@ public class LoginActivity extends AppCompatActivity {
                             snackbar.show();
                         }
                     });
-
-//            mAuth.signInWithEmailAndPassword(email, password)
-//                   .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                       @Override
-//                       public void onComplete(@NonNull Task<AuthResult> task) {
-//                           if (task.isSuccessful()) {
-//                               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                               startActivity(intent);
-//                               finish();
-//                           } else {
-//                               Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
-//                               snackbar.setAction("Retry", new View.OnClickListener() {
-//                                   @Override
-//                                   public void onClick(View v) {
-//                                       mAuth.signInWithEmailAndPassword(email, password);
-//                                   }
-//                               });
-//                               snackbar.show();
-//                           }
-//                       }
-//                   });
-//
        });
         
     }
