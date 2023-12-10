@@ -15,10 +15,9 @@ public class Booking extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< Updated upstream:app/src/main/java/com/java/trainticketbookingapp/TicketManagement/Booking.java
+
         setContentView(R.layout.activity_choose_seat);
-=======
-        setContentView(R.layout.activity_search_results);
+
 
         tv_bookingFromID = findViewById(R.id.tv_bookingFromID);
         tv_bookingToID = findViewById(R.id.tv_bookingToID);
@@ -35,6 +34,6 @@ public class Booking extends AppCompatActivity {
         tv_bookingToID.setText(savedDestination); // replace with actual data
         tv_bookingPassID.setText(savedPassenger);
         tv_bookingDateID.setText(savedDate);
->>>>>>> Stashed changes:app/src/main/java/com/java/trainticketbookingapp/Booking.java
+
     }
 }

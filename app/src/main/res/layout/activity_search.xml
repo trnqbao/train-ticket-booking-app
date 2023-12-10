@@ -1,498 +1,489 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/lavender"
     tools:context=".Fragment.HomeFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="190dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="29dp">
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".Fragment.HomeFragment">
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:fontFamily="sans-serif-black"-->
-<!--            android:text="@string/hi"-->
-<!--            android:textColor="@color/default_color"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:translationX="53dp"-->
-<!--            android:translationY="50dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.0" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_user"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="80dp"-->
-<!--            android:layout_marginTop="58dp"-->
-<!--            android:fontFamily="sans-serif-black"-->
-<!--            android:text="Tran Bao"-->
-<!--            android:textColor="@color/default_color"-->
-<!--            android:textSize="21sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <TextView
-            android:id="@+id/book"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="132dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Book a train ticket"
-            android:textColor="@color/default_color"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:translationX="53dp"
-            android:translationY="80dp"
-            app:layout_constraintBottom_toBottomOf="@id/constraint"
-            app:layout_constraintEnd_toEndOf="@id/constraint"
-            app:layout_constraintHorizontal_bias="0.0"
-
-            app:layout_constraintStart_toStartOf="@id/constraint" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/lavender"/>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="85dp"
-        app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:weightSum="2"
-        android:orientation="horizontal"
-        android:background="@drawable/shape_from_to">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="12dp"
-                android:background="@drawable/shape_search_dir">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="14dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/from" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="2"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="bottom">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="From"
-                    android:textSize="21sp"
-                    android:textAllCaps="false"
-                    android:textColor="#7E000000"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/spinnerFromID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="85dp"
-        android:weightSum="2"
-        android:orientation="horizontal"
-        android:translationY="93dp"
-        android:background="@drawable/shape_from_to"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="@id/guideline">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="12dp"
-                android:background="@drawable/shape_search_loc">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:padding="11dp"
-                    android:src="@drawable/destination"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="2"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="bottom">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="To"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-                    android:textSize="21sp"
-                    android:textColor="#7E000000"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinnerToID"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/swap"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:rotation="90"
-        android:padding="12dp"
-        android:background="@drawable/shape_search_trans"
-        android:translationX="125dp"
-        android:translationY="45dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        android:src="@drawable/transfer"/>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:background="@drawable/shape_from_to"
-        android:orientation="vertical"
-        android:translationY="350dp"
-        android:weightSum="3"
-
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:orientation="horizontal"
-            android:weightSum="3">
+            app:layout_constraintGuide_begin="190dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"
-                android:gravity="center">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="29dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_margin="14dp"
-                    android:background="@drawable/shape_member">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/hi"
+                android:textColor="@color/default_color"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationX="53dp"
+                android:translationY="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="13dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/member" />
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tv_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="58dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Tran Bao"
+                android:textColor="@color/default_color"
 
-            </LinearLayout>
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:orientation="vertical"
-                android:weightSum="2">
+            <TextView
+                android:id="@+id/book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="132dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/home_title"
+                android:textColor="@color/default_color"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:translationX="53dp"
+                android:translationY="80dp"
+                app:layout_constraintBottom_toBottomOf="@id/constraint"
+                app:layout_constraintEnd_toEndOf="@id/constraint"
+                app:layout_constraintHorizontal_bias="0.0"
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="bottom"
-                    tools:ignore="InefficientWeight">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Passeger"
-                        android:textAllCaps="false"
-                        android:textColor="#7E000000"
-                        android:textSize="21sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center|top|left"
-                    android:orientation="horizontal"
-                    android:paddingTop="3dp"
-                    tools:ignore="RtlHardcoded">
-
-                    <ImageButton
-                        android:id="@+id/btn_minus"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:background="@color/default_color"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/minus" />
-
-                    <TextView
-                        android:id="@+id/tv_count"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginRight="7dp"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black"
-                        android:textSize="19sp"
-                        android:textStyle="bold" />
-
-                    <ImageButton
-                        android:id="@+id/btn_plus"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:background="@color/default_color"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/plus" />
-                </LinearLayout>
-            </LinearLayout>
-
-<<<<<<< Updated upstream
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"
-                android:orientation="vertical"
-                android:weightSum="3">
-=======
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1.1"-->
-<!--                android:orientation="vertical"-->
-<!--                android:weightSum="2">-->
->>>>>>> Stashed changes
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="bottom">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/type"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="#7E000000"-->
-<!--                        android:textSize="21sp"-->
-<!--                        android:textStyle="bold" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1">-->
-
-<<<<<<< Updated upstream
-                    <Spinner
-                        android:id="@+id/spinner_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                app:layout_constraintStart_toStartOf="@id/constraint" />
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|left">
-                    <TextView
-                        android:id="@+id/tv_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="123"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-
-                        />
-                </LinearLayout>
-            </LinearLayout>
-=======
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner_type"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
->>>>>>> Stashed changes
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/lavender"/>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="85dp"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:weightSum="2"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:background="@drawable/shape_from_to">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.45"
-                android:gravity="center"
-                android:orientation="vertical"
-                tools:ignore="NestedWeights">
-
+                android:layout_weight="1.5">
                 <LinearLayout
-                    android:layout_width="67dp"
-                    android:layout_height="67dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
                     android:background="@drawable/shape_search_dir">
-
                     <ImageView
-                        android:id="@+id/date_picker"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="13dp"
+                        android:padding="14dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/calendar" />
+                        android:src="@drawable/from" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.55"
-                android:orientation="vertical"
-                android:weightSum="2">
-
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Departure"
-                        android:textAllCaps="false"
-                        android:textColor="#7E000000"
+                        android:text="@string/start"
                         android:textSize="21sp"
-                        android:textStyle="bold" />
+                        android:textAllCaps="false"
+                        android:textColor="#7E000000"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="top">
+                    android:layout_weight="1">
 
+                    <Spinner
+                        android:id="@+id/spinnerFromID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="85dp"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:translationY="93dp"
+            android:background="@drawable/shape_from_to"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="@id/guideline">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/shape_search_loc">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:padding="11dp"
+                        android:src="@drawable/destination"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom">
                     <TextView
-                        android:id="@+id/tv_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="pick_travel_date"
+                        android:text="@string/destination"
+                        android:textStyle="bold"
                         android:textAllCaps="false"
-                        android:textColor="@color/black"
                         android:textSize="21sp"
-                        android:textStyle="bold" />
+                        android:textColor="#7E000000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerToID"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/swap"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:rotation="90"
+            android:padding="12dp"
+            android:background="@drawable/shape_search_trans"
+            android:translationX="125dp"
+            android:translationY="45dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            android:src="@drawable/transfer"/>
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:background="@drawable/shape_from_to"
+            android:orientation="vertical"
+            android:translationY="350dp"
+            android:weightSum="3"
 
-            <Button
-                android:id="@+id/btn_find_train"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:text="Find Train"
-                android:textAllCaps="false"
-                android:textSize="25sp"
-                app:cornerRadius="10dp"
-                android:layout_marginBottom="30dp"/>
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.1"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="14dp"
+                        android:background="@drawable/shape_member">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="13dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/member" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        tools:ignore="InefficientWeight">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/passenger"
+                            android:textAllCaps="false"
+                            android:textColor="#7E000000"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top|left"
+                        android:orientation="horizontal"
+                        android:paddingTop="3dp"
+                        tools:ignore="RtlHardcoded">
+
+                        <ImageButton
+                            android:id="@+id/btn_minus"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@color/default_color"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/minus" />
+
+                        <TextView
+                            android:id="@+id/tv_count"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginRight="7dp"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/btn_plus"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@color/default_color"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/plus" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.1"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/type"
+                            android:textAllCaps="false"
+                            android:textColor="#7E000000"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <Spinner
+                            android:id="@+id/spinner_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|left">
+                        <TextView
+                            android:id="@+id/tv_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="123"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.45"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <LinearLayout
+                        android:layout_width="67dp"
+                        android:layout_height="67dp"
+                        android:background="@drawable/shape_search_dir">
+
+                        <ImageView
+                            android:id="@+id/date_picker"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="13dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/calendar" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.55"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/departure"
+                            android:textAllCaps="false"
+                            android:textColor="#7E000000"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="top">
+
+                        <TextView
+                            android:id="@+id/tv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pick_travel_date"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_find_train"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:text="@string/find_train"
+                    android:textAllCaps="false"
+                    android:textSize="25sp"
+                    app:cornerRadius="10dp"
+                    android:layout_marginBottom="30dp"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -130,7 +130,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_bookingPass"
+                    android:id="@+id/tv_bookingPassID"
                     android:text="0"
                     android:textAllCaps="false"
                     android:textColor="@color/default_color"

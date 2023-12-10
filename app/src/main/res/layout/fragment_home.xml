@@ -218,6 +218,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/swap"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:rotation="90"
