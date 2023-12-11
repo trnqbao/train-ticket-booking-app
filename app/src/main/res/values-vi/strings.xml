@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ứng dụng đặt vé tàu</string>
+    <string name="Home">Trang Chủ</string>
+    <string name="Booking">Vé Tàu</string>
+    <string name="Inbox">Tư vấn</string>
+    <string name="Profile">Thông tin</string>
+
+    <string name="txtWelcome">Welcome Back!</string>
+    <string name="txtForget">Forgot password?</string>
+    <string name="notifyRegister">Đăng ký tài khoản?</string>
+    <string name="txtRegister">Đăng ký</string>
+
+    <string name="notifyLogin">Toi đã có tài khoản</string>
+    <string name="txtLogin">Đăng nhập</string>
+    <string name="btnLogin">Đăng nhập</string>
+    <string name="btnRegister">Tạo tài khoản</string>
+
+    <string name="txtReset">Đặt lại mật khẩu</string>
+    <string name="btnNext">Tiếp tục</string>
+    <string name="btnBack">Quay lai</string>
+
+    <string name="aboutUs">Tran Quoc Bao - Le Nguyen Viet Hiep</string>
+    <string name="email">Email</string>
+    <string name="confirm_email">Xác định Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="remember_me">Ghi nhớ email</string>
+    <string name="reset_password">Đặt lại mật khẩu</string>
+    <string name="confirm_password">Nhap lại mật khẩu</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="reset">Đặt lại</string>
+    <string name="find_train">Tìm kiếm</string>
+    <string name="home_title">Đặt vé tàu</string>
+    <string name="start">Bắt Đầu</string>
+    <string name="destination">Đích Đến</string>
+    <string name="passenger">Khách Hàng</string>
+    <string name="type">Loại</string>
+    <string name="departure">Ngày khởi hành</string>
+    <string name="pick_travel_date">Chọn ngày</string>
+    <string name="hi">Xin chào,</string>
+    <string name="time">Thời gian</string>
+    <string name="btn_book_ticket">Đặt vé</string>
+    <string name="price">Giá</string>
+    <string name="back">Quay lại</string>
+    <string name="change_password">Thay đổi mật khẩu</string>
+    <string name="log_out">Đăng Xuất</string>
+    <string name="change_language">Thay đổi ngôn ngữ</string>
+
+</resources>

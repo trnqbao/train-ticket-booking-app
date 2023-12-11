@@ -1,5 +1,7 @@
 package com.java.trainticketbookingapp.AccountManagement;
 
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -17,15 +19,28 @@ import com.java.trainticketbookingapp.Fragment.ProfileFragment;
 import com.java.trainticketbookingapp.R;
 import com.java.trainticketbookingapp.databinding.ActivityHomeBinding;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
     FirebaseAuth auth;
     FirebaseUser user;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Change Language
+        SharedPreferences prefs = getSharedPreferences("app_language", MODE_PRIVATE);
+        String currentLocale = prefs.getString("locale", "en");
+        Locale locale = new Locale(currentLocale);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
 
         auth = FirebaseAuth.getInstance();
         binding = ActivityHomeBinding.inflate(getLayoutInflater());

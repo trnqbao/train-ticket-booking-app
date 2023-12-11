@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Train Ticket Booking</string>
@@ -45,5 +46,6 @@
     <string name="change_password">Change Password</string>
     <string name="log_out">Log Out</string>
     <string name="change_language">Change language</string>
+
 
 </resources>

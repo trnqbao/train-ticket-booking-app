@@ -137,6 +137,16 @@
                     android:textSize="17sp"
                     android:textStyle="bold"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Passenger"
+                    android:textAllCaps="false"
+                    android:textColor="@color/default_color"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"/>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

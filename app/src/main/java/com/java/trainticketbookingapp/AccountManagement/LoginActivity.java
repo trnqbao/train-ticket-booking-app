@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.java.trainticketbookingapp.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox rememberMe;
     private TextView tvSignUp, tvForget;
     FirebaseAuth mAuth;
+
+
     public static final String PREFS_NAME = "LoginPrefs";
     private static final String PREF_EMAIL = "email";
     private static final String PREF_PASSWORD = "password";
@@ -165,6 +168,4 @@ public class LoginActivity extends AppCompatActivity {
        });
         
     }
-
-
 }

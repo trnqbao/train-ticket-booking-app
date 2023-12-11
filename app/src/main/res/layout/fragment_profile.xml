@@ -7,14 +7,29 @@
     tools:context=".Fragment.ProfileFragment"
     android:padding="8dp">
 
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#888585"
-        android:text="Log Out"
-        android:textColor="@color/default_color"
-        android:textSize="20sp" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#888585"
+            android:text="@string/log_out"
+            android:textColor="@color/default_color"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/change_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#888585"
+            android:text="@string/change_language"
+            android:textColor="@color/default_color"
+            android:textSize="20sp"
+            android:layout_gravity="left"/>
+    </LinearLayout>
 
 </FrameLayout>
