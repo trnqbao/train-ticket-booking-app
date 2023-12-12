@@ -1,57 +1,71 @@
 package com.java.trainticketbookingapp.Model;
 
 public class UserAccount {
-    private String userId;
-    private String email;
-    private String password;
-    private String language; // New field to store language preference
+    private String userName;
+    private String userEmail;
+    private String userPhone;
+    private String userLanguage;
+    private int userPoint;
 
-    public UserAccount(String userId, String email, String password, String language) {
-        this.userId = userId;
-        this.email = email;
-        this.password = password;
-        this.language = language;
+    public UserAccount() {
     }
 
-    public String getUserId() {
-        return userId;
+    public UserAccount(String userName, String userEmail) {
+        this.userName = userName;
+        this.userEmail = userEmail;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public UserAccount(String userName, String userEmail, String userPhone) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
     }
 
-    public String getEmail() {
-        return email;
+    public UserAccount(String userName, String userEmail, String userPhone, String userLanguage, int userPoint) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
+        this.userLanguage = userLanguage;
+        this.userPoint = userPoint;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public String getLanguage() {
-        return language;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    @Override
-    public String toString() {
-        return "UserAccount{" +
-                "userId='" + userId + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", language='" + language + '\'' +
-                '}';
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserLanguage() {
+        return userLanguage;
+    }
+
+    public void setUserLanguage(String userLanguage) {
+        this.userLanguage = userLanguage;
+    }
+
+    public int getUserPoint() {
+        return userPoint;
+    }
+
+    public void setUserPoint(int userPoint) {
+        this.userPoint = userPoint;
     }
 }

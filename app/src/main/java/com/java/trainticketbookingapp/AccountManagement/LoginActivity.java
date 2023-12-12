@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvSignUp, tvForget;
     FirebaseAuth mAuth;
 
-
     public static final String PREFS_NAME = "LoginPrefs";
     private static final String PREF_EMAIL = "email";
     private static final String PREF_PASSWORD = "password";

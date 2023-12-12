@@ -47,4 +47,11 @@
     <string name="log_out">Đăng Xuất</string>
     <string name="change_language">Thay đổi ngôn ngữ</string>
 
+    <string name="user_name">HỌ TÊN</string>
+    <string name="user_avatar">CẬP NHẬT ẢNH ĐẠI DIỆN</string>
+    <string name="user_choose_avatar">CHỌN ẢNH</string>
+    <string name="upload_avatar">CẬP NHẬT</string>
+    <string name="user_email">ĐỊA CHỈ MAIL</string>
+    <string name="user_phone">SỐ ĐIỆN THOẠI</string>
+    <string name="user_point">ĐIỂM</string>
 </resources>
