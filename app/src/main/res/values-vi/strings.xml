@@ -54,4 +54,8 @@
     <string name="user_email">ĐỊA CHỈ MAIL</string>
     <string name="user_phone">SỐ ĐIỆN THOẠI</string>
     <string name="user_point">ĐIỂM</string>
+    <string name="user_save_profile">CẬP NHẬT</string>
+    <string name="user_update_profile">CẬP NHẬT THÔNG TIN</string>
+
+
 </resources>

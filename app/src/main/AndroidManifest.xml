@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TrainTicketBookingApp"
         tools:targetApi="31">
         <activity
+            android:name=".AccountManagement.UpdateProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".Model.UploadProfile"
             android:exported="false" />
         <activity
@@ -32,7 +35,6 @@
         <activity android:name=".Fragment.HomeFragment" />
         <activity android:name=".Fragment.ProfileFragment" />
         <activity android:name=".TicketManagement.TicketList" />
-
     </application>
 
 </manifest>

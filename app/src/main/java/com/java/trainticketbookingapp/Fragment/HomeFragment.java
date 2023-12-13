@@ -193,7 +193,6 @@ public class HomeFragment extends Fragment {
         spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("item", (String) parent.getItemAtPosition(position));
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                 tvType.setText((String) parent.getItemAtPosition(position));
             }

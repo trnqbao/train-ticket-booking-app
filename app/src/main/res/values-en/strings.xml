@@ -54,5 +54,8 @@
     <string name="user_email">EMAIL</string>
     <string name="user_phone">PHONE NUMBER</string>
     <string name="user_point">POINT</string>
+    <string name="user_save_profile">SAVE</string>
+    <string name="user_update_profile">UPDATE PROFILE</string>
+
 
 </resources>

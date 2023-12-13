@@ -140,7 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Passenger"
+                    android:text="@string/passenger"
                     android:textAllCaps="false"
                     android:textColor="@color/default_color"
                     android:textSize="17sp"
@@ -163,9 +163,4 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-
-
-
-
-
 </LinearLayout>
