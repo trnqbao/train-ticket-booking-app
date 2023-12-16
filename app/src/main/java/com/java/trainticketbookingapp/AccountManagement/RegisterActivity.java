@@ -98,8 +98,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
     }
-
-
     //Register with Check Email and Verification
     private void registerUserWithEmailVerification(String name, String phone, String email, String password) {
         mAuth.fetchSignInMethodsForEmail(email)
