@@ -185,6 +185,7 @@
                     android:background="@drawable/shape_book_ticket_btn"
                     android:text="@string/btn_book_ticket"
                     android:textColor="@color/default_color"
+                    android:backgroundTint="@color/colorPrimary"
                     android:layout_margin="10dp"
                     android:textSize="14sp"
                     android:textStyle="bold"

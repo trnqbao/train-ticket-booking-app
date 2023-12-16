@@ -23,16 +23,16 @@ public class TicketList extends AppCompatActivity {
         tv_bookingFromID = findViewById(R.id.tv_bookingFromID);
         tv_bookingToID = findViewById(R.id.tv_bookingToID);
         tv_bookingDateID = findViewById(R.id.tv_bookingDateID);
-        tv_bookingPassID = findViewById(R.id.tv_bookingPassID);
+//        tv_bookingPassID = findViewById(R.id.tv_bookingPassID);
 
         String savedDepartureName = getIntent().getStringExtra("bookingFromID");
         String savedDestination = getIntent().getStringExtra("bookingToID");
-        String savedPassenger = getIntent().getStringExtra("passenger");
+//        String savedPassenger = getIntent().getStringExtra("passenger");
         String savedDate = getIntent().getStringExtra("date");
 
         tv_bookingFromID.setText(String.valueOf(savedDepartureName));
         tv_bookingToID.setText(String.valueOf(savedDestination));
-        tv_bookingPassID.setText(savedPassenger);
+//        tv_bookingPassID.setText(savedPassenger);
         tv_bookingDateID.setText(savedDate);
 
         ImageButton btnBack = findViewById(R.id.btn_back_to_home);

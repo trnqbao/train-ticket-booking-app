@@ -44,17 +44,17 @@
     <string name="back">Back</string>
     <string name="change_password">Change Password</string>
     <string name="log_out">Log Out</string>
-    <string name="change_language">Change language</string>
+    <string name="change_language">Change Language</string>
 
     <string name="user_name">FULL NAME</string>
-    <string name="user_avatar">UPLOAD YOUR AVATAR</string>
-    <string name="user_choose_avatar">CHOOSE IMAGE</string>
-    <string name="upload_avatar">UPLOAD</string>
+    <string name="user_avatar">Upload avatar</string>
+    <string name="user_choose_avatar">Choose image</string>
+    <string name="upload_avatar">Upload</string>
     <string name="user_email">EMAIL</string>
     <string name="user_phone">PHONE NUMBER</string>
     <string name="user_point">POINT</string>
-    <string name="user_save_profile">SAVE</string>
-    <string name="user_update_profile">UPDATE PROFILE</string>
+    <string name="user_save_profile">Save</string>
+    <string name="user_update_profile">Update Profile</string>
 
 
 

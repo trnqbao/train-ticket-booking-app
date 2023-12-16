@@ -76,12 +76,12 @@ public class HomeFragment extends Fragment {
 
         // Find UI elements
         btnFindTrain = view.findViewById(R.id.btn_find_train);
-        btnPlus = view.findViewById(R.id.btn_plus);
-        btnMinus = view.findViewById(R.id.btn_minus);
-        tvPassenger = view.findViewById(R.id.tv_count);
-        tvType = view.findViewById(R.id.tv_type);
+//        btnPlus = view.findViewById(R.id.btn_plus);
+//        btnMinus = view.findViewById(R.id.btn_minus);
+//        tvPassenger = view.findViewById(R.id.tv_count);
+//        tvType = view.findViewById(R.id.tv_type);
         tvDate = view.findViewById(R.id.tv_date);
-        spinnerType = view.findViewById(R.id.spinner_type);
+//        spinnerType = view.findViewById(R.id.spinner_type);
         spinnerFromID = view.findViewById(R.id.spinnerFromID);
         spinnerToID = view.findViewById(R.id.spinnerToID);
         swap = view.findViewById(R.id.swap);
@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment {
         savedDateText = sharedPreferences.getString("DATE_TEXT", "");
 
         // Display initial values
-        tvPassenger.setText(String.valueOf(passenger));
+//        tvPassenger.setText(String.valueOf(passenger));
         tvDate.setText(savedDateText);
         spinnerFromID.setSelection(sharedPreferences.getInt("SELECTED_POSITION", 0));
         spinnerToID.setSelection(sharedPreferences.getInt("SELECTED_POSITION_TO", 0));
@@ -102,8 +102,8 @@ public class HomeFragment extends Fragment {
         // Set up spinner adapters
         showSpinnerOptions(spinnerFromID, locations);
         showSpinnerOptions(spinnerToID, locations);
-        showSpinnerOptions(spinnerType, typeOfUsers);
-        showTypeOfUser();
+//        showSpinnerOptions(spinnerType, typeOfUsers);
+//        showTypeOfUser();
 
         datePicker.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
@@ -134,24 +134,24 @@ public class HomeFragment extends Fragment {
 
 
         // On plus button click increase passenger count and update shared preferences
-        btnPlus.setOnClickListener(v -> {
-            passenger++;
-            tvPassenger.setText(String.valueOf(passenger));
-            savedPassengerText = String.valueOf(passenger);
-            sharedPreferences.edit().putString("PASSENGER_TEXT", savedPassengerText).apply();
-
-        });
+//        btnPlus.setOnClickListener(v -> {
+//            passenger++;
+//            tvPassenger.setText(String.valueOf(passenger));
+//            savedPassengerText = String.valueOf(passenger);
+//            sharedPreferences.edit().putString("PASSENGER_TEXT", savedPassengerText).apply();
+//
+//        });
 
         // On minus button click decrease passenger count (with minimum value of 1) and update shared preferences
-        btnMinus.setOnClickListener(v -> {
-            passenger--;
-            if (passenger <= 1) {
-                passenger = 1;
-            }
-            tvPassenger.setText(String.valueOf(passenger));
-            savedPassengerText = String.valueOf(passenger);
-            sharedPreferences.edit().putString("PASSENGER_TEXT", savedPassengerText).apply();
-        });
+//        btnMinus.setOnClickListener(v -> {
+//            passenger--;
+//            if (passenger <= 1) {
+//                passenger = 1;
+//            }
+//            tvPassenger.setText(String.valueOf(passenger));
+//            savedPassengerText = String.valueOf(passenger);
+//            sharedPreferences.edit().putString("PASSENGER_TEXT", savedPassengerText).apply();
+//        });
 
         // On swap button click swap location selections and update shared preferences
         swap.setOnClickListener(v -> {
@@ -168,7 +168,7 @@ public class HomeFragment extends Fragment {
         btnFindTrain.setOnClickListener(v -> {
             savedDepartureName = locations[spinnerFromID.getSelectedItemPosition()];
             savedDestination = locations[spinnerToID.getSelectedItemPosition()];
-            savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
+//            savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
             savedDateText = sharedPreferences.getString("DATE_TEXT", "");
             if (savedDepartureName.equals(savedDestination)) {
                 Toast.makeText(getActivity(), "Departure and destination cannot be the same.", Toast.LENGTH_SHORT).show();
@@ -178,7 +178,7 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(getActivity(), TicketList.class);
             intent.putExtra("bookingFromID", savedDepartureName);
             intent.putExtra("bookingToID", savedDestination);
-            intent.putExtra("passenger", savedPassengerText);
+//            intent.putExtra("passenger", savedPassengerText);
             intent.putExtra("date", savedDateText);
 
             startActivity(intent);

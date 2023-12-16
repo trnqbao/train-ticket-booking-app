@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +43,7 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseAuth auth;
     private FirebaseUser user;
-    private Button logout, change_language, update_profile;
+    private Button logout, btnChangeLanguage, update_profile;
     private ImageView avatar;
     private TextView user_name, user_phone, user_point, user_email, user_name_avatar;
     private String name, phone, email;
@@ -55,13 +56,14 @@ public class ProfileFragment extends Fragment {
 
         SharedPreferences prefs = getActivity().getSharedPreferences("app_language", MODE_PRIVATE);
 
-        final String[] availableLanguages = {"English", "Vietnamese"};
+        final String[] en_availableLanguages = {"English", "Vietnamese"};
+        final String[] vi_availableLanguages = {"Tiếng Anh", "Tiếng Việt"};
         final String[] languageCodes = {"en", "vi"};
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        change_language = view.findViewById(R.id.change_language);
+        btnChangeLanguage = view.findViewById(R.id.change_language);
         logout = view.findViewById(R.id.logout);
         update_profile = view.findViewById(R.id.update_profile);
         user_name = view.findViewById(R.id.user_name);
@@ -98,30 +100,52 @@ public class ProfileFragment extends Fragment {
             }
         });
         //Change language app
-        change_language.setOnClickListener(new View.OnClickListener() {
+        btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String titleOfButton = (String) btnChangeLanguage.getText();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                Log.e("TAG", "onClick: " + titleOfButton);
+                if (titleOfButton.equals("Change Language")) {
+                    builder.setTitle("Select Language");
 
-                builder.setTitle("Select Language");
+                    // Set the list of options
+                    builder.setItems(en_availableLanguages, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update SharedPreferences with selected language
+                            String selectedLocale = languageCodes[which];
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString("userLanguage", selectedLocale);
+                            editor.apply();
 
-                // Set the list of options
-                builder.setItems(availableLanguages, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Update SharedPreferences with selected language
-                        String selectedLocale = languageCodes[which];
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString("userLanguage", selectedLocale);
-                        editor.apply();
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Registered user");
+                            reference.child(user.getUid()).child("userLanguage").setValue(selectedLocale);
 
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Registered user");
-                        reference.child(user.getUid()).child("userLanguage").setValue(selectedLocale);
+                            getActivity().recreate();
+                        }
+                    });
+                } else {
+                    builder.setTitle("Chọn ngôn ngữ");
 
-                        getActivity().recreate();
-                    }
-                });
+                    // Set the list of options
+                    builder.setItems(vi_availableLanguages, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update SharedPreferences with selected language
+                            String selectedLocale = languageCodes[which];
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString("userLanguage", selectedLocale);
+                            editor.apply();
+
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Registered user");
+                            reference.child(user.getUid()).child("userLanguage").setValue(selectedLocale);
+
+                            getActivity().recreate();
+                        }
+                    });
+                }
+
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
