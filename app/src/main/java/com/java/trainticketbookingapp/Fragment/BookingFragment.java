@@ -36,7 +36,7 @@ public class BookingFragment extends Fragment {
 
         int i = 1;
         for (i = 1; i < 10; i++) {
-            ticketList.add(new Ticket("null", "Location A", "Location B", 1500000, "2 hours", "10:00 AM"));
+            ticketList.add(new Ticket("null", "null", "null", 600, "3 hours", "09:00", "12:00", "Train ID", "null"));
         }
 
 

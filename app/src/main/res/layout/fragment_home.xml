@@ -27,7 +27,7 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="29dp">
+            tools:layout_editor_absoluteX="0dp">
 
             <TextView
                 android:id="@+id/textView2"
@@ -46,22 +46,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_user"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="80dp"-->
-<!--                android:layout_marginTop="58dp"-->
-<!--                android:fontFamily="sans-serif-black"-->
-<!--                android:text="Tran Bao"-->
-<!--                android:textColor="@color/default_color"-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/tv_user"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="80dp"-->
+            <!--                android:layout_marginTop="58dp"-->
+            <!--                android:fontFamily="sans-serif-black"-->
+            <!--                android:text="Tran Bao"-->
+            <!--                android:textColor="@color/default_color"-->
 
-<!--                android:textSize="21sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+            <!--                android:textSize="21sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.0"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <TextView
                 android:id="@+id/book"
@@ -80,6 +80,17 @@
                 app:layout_constraintHorizontal_bias="0.0"
 
                 app:layout_constraintStart_toStartOf="@id/constraint" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="43dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/baseline_notifications_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.956"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -135,6 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/start"
+                        android:textStyle="bold"
                         android:textSize="21sp"
                         android:textAllCaps="false"
                         android:textColor="#7E000000"/>

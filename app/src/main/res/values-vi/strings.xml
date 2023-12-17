@@ -12,7 +12,7 @@
     <string name="notifyRegister">Đăng ký tài khoản?</string>
     <string name="txtRegister">Đăng ký</string>
 
-    <string name="notifyLogin">Toi đã có tài khoản</string>
+    <string name="notifyLogin">Tôi đã có tài khoản</string>
     <string name="txtLogin">Đăng nhập</string>
     <string name="btnLogin">Đăng nhập</string>
     <string name="btnRegister">Tạo tài khoản</string>
@@ -21,20 +21,20 @@
     <string name="btnNext">Tiếp tục</string>
     <string name="btnBack">Quay lai</string>
 
-    <string name="aboutUs">Tran Quoc Bao - Le Nguyen Viet Hiep</string>
+    <string name="aboutUs">Trần Quốc Bảo - Lê Nguyễn Viết Hiệp</string>
     <string name="email">Email</string>
-    <string name="confirm_email">Xác định Email</string>
+    <string name="confirm_email">Xác nhận Email</string>
     <string name="password">Mật khẩu</string>
-    <string name="remember_me">Ghi nhớ email</string>
+    <string name="remember_me">Ghi nhớ Email</string>
     <string name="reset_password">Đặt lại mật khẩu</string>
-    <string name="confirm_password">Nhap lại mật khẩu</string>
+    <string name="confirm_password">Nhập lại mật khẩu</string>
     <string name="new_password">Mật khẩu mới</string>
     <string name="reset">Đặt lại</string>
     <string name="find_train">Tìm kiếm</string>
     <string name="home_title">Đặt vé tàu</string>
-    <string name="start">Bắt Đầu</string>
-    <string name="destination">Đích Đến</string>
-    <string name="passenger">Khách Hàng</string>
+    <string name="start">Xuất phát</string>
+    <string name="destination">Đích đến</string>
+    <string name="passenger">Khách hàng</string>
     <string name="type">Loại</string>
     <string name="departure">Ngày khởi hành</string>
     <string name="pick_travel_date">Chọn ngày</string>
@@ -47,15 +47,17 @@
     <string name="log_out">Đăng Xuất</string>
     <string name="change_language">Thay đổi ngôn ngữ</string>
 
-    <string name="user_name">HỌ TÊN</string>
-    <string name="user_avatar">CẬP NHẬT ẢNH ĐẠI DIỆN</string>
-    <string name="user_choose_avatar">CHỌN ẢNH</string>
-    <string name="upload_avatar">CẬP NHẬT</string>
-    <string name="user_email">ĐỊA CHỈ MAIL</string>
-    <string name="user_phone">SỐ ĐIỆN THOẠI</string>
-    <string name="user_point">ĐIỂM</string>
-    <string name="user_save_profile">CẬP NHẬT</string>
-    <string name="user_update_profile">CẬP NHẬT THÔNG TIN</string>
-
-
+    <string name="user_name">Họ tên</string>
+    <string name="user_avatar">Cập nhật ảnh đại diện</string>
+    <string name="user_choose_avatar">Chọn ảnh</string>
+    <string name="upload_avatar">Cập nhật</string>
+    <string name="user_email">Email</string>
+    <string name="user_phone">Số điện thoại</string>
+    <string name="user_point">Điểm tích lũy</string>
+    <string name="user_save_profile">Cập nhật</string>
+    <string name="user_update_profile">Cập nhật thông tin</string>
+    <string name="profile_avatar">Ảnh đại diện</string>
+    <string name="language">Việt Nam</string>
+    <string name="time_to_time">-</string>
+    <string name="select_your_train">Chọn chuyến tàu của bạn!</string>
 </resources>
