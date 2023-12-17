@@ -1,4 +1,87 @@
 package com.java.trainticketbookingapp.Model;
 
 public class Ticket {
+    private String id;
+    private String start;
+    private String destination;
+    private int price;
+    private String totalTime;
+    private String departureTime;
+
+    public Ticket(String id, String start, String destination, int price, String totalTime, String departureTime) {
+        this.id = id;
+        this.start = start;
+        this.destination = destination;
+        this.price = price;
+        this.totalTime = totalTime;
+        this.departureTime = departureTime;
+    }
+
+    public Ticket(String start, String destination, int price, String totalTime, String departureTime) {
+        this.start = start;
+        this.destination = destination;
+        this.price = price;
+        this.totalTime = totalTime;
+        this.departureTime = departureTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(String totalTime) {
+        this.totalTime = totalTime;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id='" + id + '\'' +
+                ", start='" + start + '\'' +
+                ", destination='" + destination + '\'' +
+                ", price=" + price +
+                ", totalTime='" + totalTime + '\'' +
+                ", departureTime='" + departureTime + '\'' +
+                '}';
+    }
 }

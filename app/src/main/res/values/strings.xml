@@ -38,8 +38,8 @@
     <string name="departure">Departure</string>
     <string name="pick_travel_date">Pick Travel Date</string>
     <string name="hi">Hi,</string>
-    <string name="time">Time</string>
-    <string name="btn_book_ticket">Book Ticket</string>
+    <string name="time">Trip Time</string>
+    <string name="btn_book_ticket">Book</string>
     <string name="price">Price</string>
     <string name="back">Back</string>
     <string name="change_password">Change Password</string>

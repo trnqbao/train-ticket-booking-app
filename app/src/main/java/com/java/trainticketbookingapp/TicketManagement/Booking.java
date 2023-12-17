@@ -5,12 +5,18 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.java.trainticketbookingapp.Adapter.TicketAdapter;
+import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
+
+import java.util.List;
 
 public class Booking extends AppCompatActivity {
 
-    TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
+    private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +40,8 @@ public class Booking extends AppCompatActivity {
         tv_bookingToID.setText(savedDestination); // replace with actual data
 //        tv_bookingPassID.setText(savedPassenger);
         tv_bookingDateID.setText(savedDate);
+
+
 
     }
 }
