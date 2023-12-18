@@ -5,7 +5,6 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,14 +14,11 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.java.trainticketbookingapp.AccountManagement.LoginActivity;
 import com.java.trainticketbookingapp.AccountManagement.UpdateProfileActivity;
-import com.java.trainticketbookingapp.Model.UploadProfile;
+import com.java.trainticketbookingapp.AccountManagement.UploadImageActivity;
 import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
 import com.squareup.picasso.Picasso;
@@ -90,7 +86,7 @@ public class ProfileFragment extends Fragment {
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), UploadProfile.class);
+                Intent intent = new Intent(getActivity(), UploadImageActivity.class);
                 startActivity(intent);
             }
         });

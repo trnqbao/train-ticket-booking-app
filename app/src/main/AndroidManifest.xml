@@ -18,7 +18,7 @@
             android:name=".AccountManagement.UpdateProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Model.UploadProfile"
+            android:name=".AccountManagement.UploadImageActivity"
             android:exported="false" />
         <activity
             android:name=".AccountManagement.LoginActivity"

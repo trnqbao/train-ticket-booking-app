@@ -33,7 +33,7 @@ import com.java.trainticketbookingapp.R;
 
 public class UpdateProfileActivity extends AppCompatActivity {
     private EditText et_name, et_phone;
-    private Button save;
+    private Button btnSave, btnBack;
     private FirebaseAuth auth;
     private String user_name, user_phone;
 
@@ -44,17 +44,26 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         et_name = findViewById(R.id.et_user_name);
         et_phone = findViewById(R.id.et_user_phone);
-        save = findViewById(R.id.save);
+        btnSave = findViewById(R.id.save);
+        btnBack = findViewById(R.id.back);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
 
         showUserProfile(user);
 
-        save.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateProfile(user);
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UpdateProfileActivity.this, ProfileFragment.class);
+                startActivity(intent);
             }
         });
     }
