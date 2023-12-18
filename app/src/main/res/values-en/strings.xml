@@ -7,7 +7,7 @@
     <string name="Inbox">Inbox</string>
     <string name="Profile">Profile</string>
 
-    <string name="txtWelcome">Welcome Back!</string>
+    <string name="txtWelcome">Welcome!</string>
     <string name="txtForget">Forgot password?</string>
     <string name="notifyRegister">Do not have an account?</string>
     <string name="txtRegister">Register Now</string>
@@ -39,23 +39,25 @@
     <string name="departure">Departure</string>
     <string name="pick_travel_date">Pick Travel Date</string>
     <string name="hi">Hi,</string>
-    <string name="time">Time</string>
-    <string name="btn_book_ticket">Book Ticket</string>
+    <string name="time">Trip Time</string>
+    <string name="btn_book_ticket">Book</string>
     <string name="price">Price</string>
     <string name="back">Back</string>
     <string name="change_password">Change Password</string>
     <string name="log_out">Log Out</string>
-    <string name="change_language">Change language</string>
+    <string name="change_language">Change Language</string>
 
-    <string name="user_name">FULL NAME</string>
-    <string name="user_avatar">UPLOAD YOUR AVATAR</string>
-    <string name="user_choose_avatar">CHOOSE IMAGE</string>
-    <string name="upload_avatar">UPLOAD</string>
-    <string name="user_email">EMAIL</string>
-    <string name="user_phone">PHONE NUMBER</string>
-    <string name="user_point">POINT</string>
-    <string name="user_save_profile">SAVE</string>
-    <string name="user_update_profile">UPDATE PROFILE</string>
-
-
+    <string name="user_name">Full name</string>
+    <string name="user_avatar">Upload Avatar</string>
+    <string name="user_choose_avatar">Choose Image</string>
+    <string name="upload_avatar">Upload</string>
+    <string name="user_email">Email</string>
+    <string name="user_phone">Phone number</string>
+    <string name="user_point">Point</string>
+    <string name="user_save_profile">Save</string>
+    <string name="user_update_profile">Update Profile</string>
+    <string name="profile_avatar">Profile Avatar</string>
+    <string name="language">English</string>
+    <string name="time_to_time">-</string>
+    <string name="select_your_train">Select your train!</string>
 </resources>

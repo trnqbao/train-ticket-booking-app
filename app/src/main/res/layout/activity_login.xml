@@ -24,38 +24,46 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp">
-
+            android:padding="25dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="88dp"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="330dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="122dp"
-                        android:layout_height="88dp"
-                        android:src="@drawable/train"
-                        tools:layout_conversion_absoluteHeight="48dp"
-                        tools:layout_conversion_absoluteWidth="53dp"
-                        tools:layout_editor_absoluteX="305dp"
-                        tools:layout_editor_absoluteY="164dp" />
-                </androidx.cardview.widget.CardView>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/train" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="101dp"
-                    android:text="@string/txtWelcome"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                    android:textColor="@color/black"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/gotham"
+                        android:gravity="center"
+                        android:text="@string/txtWelcome"
+                        android:textColor="@color/black"
+                        android:textSize="27sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+
+
+
+
 
             </LinearLayout>
 
@@ -63,19 +71,19 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-
+                android:layout_marginTop="20dp"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:drawablePadding="15dp"
                 android:hint="@string/email"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:fontFamily="@font/calibri"
+                android:textSize="17sp"
+                android:textColor="@color/black"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                >
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp">
 
                 <EditText
                     android:id="@+id/et_password"
@@ -86,7 +94,9 @@
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:padding="8dp"
-                    android:textColor="@color/black" />
+                    android:fontFamily="@font/calibri"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
 
                 <ImageView
                     android:id="@+id/iv_eye"
@@ -96,35 +106,49 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="15dp"
                     android:src="@drawable/baseline_remove_red_eye_24" />
-
             </RelativeLayout>
 
-
-
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
-                <CheckBox
-                    android:id="@+id/cb_remember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/remember_me"
+                android:weightSum="2">
 
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/tv_forget_password"
-                    android:layout_width="176dp"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:gravity="end"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:text="@string/txtForget"
-                    android:textColor="@color/colorPrimary"
-                    android:focusable="true" />
+                    <CheckBox
+                        android:id="@+id/cb_remember"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/calibri"
+                        android:text="@string/remember_me"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/tv_forget_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="end"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/calibri"
+                        android:text="@string/txtForget"
+                        android:textColor="@color/colorPrimary"
+                        android:focusable="true"/>
+                </LinearLayout>
+
+
 
             </LinearLayout>
 

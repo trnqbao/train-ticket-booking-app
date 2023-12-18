@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         user_phone = view.findViewById(R.id.user_phone);
         user_point = view.findViewById(R.id.user_point);
         user_email = view.findViewById(R.id.user_email);
-        user_name_avatar = view.findViewById(R.id.user_name_avatar);
+//        user_name_avatar = view.findViewById(R.id.user_name_avatar);
         avatar = view.findViewById(R.id.user_avatar);
 
         UserProfile(user);
@@ -169,7 +169,7 @@ public class ProfileFragment extends Fragment {
                         phone = userAccount.getUserPhone();
                         point = userAccount.getUserPoint();
 
-                        user_name_avatar.setText("Welcome, " + name + "!");
+//                        user_name_avatar.setText("Welcome, " + name + "!");
                         user_name.setText(name);
                         user_email.setText(email);
                         user_phone.setText(phone);

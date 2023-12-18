@@ -7,22 +7,20 @@ public class Ticket {
     private int price;
     private String totalTime;
     private String departureTime;
+    private String arrivalTime;
+    private String trainID;
+    private String date;
 
-    public Ticket(String id, String start, String destination, int price, String totalTime, String departureTime) {
+    public Ticket(String id, String start, String destination, int price, String totalTime, String departureTime, String arrivalTime, String trainID, String date) {
         this.id = id;
         this.start = start;
         this.destination = destination;
         this.price = price;
         this.totalTime = totalTime;
         this.departureTime = departureTime;
-    }
-
-    public Ticket(String start, String destination, int price, String totalTime, String departureTime) {
-        this.start = start;
-        this.destination = destination;
-        this.price = price;
-        this.totalTime = totalTime;
-        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.trainID = trainID;
+        this.date = date;
     }
 
     public String getId() {
@@ -73,15 +71,27 @@ public class Ticket {
         this.departureTime = departureTime;
     }
 
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "id='" + id + '\'' +
-                ", start='" + start + '\'' +
-                ", destination='" + destination + '\'' +
-                ", price=" + price +
-                ", totalTime='" + totalTime + '\'' +
-                ", departureTime='" + departureTime + '\'' +
-                '}';
+    public String getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public String getTrainID() {
+        return trainID;
+    }
+
+    public void setTrainID(String trainID) {
+        this.trainID = trainID;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

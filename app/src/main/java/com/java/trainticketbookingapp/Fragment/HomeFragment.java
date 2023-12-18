@@ -32,30 +32,38 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment {
 
+//    String[] locations = new String[]{
+//            "An Giang",
+//            "Ba Ria - Vung Tau",
+//            "Bac Lieu",
+//            "Ben Tre",
+//            "Binh Phuoc",
+//            "Binh Duong",
+//            "Ca Mau",
+//            "Dong Nai",
+//            "Dong Thap",
+//            "Hau Giang",
+//            "Ho Chi Minh City",
+//            "Kien Giang",
+//            "Long An",
+//            "Soc Trang",
+//            "Tay Ninh",
+//            "Tien Giang",
+//            "Tra Vinh",
+//            "Vinh Long",
+//    };
+
     String[] locations = new String[]{
-            "An Giang",
-            "Ba Ria - Vung Tau",
-            "Bac Lieu",
-            "Ben Tre",
-            "Binh Phuoc",
-            "Binh Duong",
-            "Ca Mau",
-            "Dong Nai",
-            "Dong Thap",
-            "Hau Giang",
-            "Ho Chi Minh City",
-            "Kien Giang",
-            "Long An",
-            "Soc Trang",
-            "Tay Ninh",
-            "Tien Giang",
-            "Tra Vinh",
-            "Vinh Long",
+            "Ha Noi",
+            "Sai Gon",
+            "Da Nang",
+            "Hue",
+            "Nha Trang"
     };
 
-    String[] typeOfUsers = new String[]{
-            "Adult", "Children"
-    };
+//    String[] typeOfUsers = new String[]{
+//            "Adult", "Children"
+//    };
 
     private Spinner spinnerType, spinnerFromID, spinnerToID;
     private TextView tvType, tvPassenger, tvDate;
@@ -114,7 +122,12 @@ public class HomeFragment extends Fragment {
                         Calendar currentDate = Calendar.getInstance();
 
                         if (selectedDate.before(currentDate)) {
-                            Toast.makeText(getActivity(), "Please select a date on or after today.", Toast.LENGTH_SHORT).show();
+                            if (checkVi()) {
+                                Toast.makeText(getActivity(), "Vui lòng chọn ngày hiện tại hoặc sau ngày hôm nay.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Please select a date on or after today.", Toast.LENGTH_SHORT).show();
+                            }
+
                             return;
                         }
 
@@ -171,7 +184,11 @@ public class HomeFragment extends Fragment {
 //            savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
             savedDateText = sharedPreferences.getString("DATE_TEXT", "");
             if (savedDepartureName.equals(savedDestination)) {
-                Toast.makeText(getActivity(), "Departure and destination cannot be the same.", Toast.LENGTH_SHORT).show();
+                if (checkVi()) {
+                    Toast.makeText(getActivity(), "Điểm khởi hành và điểm đến không thể giống nhau.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Departure and destination cannot be the same.", Toast.LENGTH_SHORT).show();
+                }
                 return;
             }
 
@@ -184,6 +201,14 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
         return view;
+    }
+
+    private boolean checkVi() {
+        String check = (String) btnFindTrain.getText();
+        if (check.equals("Tìm kiếm")) {
+            return true;
+        }
+        return false;
     }
 
 

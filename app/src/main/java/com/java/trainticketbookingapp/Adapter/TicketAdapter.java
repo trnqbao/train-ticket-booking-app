@@ -43,25 +43,25 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTripTime;
-        private TextView tvStart;
-        private TextView tvDestination;
+        private TextView tvDepartureTime;
+        private TextView tvArrivalTime;
+        private TextView tvTrainID;
         private TextView tvTotalTripTime;
         private TextView tvTripPrice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvTripTime = itemView.findViewById(R.id.tv_trip_time);
-            tvStart = itemView.findViewById(R.id.tv_trip_pick_up);
-            tvDestination = itemView.findViewById(R.id.tv_trip_drop_off);
-            tvTotalTripTime = itemView.findViewById(R.id.tv_total_trip_time);
-            tvTripPrice = itemView.findViewById(R.id.tv_trip_price);
+            tvDepartureTime = itemView.findViewById(R.id.tv_departureTime);
+            tvArrivalTime = itemView.findViewById(R.id.tv_arrivalTime);
+            tvTrainID = itemView.findViewById(R.id.tv_trainID);
+            tvTotalTripTime = itemView.findViewById(R.id.tv_totalTripTime);
+            tvTripPrice = itemView.findViewById(R.id.tv_priceID);
         }
 
         public void bind(Ticket ticket) {
-            tvTripTime.setText(ticket.getDepartureTime());
-            tvStart.setText(ticket.getStart());
-            tvDestination.setText(ticket.getDestination());
+            tvDepartureTime.setText(ticket.getDepartureTime());
+            tvArrivalTime.setText(ticket.getArrivalTime());
+            tvTrainID.setText(ticket.getTrainID());
             tvTotalTripTime.setText(ticket.getTotalTime());
             tvTripPrice.setText(String.valueOf(ticket.getPrice()));
         }

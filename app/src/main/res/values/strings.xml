@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Train Ticket Booking</string>
@@ -6,7 +7,7 @@
     <string name="Inbox">Inbox</string>
     <string name="Profile">Profile</string>
 
-    <string name="txtWelcome">Welcome Back!</string>
+    <string name="txtWelcome">Welcome!</string>
     <string name="txtForget">Forgot password?</string>
     <string name="notifyRegister">Do not have an account?</string>
     <string name="txtRegister">Register Now</string>
@@ -46,17 +47,17 @@
     <string name="log_out">Log Out</string>
     <string name="change_language">Change Language</string>
 
-    <string name="user_name">FULL NAME</string>
-    <string name="user_avatar">Upload avatar</string>
-    <string name="user_choose_avatar">Choose image</string>
+    <string name="user_name">Full name</string>
+    <string name="user_avatar">Upload Avatar</string>
+    <string name="user_choose_avatar">Choose Image</string>
     <string name="upload_avatar">Upload</string>
-    <string name="user_email">EMAIL</string>
-    <string name="user_phone">PHONE NUMBER</string>
-    <string name="user_point">POINT</string>
+    <string name="user_email">Email</string>
+    <string name="user_phone">Phone number</string>
+    <string name="user_point">Point</string>
     <string name="user_save_profile">Save</string>
     <string name="user_update_profile">Update Profile</string>
-
-
-
-
+    <string name="profile_avatar">Profile Avatar</string>
+    <string name="language">English</string>
+    <string name="time_to_time">-</string>
+    <string name="select_your_train">Select your train!</string>
 </resources>
