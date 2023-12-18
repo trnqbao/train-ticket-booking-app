@@ -124,6 +124,7 @@ public class HomeFragment extends Fragment {
 
         // Display initial values
 //        tvPassenger.setText(String.valueOf(passenger));
+
         tvDate.setText(savedDateText);
         spinnerFromID.setSelection(sharedPreferences.getInt("SELECTED_POSITION", 0));
         spinnerToID.setSelection(sharedPreferences.getInt("SELECTED_POSITION_TO", 0));
