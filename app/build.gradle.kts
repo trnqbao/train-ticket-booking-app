@@ -4,11 +4,17 @@ plugins {
 
 }
 
-
 android {
 
     namespace = "com.java.trainticketbookingapp"
     compileSdk = 34
+
+    packagingOptions {
+        resources {
+            exclude("META-INF/NOTICE.md")
+            exclude("META-INF/LICENSE.md")
+        }
+    }
 
     defaultConfig {
         applicationId = "com.java.trainticketbookingapp"
@@ -41,6 +47,9 @@ android {
 
 dependencies {
 
+    implementation ("com.google.code.gson:gson:2.8.9")
+    implementation ("com.sun.mail:android-mail:1.6.6")
+    implementation ("com.sun.mail:android-activation:1.6.6")
     implementation("com.squareup.picasso:picasso:2.5.2")
     implementation ("com.google.firebase:firebase-storage:20.2.1")
     implementation ("com.google.android.material:material:1.10.0")
@@ -56,3 +65,4 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
 }
+

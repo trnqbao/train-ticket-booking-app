@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.java.trainticketbookingapp.Adapter.TicketAdapter;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
@@ -22,6 +23,8 @@ public class TicketList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TicketAdapter ticketAdapter;
     private List<Ticket> ticketList;
+    private FirebaseDatabase database;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

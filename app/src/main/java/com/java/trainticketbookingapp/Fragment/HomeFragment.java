@@ -3,10 +3,13 @@ package com.java.trainticketbookingapp.Fragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import static android.content.Context.MODE_PRIVATE;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -23,12 +26,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
 import com.java.trainticketbookingapp.TicketManagement.TicketList;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -66,17 +79,24 @@ public class HomeFragment extends Fragment {
 //    };
 
     private Spinner spinnerType, spinnerFromID, spinnerToID;
-    private TextView tvType, tvPassenger, tvDate;
+    private TextView tvType, tvPassenger, tvDate, tvUser;
     private Button btnFindTrain;
     private ImageButton btnPlus, btnMinus;
     private ImageView swap;
     private SharedPreferences sharedPreferences;
     private int passenger;
     private String savedDepartureName, savedDestination, savedPassengerText, savedDateText;
+    FirebaseAuth auth;
+    FirebaseUser user;
+    String name;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // Get current user
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         // Initialize variables
         sharedPreferences = getActivity().getSharedPreferences("MY_PREFS", MODE_PRIVATE);
@@ -89,6 +109,7 @@ public class HomeFragment extends Fragment {
 //        tvPassenger = view.findViewById(R.id.tv_count);
 //        tvType = view.findViewById(R.id.tv_type);
         tvDate = view.findViewById(R.id.tv_date);
+        tvUser = view.findViewById(R.id.tv_user);
 //        spinnerType = view.findViewById(R.id.spinner_type);
         spinnerFromID = view.findViewById(R.id.spinnerFromID);
         spinnerToID = view.findViewById(R.id.spinnerToID);
@@ -112,6 +133,8 @@ public class HomeFragment extends Fragment {
         showSpinnerOptions(spinnerToID, locations);
 //        showSpinnerOptions(spinnerType, typeOfUsers);
 //        showTypeOfUser();
+
+        userName(user);
 
         datePicker.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
@@ -232,6 +255,26 @@ public class HomeFragment extends Fragment {
     private void showSpinnerOptions(Spinner spinner, String[] options) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, options);
         spinner.setAdapter(adapter);
+    }
+
+    private void userName(FirebaseUser user){
+        String userID = user.getUid();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Registered user");
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserAccount userAccount = snapshot.getValue(UserAccount.class);
+                if (userAccount != null) {
+                    name = userAccount.getUserName();
+                    tvUser.setText(name);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }
 

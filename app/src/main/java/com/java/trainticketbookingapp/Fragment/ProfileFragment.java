@@ -49,6 +49,8 @@ public class ProfileFragment extends Fragment {
     private String name, phone, email;
     private int point;
 
+    boolean updateSuccessful;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,10 +72,9 @@ public class ProfileFragment extends Fragment {
         user_phone = view.findViewById(R.id.user_phone);
         user_point = view.findViewById(R.id.user_point);
         user_email = view.findViewById(R.id.user_email);
-//        user_name_avatar = view.findViewById(R.id.user_name_avatar);
         avatar = view.findViewById(R.id.user_avatar);
 
-        UserProfile(user);
+
 
         update_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +83,9 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        UserProfile(user);
+
         //Set user avatar
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,9 +159,8 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-        private void UserProfile(FirebaseUser user){
+    private void UserProfile(FirebaseUser user) {
             String userID = user.getUid();
-
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Registered user");
             reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -169,7 +172,6 @@ public class ProfileFragment extends Fragment {
                         phone = userAccount.getUserPhone();
                         point = userAccount.getUserPoint();
 
-//                        user_name_avatar.setText("Welcome, " + name + "!");
                         user_name.setText(name);
                         user_email.setText(email);
                         user_phone.setText(phone);

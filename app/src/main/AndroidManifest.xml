@@ -32,9 +32,11 @@
         <activity android:name=".AccountManagement.RegisterActivity" />
         <activity android:name=".AccountManagement.MainActivity" />
         <activity android:name=".AccountManagement.ConfirmEmail" />
+        <activity android:name=".ActivityforFragment.ActForProfileFragment" />
         <activity android:name=".Fragment.HomeFragment" />
         <activity android:name=".Fragment.ProfileFragment" />
         <activity android:name=".TicketManagement.TicketList" />
+
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

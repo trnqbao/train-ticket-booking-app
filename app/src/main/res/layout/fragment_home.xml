@@ -28,40 +28,40 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="0dp">
+            
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/hi"
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:translationX="53dp"
-                android:translationY="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/hi"
+            android:textColor="@color/default_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:translationX="53dp"
+            android:translationY="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/tv_user"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="80dp"-->
-            <!--                android:layout_marginTop="58dp"-->
-            <!--                android:fontFamily="sans-serif-black"-->
-            <!--                android:text="Tran Bao"-->
-            <!--                android:textColor="@color/default_color"-->
-
-            <!--                android:textSize="21sp"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintHorizontal_bias="0.0"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="58dp"
+            android:fontFamily="sans-serif-black"
+            android:text="User"
+            android:textColor="@color/default_color"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/book"
@@ -81,16 +81,16 @@
 
                 app:layout_constraintStart_toStartOf="@id/constraint" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="43dp"
-                android:layout_height="33dp"
-                android:layout_marginTop="36dp"
-                android:src="@drawable/baseline_notifications_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.956"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView"-->
+<!--                android:layout_width="43dp"-->
+<!--                android:layout_height="33dp"-->
+<!--                android:layout_marginTop="36dp"-->
+<!--                android:src="@drawable/baseline_notifications_24"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.956"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

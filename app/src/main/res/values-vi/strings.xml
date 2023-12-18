@@ -46,6 +46,10 @@
     <string name="change_password">Thay đổi mật khẩu</string>
     <string name="log_out">Đăng Xuất</string>
     <string name="change_language">Thay đổi ngôn ngữ</string>
+    <string name="send_message">Gửi</string>
+    <string name="title">Tiêu Đề</string>
+    <string name="optional">(Tùy Chọn)</string>
+
 
     <string name="user_name">Họ tên</string>
     <string name="user_avatar">Cập nhật ảnh đại diện</string>
@@ -60,4 +64,21 @@
     <string name="language">Việt Nam</string>
     <string name="time_to_time">-</string>
     <string name="select_your_train">Chọn chuyến tàu của bạn!</string>
+
+    <string name="how_to_use_ticket">Làm thế nào để tôi có thể sử dụng vé tàu?</string>
+    <string name="how_to_book_ticket">Làm thế nào để tôi có thể mua vé tàu?</string>
+    <string name="how_to_change_language">Làm thế nào để tôi có thể thay đổi ngôn ngữ của ứng dụng?</string>
+    <string name="how_to_update_profile">Làm thế nào để tôi có thể cập nhật thông tin cá nhân?</string>
+
+    <string name="answer_use_ticket">Sử dụng vé tàu như sau...</string>
+    <string name="answer_book_ticket">Để đặt vé tàu:...</string>
+    <string name="answer_change_language">Để thay đổi ngôn ngữ của ứng dụng:\n
+    Bước 1: Di chuyển tới mục Thông tin\n
+    Bước 2: Chọn nút "Thay đổi ngôn ngữ"\n
+    Bước 3: Chọn ngôn ngữ muốn chuyển đổi. Ngôn ngữ của ứng dụng sẽ thay đổi</string>
+    <string name="answer_update_profile">Để cập nhật thông tin cá nhân:\n
+    Bước 1: Di chuyển tới mục Thông tin\n
+    Bước 2: Chọn nút "Cập nhật thông tin"\n
+    Bước 3: Thay đổi tên và số điện thoại phù hợp\n
+    Bước 4: Chọn nút "Cập nhât"</string>
 </resources>

@@ -46,6 +46,11 @@
     <string name="change_password">Change Password</string>
     <string name="log_out">Log Out</string>
     <string name="change_language">Change Language</string>
+    <string name="send_message">Send</string>
+    <string name="title">Title</string>
+    <string name="optional">(Optional)</string>
+
+
 
     <string name="user_name">Full name</string>
     <string name="user_avatar">Upload Avatar</string>
@@ -60,4 +65,20 @@
     <string name="language">English</string>
     <string name="time_to_time">-</string>
     <string name="select_your_train">Select your train!</string>
+
+    <string name="how_to_use_ticket">How can I use the ticket?</string>
+    <string name="how_to_book_ticket">How can I book a ticket?</string>
+    <string name="how_to_change_language">How can I change the app language?</string>
+    <string name="how_to_update_profile">How can I update the profile?</string>
+
+    <string name="answer_use_ticket">You can use the ticket by...</string>
+    <string name="answer_book_ticket">To book a ticket, you need to...</string>
+    <string name="answer_change_language">To change the app language:\n
+    Step1: Navigate to Profle\n
+    Step2: Click on "Change Language" button. Your app language will be changed</string>
+    <string name="answer_update_profile">To update your profile:\n
+    Step1: Navigate to Profile\n
+    Step2: Click on "Update Profile" button\n
+    Step3: Change your Fullname and Phonenumber\n
+    Step4: Click on "Update" button</string>
 </resources>

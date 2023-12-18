@@ -8,19 +8,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {
 
     private List<Ticket> ticketList;
 
-
-    public TicketAdapter(List<Ticket> ticketList) {
+    public TicketAdapter(List<Ticket> ticketList)
+    {
         this.ticketList = ticketList;
+    }
+    private OnTicketClickListener listener;
+
+    public void setOnTicketClickListener(OnTicketClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnTicketClickListener
+    {
+        void onTicketClicked(Ticket ticket);
     }
 
     @NonNull
@@ -41,6 +55,29 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     public int getItemCount() {
         return ticketList.size();
     }
+    public void saveToDatabase(Ticket ticket) {
+        // Get Realtime Database reference
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Ticket booked");
+
+        // Generate unique key
+        String key = databaseReference.push().getKey();
+
+        // Create ticket data map
+        Map<String, Object> ticketData = new HashMap<>();
+        ticketData.put("id", ticket.getId());
+        ticketData.put("start", ticket.getStart());
+        ticketData.put("destination", ticket.getDestination());
+        ticketData.put("price", ticket.getPrice());
+        ticketData.put("totalTime", ticket.getTotalTime());
+        ticketData.put("departureTime", ticket.getDepartureTime());
+        ticketData.put("arrivalTime", ticket.getArrivalTime());
+        ticketData.put("trainID", ticket.getTrainID());
+        ticketData.put("date", ticket.getDate());
+
+        // Save ticket data
+        databaseReference.child(key).setValue(ticketData);
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvDepartureTime;

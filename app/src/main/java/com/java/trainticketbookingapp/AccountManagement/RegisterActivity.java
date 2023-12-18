@@ -79,8 +79,8 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            if (TextUtils.isEmpty(email)) {
-                etEmail.setError("Please enter your email");
+            if (TextUtils.isEmpty(phone)) {
+                etPhone.setError("Please enter your phone number");
                 return;
             }
 
