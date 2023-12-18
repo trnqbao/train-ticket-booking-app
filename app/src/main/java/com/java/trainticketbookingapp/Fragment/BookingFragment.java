@@ -34,10 +34,10 @@ public class BookingFragment extends Fragment {
         recyclerView = view.findViewById(R.id.booked_tripID);
         ticketList = new ArrayList<>();
 
-        int i = 1;
-        for (i = 1; i < 10; i++) {
-            ticketList.add(new Ticket("null", "null", "null", 600, "3 hours", "09:00", "12:00", "Train ID", "null"));
-        }
+//        int i = 1;
+//        for (i = 1; i < 10; i++) {
+//            ticketList.add(new Ticket(0, "null", "null", 600, "3 hours", "09:00", "12:00", 0, "null"));
+//        }
 
 
         ticketAdapter = new BookedTicketAdapter(ticketList);

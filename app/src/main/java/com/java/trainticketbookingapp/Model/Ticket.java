@@ -1,17 +1,18 @@
 package com.java.trainticketbookingapp.Model;
 
 public class Ticket {
-    private String id;
-    private String start;
-    private String destination;
-    private int price;
-    private String totalTime;
-    private String departureTime;
-    private String arrivalTime;
-    private String trainID;
-    private String date;
 
-    public Ticket(String id, String start, String destination, int price, String totalTime, String departureTime, String arrivalTime, String trainID, String date) {
+    private int id = 0;
+    private String start = "";
+    private String destination = "";
+    private String price = "";
+    private String totalTime = "";
+    private String departureTime = "";
+    private String arrivalTime = "";
+    private String trainID = "";
+    private String date = "";
+
+    public Ticket(int id, String start, String destination, String price, String totalTime, String departureTime, String arrivalTime, String trainID, String date) {
         this.id = id;
         this.start = start;
         this.destination = destination;
@@ -23,12 +24,19 @@ public class Ticket {
         this.date = date;
     }
 
-    public String getId() {
-        return id;
+    public Ticket() {
     }
 
-    public void setId(String id) {
+
+    public void setId(int id) {
         this.id = id;
+    }
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setTrainID(String trainID) {
+        this.trainID = trainID;
     }
 
     public String getStart() {
@@ -47,12 +55,16 @@ public class Ticket {
         this.destination = destination;
     }
 
-    public int getPrice() {
+    public int getId() {
+        return id;
+    }
+
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public String getTrainID() {
+        return trainID;
     }
 
     public String getTotalTime() {
@@ -77,14 +89,6 @@ public class Ticket {
 
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
-    }
-
-    public String getTrainID() {
-        return trainID;
-    }
-
-    public void setTrainID(String trainID) {
-        this.trainID = trainID;
     }
 
     public String getDate() {

@@ -105,8 +105,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                         UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(user_name).build();
-                        user.updateProfile(profileChangeRequest);
 
+                        user.updateProfile(profileChangeRequest);
                         replaceFragment(new ProfileFragment());
 
                     } else {
@@ -128,8 +128,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         fragmentTransaction.commit();
         finish();
     }
-
-
     //                        Intent intent = new Intent(UpdateProfileActivity.this, ProfileFragment.class);
 //                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
 //                                Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

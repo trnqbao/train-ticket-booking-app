@@ -28,7 +28,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     }
     private OnTicketClickListener listener;
 
-    public void setOnTicketClickListener(OnTicketClickListener listener) {
+    public void setOnTicketClickListener(OnTicketClickListener listener)
+    {
         this.listener = listener;
     }
 
@@ -55,29 +56,6 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     public int getItemCount() {
         return ticketList.size();
     }
-    public void saveToDatabase(Ticket ticket) {
-        // Get Realtime Database reference
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Ticket booked");
-
-        // Generate unique key
-        String key = databaseReference.push().getKey();
-
-        // Create ticket data map
-        Map<String, Object> ticketData = new HashMap<>();
-        ticketData.put("id", ticket.getId());
-        ticketData.put("start", ticket.getStart());
-        ticketData.put("destination", ticket.getDestination());
-        ticketData.put("price", ticket.getPrice());
-        ticketData.put("totalTime", ticket.getTotalTime());
-        ticketData.put("departureTime", ticket.getDepartureTime());
-        ticketData.put("arrivalTime", ticket.getArrivalTime());
-        ticketData.put("trainID", ticket.getTrainID());
-        ticketData.put("date", ticket.getDate());
-
-        // Save ticket data
-        databaseReference.child(key).setValue(ticketData);
-    }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvDepartureTime;

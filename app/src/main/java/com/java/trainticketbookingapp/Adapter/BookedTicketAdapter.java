@@ -63,7 +63,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             tvStart.setText(ticket.getStart());
             tvDestination.setText(ticket.getDestination());
             tvTotalTripTime.setText(ticket.getTotalTime());
-            tvTripPrice.setText(String.valueOf(ticket.getPrice()));
+            tvTripPrice.setText(ticket.getPrice());
         }
     }
 }
