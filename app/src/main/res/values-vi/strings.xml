@@ -93,6 +93,10 @@
     <string name="internet_bankName">VVBank</string>
     <string name="internet_bankAccount">0817415159</string>
     <string name="internet_transferContent">Họ tên + Số điện thoại + mã tàu lửa</string>
+    <string name="departureTime">Thời gian xuất phát: </string>
+    <string name="shareTicket">Chia sẻ vé</string>
+    <string name="ticketCode">Mã vé</string>
+
 
     <string name="companyName">Tên công ty: </string>
     <string name="bankName">Tên ngân hàng: </string>

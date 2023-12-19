@@ -181,7 +181,7 @@
                 android:weightSum="2">
 
                 <Button
-                    android:id="@+id/btn_book"
+                    android:id="@+id/btn_viewTicket"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"

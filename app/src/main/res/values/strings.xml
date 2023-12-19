@@ -93,6 +93,10 @@
     <string name="internet_bankName">VVBank</string>
     <string name="internet_bankAccount">0817415159</string>
     <string name="internet_transferContent">Fullname + Phonenumber + TrainID</string>
+    <string name="departureTime">Departure time: </string>
+    <string name="shareTicket">Share Ticket </string>
+    <string name="ticketCode">Ticket Code </string>
+
 
     <string name="companyName">Company Name: </string>
     <string name="bankName">Bank Name: </string>

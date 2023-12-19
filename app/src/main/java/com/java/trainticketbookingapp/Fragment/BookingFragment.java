@@ -66,7 +66,6 @@ public class BookingFragment extends Fragment {
                         ticketList.add(ticket); // Add retrieved ticket to list
                     }
                 }
-                // Notify the adapter of updated data
                 ticketAdapter.notifyDataSetChanged();
             }
 
