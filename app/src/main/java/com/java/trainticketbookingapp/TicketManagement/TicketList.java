@@ -2,8 +2,12 @@ package com.java.trainticketbookingapp.TicketManagement;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.java.trainticketbookingapp.AccountManagement.PaymentActivity;
 import com.java.trainticketbookingapp.Adapter.TicketAdapter;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
@@ -41,7 +46,6 @@ public class TicketList extends AppCompatActivity {
     private List<Ticket> ticketList;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,13 +92,13 @@ public class TicketList extends AppCompatActivity {
                     Ticket ticket = new Ticket();
 
                     String departureTime = childSnapshot.child("departureTime").getValue(String.class);
+                    String ticketStart = childSnapshot.child("start").getValue(String.class);
+                    String ticketDestination = childSnapshot.child("destination").getValue(String.class);
+
                     String formattedDepartureTime = convertDepartureTime(departureTime);
 
-                    System.out.println(formattedDepartureTime);
-                    System.out.println(currentTime);
-
-                    if (!isDeparted(formattedDepartureTime, "0:00")) {
-
+                    if (!isDeparted(formattedDepartureTime, "1h00") && savedDepartureName.equals(ticketStart) && savedDestination.equals(ticketDestination)) {
+//
                         ticket.setId(Integer.parseInt(childSnapshot.getKey().substring("ticket".length())));
                         ticket.setStart(childSnapshot.child("start").getValue(String.class));
                         ticket.setDestination(childSnapshot.child("destination").getValue(String.class));
@@ -125,7 +129,16 @@ public class TicketList extends AppCompatActivity {
         ticketAdapter = new TicketAdapter(ticketList);
         recyclerView.setAdapter(ticketAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ticketAdapter.setOnTicketClickListener(new TicketAdapter.OnTicketClickListener() {
+            @Override
+            public void onTicketClicked(Ticket ticket) {
+                startPaymentActivity(ticket);
+            }
+        });
+
     }
+
 
     // Convert time format
     private String convertDepartureTime(String originalDepartureTime)
@@ -196,5 +209,20 @@ public class TicketList extends AppCompatActivity {
         }
     }
 
+    private void startPaymentActivity(Ticket selectedTicket) {
+        Intent paymentIntent = new Intent(TicketList.this, PaymentActivity.class);
+        paymentIntent.putExtra("ticket_id", selectedTicket.getId());
+        paymentIntent.putExtra("ticket_destination", selectedTicket.getDestination());
+        paymentIntent.putExtra("ticket_price", selectedTicket.getPrice());
+        paymentIntent.putExtra("ticket_start", selectedTicket.getStart());
+        paymentIntent.putExtra("ticket_arrivalTime", selectedTicket.getArrivalTime());
+        paymentIntent.putExtra("ticket_totalTime", selectedTicket.getTotalTime());
+        paymentIntent.putExtra("ticket_departureTime", selectedTicket.getDepartureTime());
+        paymentIntent.putExtra("ticket_trainID", selectedTicket.getTrainID());
+        paymentIntent.putExtra("ticket_date", selectedTicket.getDate());
+
+        startActivity(paymentIntent);
+        // If you need a result from PaymentActivity, consider using startActivityForResult instead.
+    }
 
 }

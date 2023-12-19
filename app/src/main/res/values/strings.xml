@@ -49,7 +49,7 @@
     <string name="send_message">Send</string>
     <string name="title">Title</string>
     <string name="optional">(Optional)</string>
-
+    <string name="view">View</string>
 
 
     <string name="user_name">Full name</string>
@@ -81,4 +81,30 @@
     Step2: Click on "Update Profile" button
     Step3: Change your Fullname and Phonenumber
     Step4: Click on "Update" button</string>
+
+    <string name="pay_internet_banking">Internet Banking</string>
+    <string name="pay_cash">Cash</string>
+    <string name="pay">Pay</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="internet_bankingDetails">Internet Banking Details</string>
+    <string name="internet_details">Transfer funds according to the following information:</string>
+    <string name="internet_companyName">QBao_VHip Train</string>
+    <string name="internet_bankName">VVBank</string>
+    <string name="internet_bankAccount">0817415159</string>
+    <string name="internet_transferContent">Fullname + Phonenumber + TrainID</string>
+
+    <string name="companyName">Company Name: </string>
+    <string name="bankName">Bank Name: </string>
+    <string name="accountNumber">Account Number: </string>
+    <string name="prices">Price: </string>
+    <string name="content">Content: </string>
+
+    <string name="cash_paymentDetails">Cash Payment Information</string>
+    <string name="cash_details">Làm theo thứ tự sau:</string>
+    <string name="cash_companyName">Go to the train station</string>
+    <string name="cash_bankName">Go to cashier</string>
+    <string name="cash_bankAccount">Show the ticket</string>
+    <string name="cash_transferContent">Pay by cash</string>
+
 </resources>

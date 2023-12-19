@@ -1,5 +1,8 @@
 package com.java.trainticketbookingapp.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 public class Ticket {
 
     private int id = 0;
@@ -26,7 +29,6 @@ public class Ticket {
 
     public Ticket() {
     }
-
 
     public void setId(int id) {
         this.id = id;

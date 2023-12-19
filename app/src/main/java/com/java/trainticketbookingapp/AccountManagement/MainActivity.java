@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         config.locale = locale;
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
-
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

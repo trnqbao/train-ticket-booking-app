@@ -66,11 +66,21 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             tvDepartureTime = itemView.findViewById(R.id.tv_departureTime);
             tvArrivalTime = itemView.findViewById(R.id.tv_arrivalTime);
             tvTrainID = itemView.findViewById(R.id.tv_trainID);
             tvTotalTripTime = itemView.findViewById(R.id.tv_totalTripTime);
             tvTripPrice = itemView.findViewById(R.id.tv_priceID);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onTicketClicked(ticketList.get(position));
+                    }
+                }
+            });
         }
 
         public void bind(Ticket ticket) {

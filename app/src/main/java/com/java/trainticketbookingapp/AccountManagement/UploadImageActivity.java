@@ -77,8 +77,7 @@ public class UploadImageActivity extends AppCompatActivity implements UploadComp
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UploadImageActivity.this, ProfileFragment.class);
-                startActivity(intent);
+                replaceFragment(new ProfileFragment());
             }
         });
     }
@@ -97,6 +96,17 @@ public class UploadImageActivity extends AppCompatActivity implements UploadComp
         transaction.commit();
         finish();
     }
+
+    public void replaceFragment(Fragment fragment) {
+        // Replace with fragment transaction
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+        finish();
+    }
+
 
     private void uploadPicture() {
 
@@ -142,7 +152,6 @@ public class UploadImageActivity extends AppCompatActivity implements UploadComp
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Log.d(TAG, "onActivityResult: Image choose");
             uriImage = data.getData();
             avatar.setImageURI(uriImage);
         }

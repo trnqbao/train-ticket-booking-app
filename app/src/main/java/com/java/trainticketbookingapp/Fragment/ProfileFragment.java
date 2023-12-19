@@ -71,7 +71,6 @@ public class ProfileFragment extends Fragment {
         avatar = view.findViewById(R.id.user_avatar);
 
 
-
         update_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

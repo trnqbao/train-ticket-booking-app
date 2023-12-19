@@ -170,5 +170,4 @@ public class InboxFragment extends Fragment {
         chatMessages.add(getString(R.string.how_to_update_profile));
         preExistingAnswers.put(getString(R.string.how_to_update_profile), getString(R.string.answer_update_profile));
     }
-
 }

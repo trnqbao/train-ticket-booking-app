@@ -62,8 +62,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UpdateProfileActivity.this, ProfileFragment.class);
-                startActivity(intent);
+                replaceFragment(new ProfileFragment());
             }
         });
     }
@@ -90,7 +89,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void updateProfile(FirebaseUser user) {
 
@@ -134,9 +132,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.update_profile, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
         finish();
     }
+
     //                        Intent intent = new Intent(UpdateProfileActivity.this, ProfileFragment.class);
 //                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
 //                                Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
