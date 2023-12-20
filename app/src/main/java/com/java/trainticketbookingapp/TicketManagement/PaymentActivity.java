@@ -1,4 +1,4 @@
-package com.java.trainticketbookingapp.AccountManagement;
+package com.java.trainticketbookingapp.TicketManagement;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -7,16 +7,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,12 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.java.trainticketbookingapp.Fragment.BookingFragment;
-import com.java.trainticketbookingapp.Fragment.ProfileFragment;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
-import com.java.trainticketbookingapp.TicketManagement.TicketList;
-import com.squareup.picasso.Picasso;
 
 public class PaymentActivity extends AppCompatActivity {
 

@@ -1,52 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="13dp"
+    android:layout_margin="15dp"
     app:cardCornerRadius="15dp"
-    android:elevation="10dp">
+    android:elevation="10dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#E8E8E8"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:weightSum="10">
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="3"
+            android:layout_weight="7"
+            android:weightSum="1"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"
-                android:gravity="center|left|bottom">
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:gravity="center|left|bottom"
+                tools:ignore="NestedWeights">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_trip_time"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:text="10:00 AM"
                     android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:textSize="27sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="24sp"
+                    android:textColor="@color/gray"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.950"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="1">
+
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.4">
+                    android:layout_weight="0.3">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -56,9 +63,9 @@
                         android:src="@drawable/from"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.7"
                     android:orientation="vertical"
                     android:weightSum="2">
                     <TextView
@@ -67,8 +74,7 @@
                         android:gravity="bottom|left"
                         android:layout_weight="1.1"
                         android:textColor="#656565"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:textSize="17sp"
                         android:textAllCaps="false"
                         android:text="@string/start"/>
 
@@ -85,10 +91,11 @@
                         android:text="Saigon Station"/>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.950"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
                 android:orientation="horizontal"
                 android:weightSum="2">
                 <LinearLayout
@@ -110,16 +117,16 @@
                     android:layout_weight="0.6"
                     android:orientation="vertical"
                     android:weightSum="2">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="bottom|left"
                         android:layout_weight="1.1"
-                        android:textColor="#656565"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:gravity="bottom|left"
+                        android:text="@string/destination"
                         android:textAllCaps="false"
-                        android:text="@string/destination"/>
+                        android:textColor="#656565"
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/tv_trip_drop_off"
@@ -134,12 +141,13 @@
                         android:text="Hanoi Station"/>
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.6"
+            android:layout_weight="3"
             android:weightSum="3"
             android:orientation="vertical">
             <LinearLayout

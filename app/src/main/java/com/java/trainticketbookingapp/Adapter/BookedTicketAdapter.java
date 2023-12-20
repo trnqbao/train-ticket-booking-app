@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.java.trainticketbookingapp.AccountManagement.ViewTicketActivity;
+import com.java.trainticketbookingapp.TicketManagement.ViewTicketActivity;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 

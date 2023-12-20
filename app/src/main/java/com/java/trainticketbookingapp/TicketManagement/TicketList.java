@@ -1,13 +1,8 @@
 package com.java.trainticketbookingapp.TicketManagement;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,7 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.java.trainticketbookingapp.AccountManagement.PaymentActivity;
 import com.java.trainticketbookingapp.Adapter.TicketAdapter;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
@@ -30,13 +24,8 @@ import com.java.trainticketbookingapp.R;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class TicketList extends AppCompatActivity {
 

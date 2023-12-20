@@ -47,7 +47,7 @@
     <string name="log_out">Đăng Xuất</string>
     <string name="change_language">Thay đổi ngôn ngữ</string>
     <string name="send_message">Gửi</string>
-    <string name="title">Tiêu Đề</string>
+    <string name="title">Tiêu Đề (Tùy Chọn)</string>
     <string name="optional">(Tùy Chọn)</string>
     <string name="view">Xem vé</string>
 
@@ -104,11 +104,16 @@
     <string name="prices">Giá: </string>
     <string name="content">Nội dung chuyển khoản: </string>
 
-    <string name="cash_paymentDetails">Thông Tin Thanh Toán Tiền Mặt</string>
+    <string name="cash_paymentDetails">Thông tin thanh toán tiền mặt</string>
     <string name="cash_details">Làm theo thứ tự sau: </string>
     <string name="cash_companyName">Đến ga tàu</string>
     <string name="cash_bankName">Đến quầy thu ngân</string>
     <string name="cash_bankAccount">Đưa vé viện tử</string>
-    <string name="cash_transferContent">Thanh tóan</string>
+    <string name="cash_transferContent">Thanh toán</string>
+    <string name="ticket_id">Mã vé: </string>
+    <string name="train_ticket">Thông tin chi tiết</string>
+    <string name="train_booking_code">Mã Đặt Vé</string>
+    <string name="economy">Hạng phổ thông</string>
+    <string name="total_price">Tổng tiền</string>
 
 </resources>

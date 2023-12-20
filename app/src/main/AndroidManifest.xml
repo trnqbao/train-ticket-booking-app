@@ -15,10 +15,10 @@
         android:theme="@style/Theme.TrainTicketBookingApp"
         tools:targetApi="31">
         <activity
-            android:name=".AccountManagement.ViewTicketActivity"
+            android:name=".TicketManagement.ViewTicketActivity"
             android:exported="false" />
         <activity
-            android:name=".AccountManagement.PaymentActivity"
+            android:name=".TicketManagement.PaymentActivity"
             android:exported="false" />
         <activity
             android:name=".AccountManagement.UpdateProfileActivity"

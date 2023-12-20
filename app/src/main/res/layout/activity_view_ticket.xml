@@ -5,137 +5,1279 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountManagement.ViewTicketActivity"
-    android:orientation="vertical">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/ticket_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ticket_departureTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="@string/departureTime"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/departureTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="Departure Time:"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ticket_start"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/start"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/start"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Start Station:"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ticket_destination"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/destination"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/destination"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Destination Station:"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ticket_price"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/price"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/price"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Ticket Price:"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    tools:context=".TicketManagement.ViewTicketActivity"
+    android:orientation="vertical"
+    android:weightSum="10">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:weightSum="10"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        android:layout_margin="16dp">
+        tools:ignore="UselessParent"
+        android:baselineAligned="false">
 
-        <Button
-            android:id="@+id/btn_share_ticket"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/shareTicket" />
+            tools:ignore="NestedWeights"
+            android:gravity="center|left">
+            <ImageButton
+                android:layout_marginBottom="10dp"
+                android:id="@+id/imgBtnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                tools:ignore="RtlSymmetry" />
+        </LinearLayout>
 
-
-        <Button
-            android:id="@+id/btn_ticketCode"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ticketCode" />
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:weightSum="10"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="4">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ha Noi"
+                    android:textSize="20sp"
+                    android:gravity="center|right"
+                    android:textColor="@color/default_color"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_arrow_forward_white_24"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Sai Gon"
+                    android:textSize="20sp"
+                    android:gravity="center|left"
+                    android:textColor="@color/default_color"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="NestedWeights">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:gravity="center|right|top"
+                tools:ignore="RtlHardcoded">
+                <ImageButton
+                    android:id="@+id/imgBtnOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:src="@drawable/baseline_setting_25"
+                    android:paddingTop="15dp"
+                    android:background="@color/colorPrimaryDark"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="8.5"
+        android:background="#e6e6e6">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8.5"
+            tools:ignore="NestedWeights">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="8.5"
+                android:background="#e6e6e6"
+                android:weightSum="10">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:text="@string/train_ticket"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9.5">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ticket_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardElevation="8dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:weightSum="70">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                android:layout_weight="10"
+                                android:weightSum="10"
+                                android:padding="20dp"
+                                tools:ignore="UselessParent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="6"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:textSize="16sp"
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:textColor="@color/gray"
+                                        android:text="@string/train_booking_code"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="4"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:id="@+id/tv_training_booking_code"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold"
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="SNX7GNJ"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                android:layout_weight="10"
+                                android:weightSum="10"
+                                android:padding="20dp"
+                                tools:ignore="UselessParent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="5"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        android:text="Vietname train VN-SE-01"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="5"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:textColor="@color/gray"
+                                        android:fontFamily="@font/calibri"
+                                        android:textSize="16sp"
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="@string/economy"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                android:layout_weight="30"
+                                android:weightSum="10"
+                                tools:ignore="UselessParent"
+                                android:padding="20dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="10"
+                                    android:orientation="horizontal"
+                                    android:weightSum="10"
+                                    tools:ignore="NestedWeights">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2.5"
+                                        android:orientation="vertical"
+                                        android:weightSum="10">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+
+                                            <TextView
+                                                android:id="@+id/departureTime"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center"
+                                                android:text="HH:mm"
+                                                android:textStyle="bold" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+                                            <TextView
+                                                android:id="@+id/tv_departure_date"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:text="d/m/y"
+                                                android:textColor="@color/gray"
+                                                android:gravity="center"/>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+
+                                            <TextView
+                                                android:id="@+id/tv_total_trip_time"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center"
+                                                android:text="total trip time"
+                                                android:textColor="@color/gray" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+                                            <TextView
+                                                android:id="@+id/tv_arrival_time"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:text="HH:mm"
+                                                android:textStyle="bold"
+                                                android:gravity="center"/>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+                                            <TextView
+                                                android:id="@+id/tv_arrival_date"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:text="d/m/y"
+                                                android:textColor="@color/gray"
+                                                android:gravity="center"/>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1.5"
+                                        android:weightSum="10"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="8">
+                                            <ImageView
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="5dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:src="@drawable/progress"/>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6"
+                                        android:orientation="vertical"
+                                        android:weightSum="10">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+
+                                            <TextView
+                                                android:id="@+id/start"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center|left"
+                                                android:text="Sai Gon"
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+
+                                            <TextView
+                                                android:id="@+id/tv_departure_station"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center|left"
+                                                android:text="Sai Gon Station"
+                                                android:textSize="16sp" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+
+                                            <TextView
+                                                android:id="@+id/destination"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center|left"
+                                                android:text="Ha Noi"
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="2">
+
+                                            <TextView
+                                                android:id="@+id/tv_arrival_station"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center|left"
+                                                android:text="Ha Noi Station"
+                                                android:textSize="16sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                android:layout_weight="10"
+                                android:weightSum="10"
+                                android:padding="20dp"
+                                tools:ignore="UselessParent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="6"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="@string/passenger"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/gray"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="4"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:fontFamily="@font/gotham"
+                                        android:textSize="20sp"
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Tran Quoc Bao"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                android:layout_weight="10"
+                                android:weightSum="10"
+                                android:padding="20dp"
+                                tools:ignore="UselessParent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="6"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="@string/total_price"
+                                        android:textColor="@color/gray"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="4"
+                                    tools:ignore="NestedWeights,UselessParent">
+                                    <TextView
+                                        android:id="@+id/price"
+                                        android:textColor="@color/colorPrimary"
+                                        android:fontFamily="@font/gotham"
+                                        android:textSize="20sp"
+                                        android:gravity="center|left"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="2.000.000 VND"
+                                        tools:ignore="RtlHardcoded" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:layout_weight="8.5"-->
+    <!--        android:background="#e6e6e6"-->
+    <!--        android:weightSum="10">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_weight="0.5"-->
+    <!--            android:gravity="center">-->
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:text="@string/train_ticket"-->
+    <!--                android:gravity="center|left"-->
+    <!--                tools:ignore="RtlHardcoded" />-->
+    <!--        </LinearLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_weight="9.5">-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:id="@+id/ticket_card"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                app:cardElevation="8dp"-->
+    <!--                app:cardCornerRadius="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:layout_marginLeft="10dp">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    android:orientation="vertical"-->
+    <!--                    android:weightSum="70">-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="0dp"-->
+    <!--                        android:orientation="vertical"-->
+    <!--                        android:layout_weight="10"-->
+    <!--                        android:weightSum="10"-->
+    <!--                        android:padding="10dp"-->
+    <!--                        tools:ignore="UselessParent">-->
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="6"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:textSize="16sp"-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:textColor="@color/gray"-->
+    <!--                                android:text="@string/train_booking_code"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="4"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/tv_training_booking_code"-->
+    <!--                                android:textColor="@color/colorPrimary"-->
+    <!--                                android:textSize="20sp"-->
+    <!--                                android:textStyle="bold"-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:text="SNX7GNJ"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <View-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="1dp"-->
+    <!--                            android:background="@color/gray" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="0dp"-->
+    <!--                        android:orientation="vertical"-->
+    <!--                        android:layout_weight="10"-->
+    <!--                        android:weightSum="10"-->
+    <!--                        android:padding="10dp"-->
+    <!--                        tools:ignore="UselessParent">-->
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="0dp"-->
+    <!--                            android:layout_weight="5"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:textSize="18sp"-->
+    <!--                                android:textStyle="bold"-->
+    <!--                                android:text="Vietname train VN-SE-01"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="0dp"-->
+    <!--                            android:layout_weight="5"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:textColor="@color/gray"-->
+    <!--                                android:fontFamily="@font/calibri"-->
+
+    <!--                                android:textSize="16sp"-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:text="@string/economy"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <View-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="1dp"-->
+    <!--                            android:background="@color/gray" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="0dp"-->
+    <!--                        android:orientation="vertical"-->
+    <!--                        android:layout_weight="30"-->
+    <!--                        android:weightSum="10"-->
+    <!--                        tools:ignore="UselessParent"-->
+    <!--                        android:padding="10dp">-->
+
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="0dp"-->
+    <!--                            android:layout_weight="10"-->
+    <!--                            android:orientation="horizontal"-->
+    <!--                            android:weightSum="10"-->
+    <!--                            tools:ignore="NestedWeights">-->
+
+    <!--                            <LinearLayout-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:layout_weight="2.5"-->
+    <!--                                android:orientation="vertical"-->
+    <!--                                android:weightSum="10">-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_departure_time"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:gravity="center"-->
+    <!--                                        android:text="HH:mm"-->
+    <!--                                        android:textStyle="bold" />-->
+
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_departure_date"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:text="d/m/y"-->
+    <!--                                        android:textColor="@color/gray"-->
+    <!--                                        android:gravity="center"/>-->
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_total_trip_time"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:gravity="center"-->
+    <!--                                        android:text="total trip time"-->
+    <!--                                        android:textColor="@color/gray" />-->
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_arrival_time"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:text="HH:mm"-->
+    <!--                                        android:textStyle="bold"-->
+    <!--                                        android:gravity="center"/>-->
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_arrival_date"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:text="d/m/y"-->
+    <!--                                        android:textColor="@color/gray"-->
+    <!--                                        android:gravity="center"/>-->
+    <!--                                </LinearLayout>-->
+
+    <!--                            </LinearLayout>-->
+
+    <!--                            <LinearLayout-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:layout_weight="1.5"-->
+    <!--                                android:weightSum="10"-->
+    <!--                                android:orientation="vertical">-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="8">-->
+    <!--                                    <ImageView-->
+    <!--                                        android:layout_marginTop="5dp"-->
+    <!--                                        android:layout_marginRight="5dp"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:src="@drawable/progress"/>-->
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+    <!--                                </LinearLayout>-->
+
+    <!--                            </LinearLayout>-->
+
+    <!--                            <LinearLayout-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:layout_weight="6"-->
+    <!--                                android:orientation="vertical"-->
+    <!--                                android:weightSum="10">-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_departure_place"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:gravity="center|left"-->
+    <!--                                        android:text="Sai Gon"-->
+    <!--                                        android:textSize="22sp"-->
+    <!--                                        android:textStyle="bold" />-->
+
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_departure_station"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:gravity="center|left"-->
+    <!--                                        android:text="Sai Gon Station"-->
+    <!--                                        android:textSize="16sp" />-->
+
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_arrival_place"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:gravity="center|left"-->
+    <!--                                        android:text="Ha Noi"-->
+    <!--                                        android:textSize="22sp"-->
+    <!--                                        android:textStyle="bold" />-->
+
+    <!--                                </LinearLayout>-->
+
+    <!--                                <LinearLayout-->
+    <!--                                    android:layout_width="match_parent"-->
+    <!--                                    android:layout_height="0dp"-->
+    <!--                                    android:layout_weight="2">-->
+
+    <!--                                    <TextView-->
+    <!--                                        android:id="@+id/tv_arrival_station"-->
+    <!--                                        android:layout_width="match_parent"-->
+    <!--                                        android:layout_height="match_parent"-->
+    <!--                                        android:gravity="center|left"-->
+    <!--                                        android:text="Ha Noi Station"-->
+    <!--                                        android:textSize="16sp" />-->
+
+    <!--                                </LinearLayout>-->
+
+    <!--                            </LinearLayout>-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <View-->
+    <!--                            android:layout_marginTop="10dp"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="1dp"-->
+    <!--                            android:background="@color/gray" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="0dp"-->
+    <!--                        android:orientation="vertical"-->
+    <!--                        android:layout_weight="10"-->
+    <!--                        android:weightSum="10"-->
+    <!--                        android:padding="10dp"-->
+    <!--                        tools:ignore="UselessParent">-->
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="6"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:text="@string/passenger"-->
+    <!--                                android:textStyle="bold"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="4"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:textColor="@color/colorPrimary"-->
+    <!--                                android:fontFamily="@font/gotham"-->
+    <!--                                android:textSize="20sp"-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:text="SNX7GNJ"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <View-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="1dp"-->
+    <!--                            android:background="@color/gray" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="0dp"-->
+    <!--                        android:orientation="vertical"-->
+    <!--                        android:layout_weight="10"-->
+    <!--                        android:weightSum="10"-->
+    <!--                        android:padding="10dp"-->
+    <!--                        tools:ignore="UselessParent">-->
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="6"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:text="@string/total_price"-->
+    <!--                                android:textColor="@color/gray"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <LinearLayout-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="4"-->
+    <!--                            tools:ignore="NestedWeights,UselessParent">-->
+    <!--                            <TextView-->
+    <!--                                android:textColor="@color/colorPrimary"-->
+    <!--                                android:fontFamily="@font/gotham"-->
+    <!--                                android:textSize="20sp"-->
+    <!--                                android:gravity="center|left"-->
+    <!--                                android:layout_width="match_parent"-->
+    <!--                                android:layout_height="match_parent"-->
+    <!--                                android:text="2.000.000 VND"-->
+    <!--                                tools:ignore="RtlHardcoded" />-->
+    <!--                        </LinearLayout>-->
+
+    <!--                        <View-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="1dp"-->
+    <!--                            android:background="@color/gray" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                </LinearLayout>-->
+
+    <!--            </androidx.cardview.widget.CardView>-->
+    <!--        </LinearLayout>-->
+
+
+    <!--    </LinearLayout>-->
+
+
+
+
+
 </LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:id="@+id/view_ticket"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".AccountManagement.ViewTicketActivity"-->
+<!--    android:orientation="vertical"-->
+<!--    android:weightSum="10">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/colorPrimaryDark"-->
+<!--        android:weightSum="40"-->
+<!--        android:layout_weight="8"-->
+<!--        android:orientation="horizontal"-->
+<!--        tools:ignore="UselessParent">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="36"-->
+<!--            tools:ignore="NestedWeights">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="0.9"-->
+<!--                android:gravity="center|left|top"-->
+<!--                tools:ignore="RtlHardcoded">-->
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btn_back_to_home"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingStart="10dp"-->
+<!--                    android:src="@drawable/baseline_arrow_back_ios_new_24"-->
+<!--                    android:paddingTop="15dp"-->
+<!--                    android:background="@color/colorPrimaryDark"-->
+<!--                    tools:ignore="RtlSymmetry" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="4"-->
+<!--            android:weightSum="10"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="5"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="30">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_weight="10">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="Ha Noi"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:gravity="center|right"-->
+<!--                        android:textColor="@color/default_color"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="12"-->
+<!--                    android:gravity="center">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/baseline_double_arrow_24"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="10">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="Sai Gon"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:gravity="center|left"-->
+<!--                        android:textColor="@color/default_color"/>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="5"-->
+<!--                android:weightSum="10">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="6"-->
+<!--                    >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center|right"-->
+<!--                        android:text="@string/ticket_id"-->
+<!--                        android:textColor="@color/default_color"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="4">-->
+<!--                    <TextView-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center|left"-->
+<!--                        android:text="SFF45GN"-->
+<!--                        android:textColor="@color/default_color"/>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="2">-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/ticket_card"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="16dp"-->
+<!--            app:cardElevation="8dp"-->
+<!--            app:cardCornerRadius="8dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="16dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ticket_departureTime"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:text="@string/departureTime"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/departureTime"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:text="Departure Time:"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                </LinearLayout>-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ticket_start"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/start"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/start"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Start Station:"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ticket_destination"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/destination"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/destination"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Destination Station:"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                </LinearLayout>-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ticket_price"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/price"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/price"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Ticket Price:"-->
+<!--                        android:layout_weight="1"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+<!--    </LinearLayout>-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_margin="16dp">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_share_ticket"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/shareTicket" />-->
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_ticketCode"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/ticketCode" />-->
+
+<!--    </LinearLayout>-->
+
+<!--</LinearLayout>-->

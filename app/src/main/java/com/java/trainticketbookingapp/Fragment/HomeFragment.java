@@ -4,7 +4,11 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import static android.content.Context.MODE_PRIVATE;
@@ -115,6 +119,8 @@ public class HomeFragment extends Fragment {
         spinnerToID = view.findViewById(R.id.spinnerToID);
         swap = view.findViewById(R.id.swap);
         ImageView datePicker = view.findViewById(R.id.date_picker);
+
+        rotateImg(swap);
 
         // Set initial values
         savedDepartureName = locations[sharedPreferences.getInt("SELECTED_POSITION", 0)];
@@ -233,6 +239,17 @@ public class HomeFragment extends Fragment {
             return true;
         }
         return false;
+    }
+
+    private void rotateImg(ImageView imageView) {
+        Drawable originalDrawable = imageView.getDrawable();
+        Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        Bitmap rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getHeight(), matrix, true);
+
+        Drawable rotatedDrawable = new BitmapDrawable(getResources(), rotatedBitmap);
+        imageView.setImageDrawable(rotatedDrawable);
     }
 
 

@@ -47,7 +47,7 @@
     <string name="log_out">Log Out</string>
     <string name="change_language">Change Language</string>
     <string name="send_message">Send</string>
-    <string name="title">Title</string>
+    <string name="title">Title (Optional)</string>
     <string name="optional">(Optional)</string>
     <string name="view">View</string>
 
@@ -110,5 +110,10 @@
     <string name="cash_bankName">Go to cashier</string>
     <string name="cash_bankAccount">Show the ticket</string>
     <string name="cash_transferContent">Pay by cash</string>
+    <string name="ticket_id">Ticket ID: </string>
+    <string name="train_ticket">Train Ticket Details</string>
+    <string name="train_booking_code">Train Booking Code</string>
+    <string name="economy">Economy</string>
+    <string name="total_price">Total price</string>
 
 </resources>

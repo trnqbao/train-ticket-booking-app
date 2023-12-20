@@ -107,58 +107,61 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:weightSum="2"
+            android:weightSum="10"
             android:orientation="horizontal"
-            android:background="@drawable/shape_from_to">
+            android:background="@drawable/shape_from_to"
+            android:baselineAligned="false">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5">
+                android:layout_weight="2.5">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/shape_search_dir">
+                    android:layout_margin="15dp"
+                    android:background="@drawable/shape_search_dir"
+                    tools:ignore="UselessParent">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="14dp"
+                        android:padding="15dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/from" />
+                        android:src="@drawable/place" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:weightSum="2"
+                android:layout_weight="7.5"
+                android:weightSum="1"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="bottom">
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="bottom"
+                    tools:ignore="NestedWeights">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/start"
                         android:textStyle="bold"
-                        android:textSize="21sp"
+                        android:textSize="20sp"
                         android:textAllCaps="false"
                         android:textColor="#7E000000"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5">
 
                     <Spinner
                         android:id="@+id/spinnerFromID"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -167,7 +170,7 @@
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="85dp"
-            android:weightSum="2"
+            android:weightSum="10"
             android:orientation="horizontal"
             android:translationY="93dp"
             android:background="@drawable/shape_from_to"
@@ -175,52 +178,54 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline"
             app:layout_constraintBottom_toBottomOf="@id/guideline">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5">
+                android:layout_weight="2.5">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="12dp"
+                    android:layout_margin="15dp"
                     android:background="@drawable/shape_search_loc">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:padding="11dp"
-                        android:src="@drawable/destination"/>
+                        android:padding="15dp"
+                        android:src="@drawable/place"/>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:weightSum="2"
+                android:layout_weight="7.5"
+                android:weightSum="1"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="bottom">
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="bottom"
+                    tools:ignore="NestedWeights">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/destination"
                         android:textStyle="bold"
                         android:textAllCaps="false"
-                        android:textSize="21sp"
+                        android:textSize="20sp"
                         android:textColor="#7E000000"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5">
                     <Spinner
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/spinnerToID"/>
                 </LinearLayout>
             </LinearLayout>
@@ -243,204 +248,59 @@
 
         <LinearLayout
             android:layout_width="350dp"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:background="@drawable/shape_from_to"
             android:orientation="vertical"
             android:translationY="290dp"
-            android:weightSum="2"
+            android:weightSum="10"
 
             app:layout_constraintBottom_toBottomOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline">
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:weightSum="3">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1.1"-->
-<!--                    android:gravity="center">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="70dp"-->
-<!--                        android:layout_margin="14dp"-->
-<!--                        android:background="@drawable/shape_member">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:padding="13dp"-->
-<!--                            android:scaleType="centerCrop"-->
-<!--                            android:src="@drawable/member" />-->
-<!--                    </LinearLayout>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="0.8"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:weightSum="2">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:gravity="bottom"-->
-<!--                        tools:ignore="InefficientWeight">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="@string/passenger"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="#7E000000"-->
-<!--                            android:textSize="21sp"-->
-<!--                            android:textStyle="bold" />-->
-<!--                    </LinearLayout>-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center|top|left"-->
-<!--                        android:orientation="horizontal"-->
-<!--                        android:paddingTop="3dp"-->
-<!--                        tools:ignore="RtlHardcoded">-->
-
-<!--                        <ImageButton-->
-<!--                            android:id="@+id/btn_minus"-->
-<!--                            android:layout_width="25dp"-->
-<!--                            android:layout_height="25dp"-->
-<!--                            android:background="@color/default_color"-->
-<!--                            android:scaleType="centerCrop"-->
-<!--                            android:src="@drawable/minus" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_count"-->
-<!--                            android:layout_width="25dp"-->
-<!--                            android:layout_height="25dp"-->
-<!--                            android:layout_marginLeft="7dp"-->
-<!--                            android:layout_marginRight="7dp"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="0"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="19sp"-->
-<!--                            android:textStyle="bold" />-->
-
-<!--                        <ImageButton-->
-<!--                            android:id="@+id/btn_plus"-->
-<!--                            android:layout_width="25dp"-->
-<!--                            android:layout_height="25dp"-->
-<!--                            android:background="@color/default_color"-->
-<!--                            android:scaleType="centerCrop"-->
-<!--                            android:src="@drawable/plus" />-->
-<!--                    </LinearLayout>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1.1"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:weightSum="3">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:gravity="bottom">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="@string/type"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="#7E000000"-->
-<!--                            android:textSize="21sp"-->
-<!--                            android:textStyle="bold" />-->
-<!--                    </LinearLayout>-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1">-->
-
-<!--                        <Spinner-->
-<!--                            android:id="@+id/spinner_type"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content" />-->
-
-
-<!--                    </LinearLayout>-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:gravity="center|left">-->
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_type"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="123"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="20sp"-->
-
-<!--                            />-->
-<!--                    </LinearLayout>-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight="5"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="10">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.45"
+                    android:layout_weight="2.5"
                     android:gravity="center"
                     android:orientation="vertical"
                     tools:ignore="NestedWeights">
 
                     <LinearLayout
-                        android:layout_width="67dp"
-                        android:layout_height="67dp"
-                        android:background="@drawable/shape_search_dir">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_search_dir"
+                        android:layout_margin="15dp">
 
                         <ImageView
                             android:id="@+id/date_picker"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="13dp"
+                            android:padding="15dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/calendar" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.55"
+                    android:layout_weight="7.5"
                     android:orientation="vertical"
-                    android:weightSum="2">
+                    android:weightSum="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
                         android:gravity="bottom">
 
                         <TextView
@@ -449,14 +309,14 @@
                             android:text="@string/departure"
                             android:textAllCaps="false"
                             android:textColor="#7E000000"
-                            android:textSize="21sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
                         android:gravity="top">
 
                         <TextView
@@ -466,7 +326,7 @@
                             android:text="@string/pick_travel_date"
                             android:textAllCaps="false"
                             android:textColor="@color/black"
-                            android:textSize="21sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -474,14 +334,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight="5"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btn_find_train"
                     android:layout_width="300dp"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimaryDark"
                     android:text="@string/find_train"
                     android:textAllCaps="false"
