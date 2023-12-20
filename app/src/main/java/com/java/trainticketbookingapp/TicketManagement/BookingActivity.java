@@ -5,15 +5,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.java.trainticketbookingapp.Adapter.TicketAdapter;
-import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 
-import java.util.List;
-
-public class Booking extends AppCompatActivity {
+public class BookingActivity extends AppCompatActivity {
 
     private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
 

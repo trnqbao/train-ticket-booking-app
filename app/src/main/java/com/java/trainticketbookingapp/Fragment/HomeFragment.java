@@ -3,27 +3,23 @@ package com.java.trainticketbookingapp.Fragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import static android.content.Context.MODE_PRIVATE;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -39,13 +35,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
-import com.java.trainticketbookingapp.TicketManagement.TicketList;
-import com.squareup.picasso.Picasso;
+import com.java.trainticketbookingapp.TicketManagement.TicketListActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -222,7 +215,7 @@ public class HomeFragment extends Fragment {
                 return;
             }
 
-            Intent intent = new Intent(getActivity(), TicketList.class);
+            Intent intent = new Intent(getActivity(), TicketListActivity.class);
             intent.putExtra("bookingFromID", savedDepartureName);
             intent.putExtra("bookingToID", savedDestination);
 //            intent.putExtra("passenger", savedPassengerText);

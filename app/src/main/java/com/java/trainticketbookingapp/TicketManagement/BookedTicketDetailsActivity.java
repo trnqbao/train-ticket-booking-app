@@ -11,10 +11,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +39,13 @@ import com.java.trainticketbookingapp.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewTicketActivity extends AppCompatActivity {
+public class BookedTicketDetailsActivity extends AppCompatActivity {
 
     Button btn_shareTicket, btn_ticketCode;
-    TextView destination, start, departuretime, price;
+    TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation;
+
+    //for top menu bar
+    TextView menuStart, menuDes;
     ImageButton imgBtnBack, imgBtnOption;
     FirebaseUser user;
     FirebaseAuth auth;
@@ -50,10 +56,19 @@ public class ViewTicketActivity extends AppCompatActivity {
 
 //        btn_shareTicket = findViewById(R.id.btn_share_ticket);
 //        btn_ticketCode = findViewById(R.id.btn_ticketCode);
+        tvticketID = findViewById(R.id.tv_training_booking_code);
         destination = findViewById(R.id.destination);
         start = findViewById(R.id.start);
         price = findViewById(R.id.price);
         departuretime = findViewById(R.id.departureTime);
+        tvTotalTime = findViewById(R.id.tv_total_trip_time);
+        tvStartStation = findViewById(R.id.tv_departure_station);
+        tvDesStation = findViewById(R.id.tv_arrival_station);
+
+        menuStart = findViewById(R.id.tv_start);
+        menuDes = findViewById(R.id.tv_des);
+
+
 
         imgBtnBack = findViewById(R.id.imgBtnBack);
         imgBtnOption = findViewById(R.id.imgBtnOption);
@@ -61,10 +76,12 @@ public class ViewTicketActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
+        int ticketID = getIntent().getIntExtra("ticket_ID", 0);
         String ticketStart = getIntent().getStringExtra("ticket_start");
         String ticketDestination = getIntent().getStringExtra("ticket_destination");
         String ticketPrice = getIntent().getStringExtra("ticket_price");
         String ticketDepartureTime = getIntent().getStringExtra("ticket_departure_time");
+        String ticketTotalTripTime = getIntent().getStringExtra("ticket_total_trip_time");
 
 
 //        btn_ticketCode.setOnClickListener(new View.OnClickListener() {
@@ -103,10 +120,18 @@ public class ViewTicketActivity extends AppCompatActivity {
 //            }
 //        });
 
+        menuStart.setText(ticketStart);
+        menuDes.setText(ticketDestination);
+
+        tvticketID.setText(String.valueOf(ticketID));
         destination.setText(ticketDestination);
         start.setText(ticketStart);
         departuretime.setText(ticketDepartureTime);
         price.setText(ticketPrice);
+        tvTotalTime.setText(ticketTotalTripTime);
+        tvStartStation.setText(ticketStart + " Station");
+        tvDesStation.setText(ticketDestination + " Station");
+
 
         imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +142,7 @@ public class ViewTicketActivity extends AppCompatActivity {
 
         imgBtnOption.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 showOptionsDialog(ticketStart, ticketDestination, ticketDepartureTime, ticketPrice);
             }
         });
@@ -147,8 +172,8 @@ public class ViewTicketActivity extends AppCompatActivity {
 
     private void showOptionsDialog(String ticketStart, String ticketDestination, String ticketDepartureTime, String ticketPrice) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Options")
-                .setItems(new CharSequence[]{"Share", "QR Code"}, (dialog, which) -> {
+        builder.setTitle(getString(R.string.options))
+                .setItems(new CharSequence[]{getString(R.string.share_ticket), getString(R.string.qr_code)}, (dialog, which) -> {
                     // Handle option selection
                     switch (which) {
                         case 0:
@@ -159,7 +184,7 @@ public class ViewTicketActivity extends AppCompatActivity {
                             break;
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -169,6 +194,8 @@ public class ViewTicketActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+
 
     private void shareTicket(String ticketStart, String ticketDestination, String ticketDepartureTime, String ticketPrice) {
         String ticketInfo = "Start: " + ticketStart + "\n" +
@@ -187,15 +214,15 @@ public class ViewTicketActivity extends AppCompatActivity {
     private void showQRCode(String ticketInfo) {
         Bitmap qrCode = generateQRCode(ticketInfo);
         if (qrCode != null) {
-            ImageView imageView = new ImageView(ViewTicketActivity.this);
+            ImageView imageView = new ImageView(BookedTicketDetailsActivity.this);
             imageView.setImageBitmap(qrCode);
-            new AlertDialog.Builder(ViewTicketActivity.this)
+            new AlertDialog.Builder(BookedTicketDetailsActivity.this)
                     .setTitle("Ticket QR Code")
                     .setView(imageView)
                     .setPositiveButton("Close", null)
                     .show();
         } else {
-            Toast.makeText(ViewTicketActivity.this, "Error generating QR code", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BookedTicketDetailsActivity.this, "Error generating QR code", Toast.LENGTH_SHORT).show();
         }
     }
 

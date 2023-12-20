@@ -115,5 +115,13 @@
     <string name="train_booking_code">Train Booking Code</string>
     <string name="economy">Economy</string>
     <string name="total_price">Total price</string>
+    <string name="delete_ticket">Delete Ticket</string>
+    <string name="ticket_details">Ticket Details</string>
+    <string name="return_ticket">Return ticket</string>
+    <string name="share_ticket">Share ticket</string>
+    <string name="qr_code">QR code</string>
+    <string name="cancel">Cancel</string>
+    <string name="options">Option</string>
+    <string name="your_tickets">Your tickets</string>
 
 </resources>

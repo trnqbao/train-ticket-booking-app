@@ -14,8 +14,10 @@ public class Ticket {
     private String arrivalTime = "";
     private String trainID = "";
     private String date = "";
+    private String departureStation = "";
 
-    public Ticket(int id, String start, String destination, String price, String totalTime, String departureTime, String arrivalTime, String trainID, String date) {
+
+    public Ticket(int id, String start, String destination, String price, String totalTime, String departureTime, String arrivalTime, String trainID, String date, String departureStation) {
         this.id = id;
         this.start = start;
         this.destination = destination;
@@ -25,6 +27,7 @@ public class Ticket {
         this.arrivalTime = arrivalTime;
         this.trainID = trainID;
         this.date = date;
+        this.departureStation = departureStation;
     }
 
     public Ticket() {
@@ -99,5 +102,13 @@ public class Ticket {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDepartureStation() {
+        return departureStation;
+    }
+
+    public void setDepartureStation(String departureStation) {
+        this.departureStation = departureStation;
     }
 }

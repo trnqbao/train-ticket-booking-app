@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TicketList extends AppCompatActivity {
+public class TicketListActivity extends AppCompatActivity {
 
     private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
     private RecyclerView recyclerView;
@@ -199,7 +199,7 @@ public class TicketList extends AppCompatActivity {
     }
 
     private void startPaymentActivity(Ticket selectedTicket) {
-        Intent paymentIntent = new Intent(TicketList.this, PaymentActivity.class);
+        Intent paymentIntent = new Intent(TicketListActivity.this, PaymentActivity.class);
         paymentIntent.putExtra("ticket_id", selectedTicket.getId());
         paymentIntent.putExtra("ticket_destination", selectedTicket.getDestination());
         paymentIntent.putExtra("ticket_price", selectedTicket.getPrice());

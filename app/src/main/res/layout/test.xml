@@ -38,6 +38,7 @@
                     android:layout_weight="4">
 
                     <TextView
+                        android:id="@+id/tv_trip_pick_up"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center|bottom|right"
@@ -67,12 +68,13 @@
                     android:layout_weight="4">
 
                     <TextView
+                        android:id="@+id/tv_trip_drop_off"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
+                        android:gravity="center|bottom|left"
                         android:text="Ha Noi"
-                        android:gravity="center|bottom|left"/>
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
                 
             </LinearLayout>
@@ -80,7 +82,22 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8">
+                android:layout_weight="6">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <ImageView
+                    android:id="@+id/tv_options"
+                    android:layout_marginTop="13dp"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/dots"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -109,6 +126,7 @@
                     tools:ignore="NestedWeights">
 
                     <TextView
+                        android:id="@+id/tv_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Wed, 20 Dec 2023"
@@ -133,6 +151,7 @@
                     android:layout_weight="3.5"
                     android:layout_marginStart="8dp">
                     <TextView
+                        android:id="@+id/tv_trip_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Time"
@@ -153,7 +172,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20"
+            android:layout_weight="10"
             android:layout_marginStart="10dp"
             android:weightSum="10">
 
@@ -164,6 +183,7 @@
                 android:layout_marginStart="5dp"
                 tools:ignore="NestedWeights">
                 <TextView
+                    android:id="@+id/tv_train_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Vietnam Train SE-6"
@@ -188,6 +208,7 @@
                 android:layout_weight="5"
                 android:layout_marginStart="8dp">
                 <TextView
+                    android:id="@+id/tv_departure_station"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Saigon Station"
@@ -195,12 +216,7 @@
                     android:textSize="16sp"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="16">
 
-            </LinearLayout>
         </LinearLayout>
 
 

@@ -1,237 +1,466 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="15dp"
-    app:cardCornerRadius="15dp"
-    android:elevation="10dp"
-    android:focusable="true"
+    android:layout_margin="5dp"
     android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#E8E8E8"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        android:weightSum="60">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:weightSum="1"
-            android:orientation="vertical">
-
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:orientation="horizontal"
+            android:weightSum="20">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:gravity="center|left|bottom"
-                tools:ignore="NestedWeights">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_trip_time"
-                    android:layout_marginStart="10dp"
-                    android:text="10:00 AM"
-                    android:textAllCaps="false"
-                    android:textSize="24sp"
-                    android:textColor="@color/gray"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="12"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="10">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="7dp"
-                        android:layout_margin="9dp"
-                        android:background="@drawable/shape_search_dir"
-                        android:src="@drawable/from"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.7"
-                    android:orientation="vertical"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="bottom|left"
-                        android:layout_weight="1.1"
-                        android:textColor="#656565"
-                        android:textSize="17sp"
-                        android:textAllCaps="false"
-                        android:text="@string/start"/>
+                    android:layout_weight="4">
 
                     <TextView
                         android:id="@+id/tv_trip_pick_up"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="top|left"
-                        android:layout_weight="0.9"
-                        android:textColor="@color/black"
-                        android:textSize="23sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:text="Saigon Station"/>
+                        android:gravity="center|bottom|right"
+                        android:text="Saigon"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.4"
-                android:orientation="horizontal"
-                android:weightSum="2">
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.4">
+                    android:layout_weight="2"
+                    android:gravity="center|bottom"
+                    android:padding="5dp"
+                    android:layout_marginTop="19dp">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="9dp"
-                        android:layout_margin="9dp"
-                        android:background="@drawable/shape_search_loc"
-                        android:src="@drawable/destination"/>
+                        android:src="@drawable/baseline_arrow_forward_24"/>
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:orientation="vertical"
-                    android:weightSum="2">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.1"
-                        android:gravity="bottom|left"
-                        android:text="@string/destination"
-                        android:textAllCaps="false"
-                        android:textColor="#656565"
-                        android:textSize="17sp" />
+                    android:layout_weight="4">
 
                     <TextView
                         android:id="@+id/tv_trip_drop_off"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="top|left"
-                        android:layout_weight="0.9"
-                        android:textColor="@color/black"
-                        android:textSize="23sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:text="Hanoi Station"/>
+                        android:gravity="center|bottom|left"
+                        android:text="Ha Noi"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <ImageView
+                    android:id="@+id/img_options"
+                    android:layout_marginTop="13dp"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/dots"/>
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:weightSum="3"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:orientation="horizontal"
+            android:weightSum="20">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:weightSum="2"
-                android:gravity="center"
-                android:layout_marginLeft="15dp">
+                android:layout_weight="13"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                tools:ignore="NestedWeights">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="bottom"
-                    android:layout_weight="0.7"
-                    android:text="@string/time"
-                    android:textColor="#656565"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"/>
+                    android:layout_weight="6"
+                    android:layout_marginStart="5dp"
+                    tools:ignore="NestedWeights">
 
-                <TextView
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Wed, 20 Dec 2023"
+                        android:textColor="@color/gray"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/tv_total_trip_time"
-                    android:gravity="top"
-                    android:layout_weight="1.3"
-                    android:textColor="#B2000000"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-                    android:text="30Hr 30Min"/>
+                    android:layout_weight="0.5">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/dot"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:layout_marginStart="8dp">
+                    <TextView
+                        android:id="@+id/tv_trip_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Time"
+                        android:textColor="@color/gray"
+                        android:gravity="center|left"/>
+                </LinearLayout>
+
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:weightSum="2">
 
-                <Button
-                    android:id="@+id/btn_viewTicket"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:text="@string/view"
-                    android:textAllCaps="false"
-                    android:textSize="19sp"
-                    android:textStyle="normal"
-                    app:cornerRadius="0dp" />
-            </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:weightSum="2"
-                android:layout_marginRight="17dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom|right"
-                    android:layout_weight="1.2"
-                    android:gravity="center"
-                    android:text="@string/price"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-                    android:paddingRight="20dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tv_trip_price"
-                    android:gravity="top|right"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-                    android:text="1.850.000"/>
+                android:layout_weight="7">
+
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:layout_marginStart="10dp"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:layout_marginStart="5dp"
+                tools:ignore="NestedWeights">
+                <TextView
+                    android:id="@+id/tv_train_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Vietnam Train SE-6"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/dot"
+                    android:layout_gravity="center|top"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:layout_marginStart="8dp">
+                <TextView
+                    android:id="@+id/tv_departure_station"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Saigon Station"
+                    android:gravity="center|left"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.cardview.widget.CardView-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_margin="15dp"-->
+<!--    app:cardCornerRadius="15dp"-->
+<!--    android:elevation="10dp"-->
+<!--    android:focusable="true"-->
+<!--    android:clickable="true"-->
+<!--    android:foreground="?android:attr/selectableItemBackground">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:background="#E8E8E8"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="10">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="7"-->
+<!--            android:weightSum="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.2"-->
+<!--                android:gravity="center|left|bottom"-->
+<!--                tools:ignore="NestedWeights">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/tv_trip_time"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:text="10:00 AM"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textSize="24sp"-->
+<!--                    android:textColor="@color/gray"/>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.4"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="1">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="0.3">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:padding="7dp"-->
+<!--                        android:layout_margin="9dp"-->
+<!--                        android:background="@drawable/shape_search_dir"-->
+<!--                        android:src="@drawable/from"/>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="0.7"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:weightSum="2">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="bottom|left"-->
+<!--                        android:layout_weight="1.1"-->
+<!--                        android:textColor="#656565"-->
+<!--                        android:textSize="17sp"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:text="@string/start"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_trip_pick_up"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="top|left"-->
+<!--                        android:layout_weight="0.9"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="23sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:text="Saigon Station"/>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.4"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="2">-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1.4">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:padding="9dp"-->
+<!--                        android:layout_margin="9dp"-->
+<!--                        android:background="@drawable/shape_search_loc"-->
+<!--                        android:src="@drawable/destination"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="0.6"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:weightSum="2">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1.1"-->
+<!--                        android:gravity="bottom|left"-->
+<!--                        android:text="@string/destination"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="#656565"-->
+<!--                        android:textSize="17sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_trip_drop_off"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="top|left"-->
+<!--                        android:layout_weight="0.9"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="23sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:text="Hanoi Station"/>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="3"-->
+<!--            android:weightSum="3"-->
+<!--            android:orientation="vertical">-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_weight="1"-->
+<!--                android:weightSum="2"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginLeft="15dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:layout_weight="0.7"-->
+<!--                    android:text="@string/time"-->
+<!--                    android:textColor="#656565"-->
+<!--                    android:textSize="17sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textAllCaps="false"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:id="@+id/tv_total_trip_time"-->
+<!--                    android:gravity="top"-->
+<!--                    android:layout_weight="1.3"-->
+<!--                    android:textColor="#B2000000"-->
+<!--                    android:textSize="17sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:text="30Hr 30Min"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:weightSum="2">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/btn_viewTicket"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:backgroundTint="@color/colorPrimaryDark"-->
+<!--                    android:text="@string/view"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textSize="19sp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    app:cornerRadius="0dp" />-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical"-->
+<!--                android:weightSum="2"-->
+<!--                android:layout_marginRight="17dp">-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="bottom|right"-->
+<!--                    android:layout_weight="1.2"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/price"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="17sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:paddingRight="20dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:id="@+id/tv_trip_price"-->
+<!--                    android:gravity="top|right"-->
+<!--                    android:layout_weight="0.8"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="24sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:text="1.850.000"/>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+<!--</androidx.cardview.widget.CardView>-->

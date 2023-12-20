@@ -175,7 +175,7 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 userPoint++;
                 reference.child(userID).child("userPoint").setValue(userPoint);
-                Ticket ticket = new Ticket(ticketId, ticketStart, ticketDestination, ticketPrice, ticket_totalTime, ticket_departureTime, ticket_arrivalTime, ticket_trainID, ticket_date); // Populate your Ticket object
+                Ticket ticket = new Ticket(ticketId, ticketStart, ticketDestination, ticketPrice, ticket_totalTime, ticket_departureTime, ticket_arrivalTime, ticket_trainID, ticket_date, ""); // Populate your Ticket object
 
                 reference.child(userID).child("tickets").push().setValue(ticket)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

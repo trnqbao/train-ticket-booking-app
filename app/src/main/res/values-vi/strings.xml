@@ -115,5 +115,12 @@
     <string name="train_booking_code">Mã Đặt Vé</string>
     <string name="economy">Hạng phổ thông</string>
     <string name="total_price">Tổng tiền</string>
-
+    <string name="delete_ticket">Xóa vé</string>
+    <string name="ticket_details">Chi tiết vé</string>
+    <string name="return_ticket">Hoàn vé</string>
+    <string name="share_ticket">Chia sẻ vé</string>
+    <string name="qr_code">Mã QR</string>
+    <string name="cancel">Hủy</string>
+    <string name="options">Tùy chọn</string>
+    <string name="your_tickets">Vé của bạn</string>
 </resources>
