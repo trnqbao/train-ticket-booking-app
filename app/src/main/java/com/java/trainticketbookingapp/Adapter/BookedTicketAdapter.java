@@ -1,19 +1,16 @@
 package com.java.trainticketbookingapp.Adapter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.java.trainticketbookingapp.Model.Ticket;
@@ -165,6 +162,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
                 String itemId = (String) item.getTitle();
 
                 if (itemId.equals("item_ticket_details")) {
+                    Log.e("TAG", "showTicketOptions: " + itemId);
                     viewTicketDetails(view);
                     return true;
                 } else if (itemId.equals("item_refund_ticket")) {

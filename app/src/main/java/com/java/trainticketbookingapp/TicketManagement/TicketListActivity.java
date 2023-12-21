@@ -2,8 +2,12 @@ package com.java.trainticketbookingapp.TicketManagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,12 +33,14 @@ import java.util.List;
 
 public class TicketListActivity extends AppCompatActivity {
 
+    static final String TAG = "TicketList";
     private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
     private RecyclerView recyclerView;
     private TicketAdapter ticketAdapter;
     private List<Ticket> ticketList;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private LinearLayout recyLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +61,8 @@ public class TicketListActivity extends AppCompatActivity {
         tv_bookingDateID = findViewById(R.id.tv_bookingDateID);
 //        tv_bookingPassID = findViewById(R.id.tv_bookingPassID);
 
+        recyLayout = findViewById(R.id.recy_layout);
+
         String savedDepartureName = getIntent().getStringExtra("bookingFromID");
         String savedDestination = getIntent().getStringExtra("bookingToID");
 //        String savedPassenger = getIntent().getStringExtra("passenger");
@@ -67,6 +75,7 @@ public class TicketListActivity extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.btn_back_to_home);
         btnBack.setOnClickListener(v -> onBackPressed());
+
 
         recyclerView = findViewById(R.id.recy_tripID);
         ticketList = new ArrayList<>();
@@ -86,7 +95,7 @@ public class TicketListActivity extends AppCompatActivity {
 
                     String formattedDepartureTime = convertDepartureTime(departureTime);
 
-                    if (!isDeparted(formattedDepartureTime, "1h00") && savedDepartureName.equals(ticketStart) && savedDestination.equals(ticketDestination)) {
+                    if (!isDeparted(formattedDepartureTime) && savedDepartureName.equals(ticketStart) && savedDestination.equals(ticketDestination)) {
 //
                         ticket.setId(Integer.parseInt(childSnapshot.getKey().substring("ticket".length())));
                         ticket.setStart(childSnapshot.child("start").getValue(String.class));
@@ -104,16 +113,50 @@ public class TicketListActivity extends AppCompatActivity {
                         ticket.setDate(childSnapshot.child("date").getValue(String.class));
 
                         ticketList.add(ticket);
+
+                        Log.e(TAG, "onDataChange: " + String.valueOf(ticket.toString()));
                     }
                 }
                 ticketAdapter.notifyDataSetChanged();
+
+                // nếu ko có vé thì hiện giao diện ko có vé
+                if (ticketAdapter.getItemCount() == 0) {
+                    startNoTicketView(savedDepartureName, savedDestination, savedDate);
+//                    recyLayout.setVisibility(View.GONE);
+//
+//                    // Lấy vị trí của recyLayout trong LinearLayout cha
+//                    int index = -1;
+//                    ViewGroup parentLayout = null;
+//                    if (recyLayout.getParent() instanceof ViewGroup) {
+//                        parentLayout = (ViewGroup) recyLayout.getParent();
+//                        index = parentLayout.indexOfChild(recyLayout);
+//                    }
+//
+//// Ẩn recyLayout nếu tìm thấy và có LinearLayout cha
+//                    if (recyLayout != null && index != -1 && parentLayout != null) {
+//                        recyLayout.setVisibility(View.GONE);
+//
+//                        // Inflate layout mới
+//                        View newComponentView = getLayoutInflater().inflate(R.layout.activity_no_ticket_result, null);
+//
+//                        // Thêm newComponent vào vị trí cũ của recyLayout
+//                        parentLayout.addView(newComponentView, index + 1);
+//                    }
+                }
+
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("TAG", "Error reading data", error.toException());
             }
         });
+
+//        Log.d("TAG", "onCreate: " + String.valueOf(ticketAdapter.getItemCount()));
+
+
 
         ticketAdapter = new TicketAdapter(ticketList);
         recyclerView.setAdapter(ticketAdapter);
@@ -128,6 +171,13 @@ public class TicketListActivity extends AppCompatActivity {
 
     }
 
+    private void startNoTicketView(String start, String des, String date) {
+        Intent intent = new Intent(TicketListActivity.this, NoTicketActivity.class);
+        intent.putExtra("start", start);
+        intent.putExtra("des", des);
+        intent.putExtra("date", date);
+        startActivity(intent);
+    }
 
     // Convert time format
     private String convertDepartureTime(String originalDepartureTime)

@@ -1,8 +1,5 @@
 package com.java.trainticketbookingapp.Model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Ticket {
 
     private int id = 0;
@@ -110,5 +107,21 @@ public class Ticket {
 
     public void setDepartureStation(String departureStation) {
         this.departureStation = departureStation;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", start='" + start + '\'' +
+                ", destination='" + destination + '\'' +
+                ", price='" + price + '\'' +
+                ", totalTime='" + totalTime + '\'' +
+                ", departureTime='" + departureTime + '\'' +
+                ", arrivalTime='" + arrivalTime + '\'' +
+                ", trainID='" + trainID + '\'' +
+                ", date='" + date + '\'' +
+                ", departureStation='" + departureStation + '\'' +
+                '}';
     }
 }

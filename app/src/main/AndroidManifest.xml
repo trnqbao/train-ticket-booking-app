@@ -43,9 +43,10 @@
         <activity android:name=".ActivityforFragment.ActForProfileFragment" />
         <activity android:name=".Fragment.HomeFragment" />
         <activity android:name=".Fragment.ProfileFragment" />
-        <activity android:name=".TicketManagement.TicketListActivity" />
+        <activity android:name=".TicketManagement.TicketListActivity"/>
+        <activity android:name=".TicketManagement.NoTicketActivity"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".animation.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

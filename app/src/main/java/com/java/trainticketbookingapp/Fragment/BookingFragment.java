@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.java.trainticketbookingapp.Adapter.BookedTicketAdapter;
-import com.java.trainticketbookingapp.Adapter.TicketAdapter;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 

@@ -26,41 +26,44 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6">
+                android:layout_height="0dp"
+                android:layout_weight="1.5">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:weightSum="10">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:orientation="vertical"
+                        android:weightSum="3">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1.4"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:gravity="center|left">
 
                             <TextView
                                 android:id="@+id/tv_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:text="@string/title"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"/>
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.6">
+                            android:layout_height="0dp"
+                            android:layout_weight="2">
 
                             <EditText
                                 android:id="@+id/edt_title"
@@ -74,7 +77,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="15dp">
 
                         <EditText
                             android:id="@+id/edt_message"
@@ -111,7 +114,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="50dp">
+                        android:layout_marginTop="30dp">
 
                         <TextView
                             android:id="@+id/tv_auto_reply"
@@ -132,10 +135,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_margin="10dp"
-                android:layout_weight="1.5">
+                android:layout_weight="0.5">
                 <!-- Add ListView here -->
+
                 <Spinner
                     android:id="@+id/spinner_pre_existing_messages"
                     android:layout_width="match_parent"

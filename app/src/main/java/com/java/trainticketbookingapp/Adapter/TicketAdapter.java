@@ -8,14 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {

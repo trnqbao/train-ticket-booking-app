@@ -1,5 +1,6 @@
 package com.java.trainticketbookingapp.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -52,7 +55,6 @@ public class InboxFragment extends Fragment {
     private Map<String, String> preExistingAnswers = new HashMap<>();
     private Spinner spinnerPreExistingMessages;
     private TextView tvAutoReply;
-
     private SharedPreferences sharedPreferences;
 
 
@@ -157,17 +159,20 @@ public class InboxFragment extends Fragment {
     }
 
     private void loadChatMessages() {
-        // Add pre-existing chat messages to the list
-        chatMessages.add(getString(R.string.how_to_use_ticket));
-        preExistingAnswers.put(getString(R.string.how_to_use_ticket), getString(R.string.answer_use_ticket));
 
-        chatMessages.add(getString(R.string.how_to_book_ticket));
-        preExistingAnswers.put(getString(R.string.how_to_book_ticket), getString(R.string.answer_book_ticket));
+            // Add pre-existing chat messages to the list
+            chatMessages.add(getString(R.string.how_to_use_ticket));
+            preExistingAnswers.put(getString(R.string.how_to_use_ticket), getString(R.string.answer_use_ticket));
 
-        chatMessages.add(getString(R.string.how_to_change_language));
-        preExistingAnswers.put(getString(R.string.how_to_change_language), getString(R.string.answer_change_language));
+            chatMessages.add(getString(R.string.how_to_book_ticket));
+            preExistingAnswers.put(getString(R.string.how_to_book_ticket), getString(R.string.answer_book_ticket));
 
-        chatMessages.add(getString(R.string.how_to_update_profile));
-        preExistingAnswers.put(getString(R.string.how_to_update_profile), getString(R.string.answer_update_profile));
+            chatMessages.add(getString(R.string.how_to_change_language));
+            preExistingAnswers.put(getString(R.string.how_to_change_language), getString(R.string.answer_change_language));
+
+            chatMessages.add(getString(R.string.how_to_update_profile));
+            preExistingAnswers.put(getString(R.string.how_to_update_profile), getString(R.string.answer_update_profile));
+
     }
+
 }

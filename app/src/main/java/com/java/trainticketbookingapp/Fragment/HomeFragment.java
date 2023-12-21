@@ -1,6 +1,7 @@
 package com.java.trainticketbookingapp.Fragment;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -12,8 +13,12 @@ import android.os.Bundle;
 import static android.content.Context.MODE_PRIVATE;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +31,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -87,6 +93,8 @@ public class HomeFragment extends Fragment {
     FirebaseUser user;
     String name;
 
+    private ProgressDialog loadingDialog;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -145,12 +153,7 @@ public class HomeFragment extends Fragment {
                         Calendar currentDate = Calendar.getInstance();
 
                         if (selectedDate.before(currentDate)) {
-                            if (checkVi()) {
-                                Toast.makeText(getActivity(), "Vui lòng chọn ngày hiện tại hoặc sau ngày hôm nay.", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), "Please select a date on or after today.", Toast.LENGTH_SHORT).show();
-                            }
-
+                            showNotification(getString(R.string.error_place));
                             return;
                         }
 
@@ -165,9 +168,10 @@ public class HomeFragment extends Fragment {
                     Calendar.getInstance().get(Calendar.MONTH),
                     Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
             );
+
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             datePickerDialog.show();
         });
-
 
         // On plus button click increase passenger count and update shared preferences
 //        btnPlus.setOnClickListener(v -> {
@@ -206,24 +210,57 @@ public class HomeFragment extends Fragment {
             savedDestination = locations[spinnerToID.getSelectedItemPosition()];
 //            savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
             savedDateText = sharedPreferences.getString("DATE_TEXT", "");
+
             if (savedDepartureName.equals(savedDestination)) {
-                if (checkVi()) {
-                    Toast.makeText(getActivity(), "Điểm khởi hành và điểm đến không thể giống nhau.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Departure and destination cannot be the same.", Toast.LENGTH_SHORT).show();
-                }
+                showNotification(getString(R.string.error_place));
                 return;
             }
 
-            Intent intent = new Intent(getActivity(), TicketListActivity.class);
-            intent.putExtra("bookingFromID", savedDepartureName);
-            intent.putExtra("bookingToID", savedDestination);
-//            intent.putExtra("passenger", savedPassengerText);
-            intent.putExtra("date", savedDateText);
+            showLoadingDialog();
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                dismissLoadingDialog();
+                Intent intent = new Intent(getActivity(), TicketListActivity.class);
+                intent.putExtra("bookingFromID", savedDepartureName);
+                intent.putExtra("bookingToID", savedDestination);
+//                    intent.putExtra("passenger", savedPassengerText);
+                intent.putExtra("date", savedDateText);
+                startActivity(intent);
+            }, 2000);
 
-            startActivity(intent);
         });
         return view;
+    }
+
+    private void showNotification(String notification) {
+        new Handler(Looper.getMainLooper()).post(() -> {
+            Snackbar snackbar = Snackbar.make(requireView(), notification, Snackbar.LENGTH_SHORT);
+            snackbar.setAnchorView(null);
+            snackbar.show();
+            new Handler(Looper.getMainLooper()).postDelayed(snackbar::dismiss, 2000);
+        });
+    }
+
+    private void showLoadingDialog() {
+        if (loadingDialog == null) {
+            loadingDialog = new ProgressDialog(getContext());
+            loadingDialog.setMessage(getString(R.string.loading));
+            loadingDialog.setCanceledOnTouchOutside(false);
+            loadingDialog.setCancelable(false);
+        }
+        loadingDialog.show();
+
+        new Handler().postDelayed(() -> {
+            if (loadingDialog != null && loadingDialog.isShowing()) {
+                loadingDialog.dismiss();
+            }
+        }, 2000);
+    }
+
+    private void dismissLoadingDialog() {
+        if (loadingDialog != null && loadingDialog.isShowing()) {
+            loadingDialog.dismiss();
+        }
     }
 
     private boolean checkVi() {

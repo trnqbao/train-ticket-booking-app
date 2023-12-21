@@ -143,7 +143,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         imgBtnOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showOptionsDialog(ticketStart, ticketDestination, ticketDepartureTime, ticketPrice);
+                showOptionsDialog(ticketID, ticketStart, ticketDestination, ticketDepartureTime, ticketPrice, ticketTotalTripTime);
             }
         });
     }
@@ -170,7 +170,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void showOptionsDialog(String ticketStart, String ticketDestination, String ticketDepartureTime, String ticketPrice) {
+    private void showOptionsDialog(int ticketID, String ticketStart, String ticketDestination, String ticketDepartureTime, String ticketPrice, String totalTripTime) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.options))
                 .setItems(new CharSequence[]{getString(R.string.share_ticket), getString(R.string.qr_code)}, (dialog, which) -> {
@@ -180,8 +180,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
                             shareTicket(ticketStart, ticketDestination, ticketDepartureTime, ticketPrice);
                             break;
                         case 1:
-                            showQRCode("example ticket...");
-                            break;
+                            showQRCode(totalTripTime + String.valueOf(ticketID) + ticketDestination + tvStartStation + ticketStart);
                     }
                 })
                 .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
