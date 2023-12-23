@@ -51,7 +51,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTripTime;
+        private TextView tvTripTime, tvTrainId;
         private TextView tvStart;
         private TextView tvDestination;
         private TextView tvTotalTripTime;
@@ -59,6 +59,9 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         private TextView tvDepartureStation;
 
         private ImageView imgOption;
+        String ticketDepartureTime;
+        String specificDepartureTime = "12:00 PM"; // Change this to your specific time
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,15 +70,16 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             tvDestination = itemView.findViewById(R.id.tv_trip_drop_off);
             tvTotalTripTime = itemView.findViewById(R.id.tv_total_trip_time);
             tvDepartureStation = itemView.findViewById(R.id.tv_departure_station);
+            tvTrainId = itemView.findViewById(R.id.tv_train_id);
 //            tvTripPrice = itemView.findViewById(R.id.tv_trip_price);
-            imgOption = itemView.findViewById(R.id.img_options);
+//            imgOption = itemView.findViewById(R.id.img_options);
 
-            imgOption.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    showTicketOptions(view);
-                }
-            });
+//            imgOption.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    showTicketOptions(view);
+//                }
+//            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,15 +116,11 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
 
         }
 
-
-
         public void bind(Ticket ticket) {
             tvTripTime.setText(ticket.getDepartureTime());
             tvStart.setText(ticket.getStart());
             tvDestination.setText(ticket.getDestination());
-//            tvTotalTripTime.setText(ticket.getTotalTime());
-//            tvTripPrice.setText(ticket.getPrice());
-            tvDepartureStation.setText(ticket.getDepartureStation());
+            tvTrainId.setText(ticket.getTrainID());
         }
 
         private void getTicketData(View view) {
@@ -133,7 +133,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             String ticketStartTime = ticket.getDepartureTime();
             String ticketArrivalTime = ticket.getArrivalTime();
             String ticketPrice = ticket.getPrice();
-            String ticketDepartureTime = ticket.getDepartureTime();
+            ticketDepartureTime = ticket.getDepartureTime();
             String ticketTotalTripTime = ticket.getTotalTime();
             String ticketTrainID = ticket.getTrainID();
             String ticketDate = ticket.getDate();
@@ -149,47 +149,51 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             intent.putExtra("ticket_departure_time", ticketDepartureTime);
             intent.putExtra("ticket_id", ticketID);
             intent.putExtra("ticket_total_trip_time", ticketTotalTripTime);
+            intent.putExtra("ticket_train_id", ticketTrainID);
 
             view.getContext().startActivity(intent);
         }
 
-        private void showTicketOptions(View view) {
-            PopupMenu popupMenu = new PopupMenu(itemView.getContext(), view);
-            MenuInflater inflater = popupMenu.getMenuInflater();
-            inflater.inflate(R.menu.ticket_options_menu, popupMenu.getMenu());
-
-            popupMenu.setOnMenuItemClickListener(item -> {
-                String itemId = (String) item.getTitle();
-
-                if (itemId.equals("item_ticket_details")) {
-                    Log.e("TAG", "showTicketOptions: " + itemId);
-                    viewTicketDetails(view);
-                    return true;
-                } else if (itemId.equals("item_refund_ticket")) {
-                    refundTicket();
-                    return true;
-                } else if (itemId.equals("item_delete_ticket")) {
-                    deleteTicket();
-                    return true;
-                }
-                return false;
-            });
-            popupMenu.show();
-        }
-
-
-        // viet may cai nay di
-        private void viewTicketDetails(View view) {
-            getTicketData(view);
-        }
-
-        private void refundTicket() {
-
-        }
-
-        private void deleteTicket() {
-
-        }
-
+        // Khong can refund ve - bo di
+//        private void showTicketOptions(View view) {
+//            PopupMenu popupMenu = new PopupMenu(itemView.getContext(), view);
+//            MenuInflater inflater = popupMenu.getMenuInflater();
+//            inflater.inflate(R.menu.ticket_options_menu, popupMenu.getMenu());
+//
+//            popupMenu.setOnMenuItemClickListener(item -> {
+//                String itemId = (String) item.getTitle();
+//
+//                if (itemId.equals("item_ticket_details")) {
+//                    Log.e("TAG", "showTicketOptions: " + itemId);
+//                    viewTicketDetails(view);
+//                    return true;
+//                } else if (itemId.equals("item_refund_ticket")) {
+//                    refundTicket();
+//                    return true;
+//                } else if (itemId.equals("item_delete_ticket")) {
+//                    deleteTicket();
+//                    return true;
+//                }
+//                return false;
+//            });
+//            popupMenu.show();
+//        }
+//
+//
+//        // viet may cai nay di
+//        private void viewTicketDetails(View view) {
+//            getTicketData(view);
+//        }
+//
+//        private void refundTicket() {
+//
+//        }
+//
+//        private void deleteTicket() {
+//
+//        }
+//
+//    }
     }
 }
+

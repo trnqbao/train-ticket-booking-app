@@ -225,15 +225,27 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="5"
-                                    tools:ignore="NestedWeights,UselessParent">
+                                    tools:ignore="NestedWeights,UselessParent"
+                                    android:orientation="horizontal">
                                     <TextView
                                         android:gravity="center|left"
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:textSize="18sp"
                                         android:textStyle="bold"
-                                        android:text="Vietname train VN-SE-01"
+                                        android:text="Vietnam train: "
                                         tools:ignore="RtlHardcoded" />
+
+                                    <TextView
+                                        android:id="@+id/tv_train_id"
+                                        android:gravity="center|left"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        android:text="Train"
+                                        tools:ignore="RtlHardcoded" />
+
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -497,6 +509,7 @@
                                     android:layout_weight="4"
                                     tools:ignore="NestedWeights,UselessParent">
                                     <TextView
+                                        android:id="@+id/tv_user_name"
                                         android:fontFamily="@font/gotham"
                                         android:textSize="20sp"
                                         android:gravity="center|left"

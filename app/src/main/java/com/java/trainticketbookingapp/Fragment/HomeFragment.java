@@ -47,28 +47,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class HomeFragment extends Fragment {
-
-//    String[] locations = new String[]{
-//            "An Giang",
-//            "Ba Ria - Vung Tau",
-//            "Bac Lieu",
-//            "Ben Tre",
-//            "Binh Phuoc",
-//            "Binh Duong",
-//            "Ca Mau",
-//            "Dong Nai",
-//            "Dong Thap",
-//            "Hau Giang",
-//            "Ho Chi Minh City",
-//            "Kien Giang",
-//            "Long An",
-//            "Soc Trang",
-//            "Tay Ninh",
-//            "Tien Giang",
-//            "Tra Vinh",
-//            "Vinh Long",
-//    };
-
     String[] locations = new String[]{
             "Ha Noi",
             "Sai Gon",

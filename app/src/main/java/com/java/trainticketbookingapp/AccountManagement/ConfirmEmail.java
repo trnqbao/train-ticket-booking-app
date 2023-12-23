@@ -2,6 +2,7 @@ package com.java.trainticketbookingapp.AccountManagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,11 @@ public class ConfirmEmail extends AppCompatActivity {
     }
 
     private void checkEmail(String email) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(ConfirmEmail.this, "Invalid email format.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         auth.fetchSignInMethodsForEmail(email)
                 .addOnCompleteListener(task -> {
                     boolean isNewUser = task.getResult().getSignInMethods().isEmpty();

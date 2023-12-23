@@ -1,14 +1,23 @@
 package com.java.trainticketbookingapp.TicketManagement;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -23,6 +32,11 @@ import android.widget.Toast;
 
 import android.graphics.Bitmap;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -36,26 +50,30 @@ import com.google.firebase.auth.FirebaseUser;
 import com.java.trainticketbookingapp.Fragment.BookingFragment;
 import com.java.trainticketbookingapp.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class BookedTicketDetailsActivity extends AppCompatActivity {
 
     Button btn_shareTicket, btn_ticketCode;
-    TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation;
+    TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation, arrivaltime, username, trainId;
 
     //for top menu bar
     TextView menuStart, menuDes;
     ImageButton imgBtnBack, imgBtnOption;
     FirebaseUser user;
     FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_ticket);
 
-//        btn_shareTicket = findViewById(R.id.btn_share_ticket);
-//        btn_ticketCode = findViewById(R.id.btn_ticketCode);
         tvticketID = findViewById(R.id.tv_training_booking_code);
         destination = findViewById(R.id.destination);
         start = findViewById(R.id.start);
@@ -64,11 +82,12 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         tvTotalTime = findViewById(R.id.tv_total_trip_time);
         tvStartStation = findViewById(R.id.tv_departure_station);
         tvDesStation = findViewById(R.id.tv_arrival_station);
+        arrivaltime = findViewById(R.id.tv_arrival_time);
+        username = findViewById(R.id.tv_user_name);
+        trainId = findViewById(R.id.tv_train_id);
 
         menuStart = findViewById(R.id.tv_start);
         menuDes = findViewById(R.id.tv_des);
-
-
 
         imgBtnBack = findViewById(R.id.imgBtnBack);
         imgBtnOption = findViewById(R.id.imgBtnOption);
@@ -76,49 +95,33 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        int ticketID = getIntent().getIntExtra("ticket_ID", 0);
+        if (user != null) {
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Registered user").child(user.getUid());
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String userUsername = dataSnapshot.child("userName").getValue(String.class);
+                        username.setText(userUsername);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
+        String ticketID = getIntent().getStringExtra(String.valueOf("ticket_ID"));
         String ticketStart = getIntent().getStringExtra("ticket_start");
         String ticketDestination = getIntent().getStringExtra("ticket_destination");
         String ticketPrice = getIntent().getStringExtra("ticket_price");
         String ticketDepartureTime = getIntent().getStringExtra("ticket_departure_time");
         String ticketTotalTripTime = getIntent().getStringExtra("ticket_total_trip_time");
+        String ticketArrivalTime = getIntent().getStringExtra("ticket_arrival_time");
+        String ticketTrainID = getIntent().getStringExtra("ticket_train_id");
 
-
-//        btn_ticketCode.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String ticketInfo = "... your ticket information string..."; // replace with actual information
-//                Bitmap qrCode = generateQRCode(ticketInfo);
-//                if (qrCode != null) {
-//                    ImageView imageView = new ImageView(ViewTicketActivity.this);
-//                    imageView.setImageBitmap(qrCode);
-//                    new AlertDialog.Builder(ViewTicketActivity.this)
-//                            .setTitle("Ticket QR Code")
-//                            .setView(imageView)
-//                            .setPositiveButton("Close", null)
-//                            .show();
-//                } else {
-//                    Toast.makeText(ViewTicketActivity.this, "Error generating QR code", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//        btn_shareTicket.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                String ticketInfo = "Start: " + ticketStart + "\n" +
-//                        "Destination: " + ticketDestination + "\n" +
-//                        "Departure Time: " + ticketDepartureTime + "\n" +
-//                        "Price: " + ticketPrice;
-//
-//                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//                shareIntent.setType("text/plain");
-//                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Ticket Information");
-//                shareIntent.putExtra(Intent.EXTRA_TEXT, ticketInfo);
-//
-//                startActivity(Intent.createChooser(shareIntent, "Share Ticket"));
-//            }
-//        });
 
         menuStart.setText(ticketStart);
         menuDes.setText(ticketDestination);
@@ -127,11 +130,12 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         destination.setText(ticketDestination);
         start.setText(ticketStart);
         departuretime.setText(ticketDepartureTime);
+        arrivaltime.setText(ticketArrivalTime);
         price.setText(ticketPrice);
         tvTotalTime.setText(ticketTotalTripTime);
         tvStartStation.setText(ticketStart + " Station");
         tvDesStation.setText(ticketDestination + " Station");
-
+        trainId.setText(ticketTrainID);
 
         imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,9 +147,10 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         imgBtnOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showOptionsDialog(ticketID, ticketStart, ticketDestination, ticketDepartureTime, ticketPrice, ticketTotalTripTime);
+                showOptionsDialog(Integer.parseInt(ticketID), ticketStart, ticketDestination, ticketDepartureTime, ticketPrice, ticketTotalTripTime);
             }
         });
+
     }
 
     private Bitmap generateQRCode(String ticketInfo) {
