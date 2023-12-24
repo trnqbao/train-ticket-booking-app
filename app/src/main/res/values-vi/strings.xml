@@ -7,8 +7,8 @@
     <string name="Inbox">Tư vấn</string>
     <string name="Profile">Thông tin</string>
 
-    <string name="txtWelcome">Welcome Back!</string>
-    <string name="txtForget">Forgot password?</string>
+    <string name="txtWelcome">Xin chào!</string>
+    <string name="txtForget">Quên mật khẩu?</string>
     <string name="notifyRegister">Đăng ký tài khoản?</string>
     <string name="txtRegister">Đăng ký</string>
 
@@ -132,5 +132,19 @@
     <string name="cancel_ticket_confirm">Hủy vé sẽ không được hoàn tiền, bạn muốn hủy vé chứ?</string>
     <string name="cancel_yes">Đồng ý</string>
     <string name="cancel_no">Từ chối</string>
+    <string name="email_alert">Nhập lại email</string>
+    <string name="pwd_alert">Nhận lại mật khẩu</string>
+    <string name="retry">Thử lại</string>
+    <string name="error">Email hoặc mật khẩu không hợp lệ. Vui lòng nhập lại.</string>
+    <string name="verify_email">Email chưa được xác thực. Vui lòng xác thực email.</string>
+    <string name="log_out_confirm">Bạn có chắc chắn muốn đăng xuất?</string>
+    <string name="select_language">Ngôn ngữ</string>
+    <string name="eng">Tiếng Anh</string>
+    <string name="vi">Việt Nam</string>
+    <string name="hanoi">Hà Nội</string>
+    <string name="saigon">Sài Gòn</string>
+    <string name="danang">Đà Nẵng</string>
+    <string name="nhatrang">Nha Trang</string>
+    <string name="hue">Huế</string>
 
 </resources>

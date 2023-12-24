@@ -124,14 +124,28 @@
     <string name="options">Option</string>
     <string name="your_tickets">Your tickets</string>
     <string name="loading">Loading...</string>
-    <string name="error_place">Departure and destination cannot be the same</string>
-    <string name="vui_l_ng_ch_n_ng_y_kh_c_ho_c_s_a_l_i_t_m_ki_m">Please select another date or revise your search</string>
+    <string name="error_place">Departure and destination cannot be the same.</string>
+    <string name="vui_l_ng_ch_n_ng_y_kh_c_ho_c_s_a_l_i_t_m_ki_m">Please select another date or revise your search.</string>
     <string name="kh_ng_c_chuy_n_t_u">There are no trains</string>
 
     <string name="cancel_ticket">Cancel Ticket</string>
     <string name="cancel_ticket_confirm">Canceling the ticket will not refund money. Are you sure you want to cancel?</string>
     <string name="cancel_yes">Yes</string>
     <string name="cancel_no">No</string>
+    <string name="email_alert">Please enter your email.</string>
+    <string name="pwd_alert">Please enter your password.</string>
+    <string name="retry">Retry</string>
+    <string name="error">Wrong Email or Password, please try again.</string>
+    <string name="verify_email">Email is not verified. Please verify your email.</string>
+    <string name="log_out_confirm">Are you sure you want to sign out?</string>
+    <string name="select_language">Select Language</string>
+    <string name="eng">English</string>
+    <string name="vi">Vietnamese</string>
+    <string name="hanoi">Ha Noi</string>
+    <string name="saigon">Sai Gon</string>
+    <string name="danang">Da Nang</string>
+    <string name="nhatrang">Nha Trang</string>
+    <string name="hue">Hue</string>
 
 
 </resources>

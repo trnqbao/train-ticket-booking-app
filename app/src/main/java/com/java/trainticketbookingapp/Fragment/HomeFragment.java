@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import static android.content.Context.MODE_PRIVATE;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -39,6 +40,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.java.trainticketbookingapp.Animation.LoadingActivity;
 import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
 import com.java.trainticketbookingapp.TicketManagement.TicketListActivity;
@@ -47,25 +49,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class HomeFragment extends Fragment {
-    String[] locations = new String[]{
-            "Ha Noi",
-            "Sai Gon",
-            "Da Nang",
-            "Hue",
-            "Nha Trang"
-    };
-
     private Spinner spinnerFromID, spinnerToID;
     private TextView tvDate, tvUser;
     private Button btnFindTrain;
     private ImageView swap;
     private SharedPreferences sharedPreferences;
-    private String savedDepartureName, savedDestination, savedPassengerText, savedDateText;
+    private String savedDepartureName, savedDestination, savedDateText;
     FirebaseAuth auth;
     FirebaseUser user;
     String name;
+    String[] locations;
 
     private ProgressDialog loadingDialog;
+    private LoadingActivity loadingActivity;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,12 +80,14 @@ public class HomeFragment extends Fragment {
         spinnerToID = view.findViewById(R.id.spinnerToID);
         swap = view.findViewById(R.id.swap);
         ImageView datePicker = view.findViewById(R.id.date_picker);
+        loadingActivity = new LoadingActivity(loadingDialog);
 
         rotateImg(swap);
 
+        locations = getLocations();
+
         savedDepartureName = locations[sharedPreferences.getInt("SELECTED_POSITION", 0)];
         savedDestination = locations[sharedPreferences.getInt("SELECTED_POSITION_TO", 0)];
-        savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
         savedDateText = sharedPreferences.getString("DATE_TEXT", "");
 
         tvDate.setText(savedDateText);
@@ -150,10 +148,12 @@ public class HomeFragment extends Fragment {
                 return;
             }
 
-            showLoadingDialog();
+//            showLoadingDialog();
+            loadingActivity.showLoadingDialog(getContext(), getString(R.string.loading));
             Handler handler = new Handler();
             handler.postDelayed(() -> {
-                dismissLoadingDialog();
+//                dismissLoadingDialog();
+                loadingActivity.dismissLoadingDialog();
                 Intent intent = new Intent(getActivity(), TicketListActivity.class);
                 intent.putExtra("bookingFromID", savedDepartureName);
                 intent.putExtra("bookingToID", savedDestination);
@@ -174,27 +174,37 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void showLoadingDialog() {
-        if (loadingDialog == null) {
-            loadingDialog = new ProgressDialog(getContext());
-            loadingDialog.setMessage(getString(R.string.loading));
-            loadingDialog.setCanceledOnTouchOutside(false);
-            loadingDialog.setCancelable(false);
-        }
-        loadingDialog.show();
+    private String[] getLocations() {
+        final String hanoi = getString(R.string.hanoi);
+        final String saigon = getString(R.string.saigon);
+        final String danang = getString(R.string.danang);
+        final String nhatrang = getString(R.string.nhatrang);
+        final String hue = getString(R.string.hue);
 
-        new Handler().postDelayed(() -> {
-            if (loadingDialog != null && loadingDialog.isShowing()) {
-                loadingDialog.dismiss();
-            }
-        }, 2000);
+        return locations = new String[]{hanoi, saigon, danang, nhatrang, hue};
     }
 
-    private void dismissLoadingDialog() {
-        if (loadingDialog != null && loadingDialog.isShowing()) {
-            loadingDialog.dismiss();
-        }
-    }
+//    private void showLoadingDialog() {
+//        if (loadingDialog == null) {
+//            loadingDialog = new ProgressDialog(getContext());
+//            loadingDialog.setMessage(getString(R.string.loading));
+//            loadingDialog.setCanceledOnTouchOutside(false);
+//            loadingDialog.setCancelable(false);
+//        }
+//        loadingDialog.show();
+//
+//        new Handler().postDelayed(() -> {
+//            if (loadingDialog != null && loadingDialog.isShowing()) {
+//                loadingDialog.dismiss();
+//            }
+//        }, 2000);
+//    }
+//
+//    private void dismissLoadingDialog() {
+//        if (loadingDialog != null && loadingDialog.isShowing()) {
+//            loadingDialog.dismiss();
+//        }
+//    }
 
     private void rotateImg(ImageView imageView) {
         Drawable originalDrawable = imageView.getDrawable();

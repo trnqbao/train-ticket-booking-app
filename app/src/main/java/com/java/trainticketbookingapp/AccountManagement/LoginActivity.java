@@ -1,10 +1,14 @@
 package com.java.trainticketbookingapp.AccountManagement;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -15,12 +19,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.java.trainticketbookingapp.Animation.LoadingActivity;
+import com.java.trainticketbookingapp.Animation.LoginLoadingActivity;
 import com.java.trainticketbookingapp.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -30,9 +37,12 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvSignUp, tvForget;
     FirebaseAuth mAuth;
 
+    private ProgressDialog loadingDialog;
     public static final String PREFS_NAME = "LoginPrefs";
     private static final String PREF_EMAIL = "email";
     private static final String PREF_PASSWORD = "password";
+
+    private LoadingActivity loadingActivity;
 
     @Override
     public void onStart() {
@@ -58,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         tvSignUp = findViewById(R.id.tvSignup);
         ImageView ivEye = findViewById(R.id.iv_eye);
         mAuth = FirebaseAuth.getInstance();
+        loadingActivity = new LoadingActivity(loadingDialog);
+
 
         //View and UnView password
         etPassword.addTextChangedListener(new TextWatcher() {
@@ -115,12 +127,12 @@ public class LoginActivity extends AppCompatActivity {
            password = String.valueOf(etPassword.getText());
 
             if (TextUtils.isEmpty(email)) {
-                etEmail.setError("Please enter your email");
+                etEmail.setError(getString(R.string.email_alert));
                 return;
             }
 
             if (TextUtils.isEmpty(password)) {
-                etPassword.setError("Please enter your password");
+                etPassword.setError(getString(R.string.pwd_alert));
                 return;
             }
 
@@ -141,21 +153,35 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 if (user.isEmailVerified()) {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+//                                    loadingActivity.showLoadingDialog(this, getString(R.string.loading));
+//                                    Handler handler = new Handler();
+//                                    handler.postDelayed(() -> {
+//
+//                                        loadingActivity.dismissLoadingDialog();
+//                                        Intent intent = new Intent(this, MainActivity.class);
+//                                        startActivity(intent);
+//                                        finish();
+//                                    }, 2000);
+                                    Intent intent = new Intent(this, LoginLoadingActivity.class);
                                     startActivity(intent);
-                                    finish();
+
+
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "Email is not verified. Please verify your email.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, getString(R.string.verify_email), Toast.LENGTH_SHORT).show();
                                     mAuth.signOut();
                                 }
                             }
                         } else {
-                            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Wrong Email or Password, please try again", Snackbar.LENGTH_INDEFINITE);
-                            snackbar.setAction("Retry", v1 -> mAuth.signInWithEmailAndPassword(email, password));
+                            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.error), Snackbar.LENGTH_INDEFINITE);
+                            snackbar.setAction(getString(R.string.retry), v1 -> mAuth.signInWithEmailAndPassword(email, password));
                             snackbar.show();
                         }
                     });
        });
         
     }
+
+
+
 }
