@@ -84,7 +84,6 @@ public class UploadImageActivity extends AppCompatActivity implements UploadComp
         // Update user profile
         user.updateProfile(new UserProfileChangeRequest.Builder().setPhotoUri(downloadUri).build());
 
-        // Replace with fragment transaction
         Fragment fragment = new ProfileFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

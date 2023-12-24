@@ -35,9 +35,7 @@ public class SendMailTask extends AsyncTask<Message, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean result) {
         if (result) {
-            // Handle success
         } else {
-            // Handle failure
         }
     }
 }

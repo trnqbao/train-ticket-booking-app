@@ -24,13 +24,6 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
 
-//        Animation fadeOut = new AlphaAnimation(1, 0);
-//        fadeOut.setInterpolator(new AccelerateInterpolator());
-//        fadeOut.setStartOffset(500);
-//        fadeOut.setDuration(1800);
-//        ImageView imageView = findViewById((R.id.imgTrainStart));
-//        imageView.setAnimation(fadeOut);
-
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);

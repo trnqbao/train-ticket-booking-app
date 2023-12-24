@@ -3,30 +3,18 @@ package com.java.trainticketbookingapp.TicketManagement;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.Manifest;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 
-import android.util.Log;
-import android.view.MenuInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,20 +38,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.java.trainticketbookingapp.Fragment.BookingFragment;
 import com.java.trainticketbookingapp.R;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class BookedTicketDetailsActivity extends AppCompatActivity {
 
-    Button btn_shareTicket, btn_ticketCode;
     TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation, arrivaltime, username, trainId;
-
-    //for top menu bar
     TextView menuStart, menuDes;
     ImageButton imgBtnBack, imgBtnOption;
     FirebaseUser user;
@@ -179,7 +159,6 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.options))
                 .setItems(new CharSequence[]{getString(R.string.share_ticket), getString(R.string.qr_code)}, (dialog, which) -> {
-                    // Handle option selection
                     switch (which) {
                         case 0:
                             shareTicket(ticketStart, ticketDestination, ticketDepartureTime, ticketPrice);
@@ -231,7 +210,6 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
     }
 
     public void replaceFragment(Fragment fragment) {
-        // Replace with fragment transaction
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.view_ticket, fragment);

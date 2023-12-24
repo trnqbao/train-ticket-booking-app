@@ -55,17 +55,11 @@ public class HomeFragment extends Fragment {
             "Nha Trang"
     };
 
-//    String[] typeOfUsers = new String[]{
-//            "Adult", "Children"
-//    };
-
-    private Spinner spinnerType, spinnerFromID, spinnerToID;
-    private TextView tvType, tvPassenger, tvDate, tvUser;
+    private Spinner spinnerFromID, spinnerToID;
+    private TextView tvDate, tvUser;
     private Button btnFindTrain;
-    private ImageButton btnPlus, btnMinus;
     private ImageView swap;
     private SharedPreferences sharedPreferences;
-    private int passenger;
     private String savedDepartureName, savedDestination, savedPassengerText, savedDateText;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -77,23 +71,15 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Get current user
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        // Initialize variables
         sharedPreferences = getActivity().getSharedPreferences("MY_PREFS", MODE_PRIVATE);
-        passenger = 1;
 
         // Find UI elements
         btnFindTrain = view.findViewById(R.id.btn_find_train);
-//        btnPlus = view.findViewById(R.id.btn_plus);
-//        btnMinus = view.findViewById(R.id.btn_minus);
-//        tvPassenger = view.findViewById(R.id.tv_count);
-//        tvType = view.findViewById(R.id.tv_type);
         tvDate = view.findViewById(R.id.tv_date);
         tvUser = view.findViewById(R.id.tv_user);
-//        spinnerType = view.findViewById(R.id.spinner_type);
         spinnerFromID = view.findViewById(R.id.spinnerFromID);
         spinnerToID = view.findViewById(R.id.spinnerToID);
         swap = view.findViewById(R.id.swap);
@@ -101,24 +87,17 @@ public class HomeFragment extends Fragment {
 
         rotateImg(swap);
 
-        // Set initial values
         savedDepartureName = locations[sharedPreferences.getInt("SELECTED_POSITION", 0)];
         savedDestination = locations[sharedPreferences.getInt("SELECTED_POSITION_TO", 0)];
         savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
         savedDateText = sharedPreferences.getString("DATE_TEXT", "");
 
-        // Display initial values
-//        tvPassenger.setText(String.valueOf(passenger));
-
         tvDate.setText(savedDateText);
         spinnerFromID.setSelection(sharedPreferences.getInt("SELECTED_POSITION", 0));
         spinnerToID.setSelection(sharedPreferences.getInt("SELECTED_POSITION_TO", 0));
 
-        // Set up spinner adapters
         showSpinnerOptions(spinnerFromID, locations);
         showSpinnerOptions(spinnerToID, locations);
-//        showSpinnerOptions(spinnerType, typeOfUsers);
-//        showTypeOfUser();
 
         userName(user);
 
@@ -135,7 +114,6 @@ public class HomeFragment extends Fragment {
                             return;
                         }
 
-                        // Format the date string
                         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
                         savedDateText = format.format(selectedDate.getTime());
 
@@ -151,27 +129,6 @@ public class HomeFragment extends Fragment {
             datePickerDialog.show();
         });
 
-        // On plus button click increase passenger count and update shared preferences
-//        btnPlus.setOnClickListener(v -> {
-//            passenger++;
-//            tvPassenger.setText(String.valueOf(passenger));
-//            savedPassengerText = String.valueOf(passenger);
-//            sharedPreferences.edit().putString("PASSENGER_TEXT", savedPassengerText).apply();
-//
-//        });
-
-        // On minus button click decrease passenger count (with minimum value of 1) and update shared preferences
-//        btnMinus.setOnClickListener(v -> {
-//            passenger--;
-//            if (passenger <= 1) {
-//                passenger = 1;
-//            }
-//            tvPassenger.setText(String.valueOf(passenger));
-//            savedPassengerText = String.valueOf(passenger);
-//            sharedPreferences.edit().putString("PASSENGER_TEXT", savedPassengerText).apply();
-//        });
-
-        // On swap button click swap location selections and update shared preferences
         swap.setOnClickListener(v -> {
             int tempFromID = spinnerFromID.getSelectedItemPosition();
             int tempToID = spinnerToID.getSelectedItemPosition();
@@ -186,7 +143,6 @@ public class HomeFragment extends Fragment {
         btnFindTrain.setOnClickListener(v -> {
             savedDepartureName = locations[spinnerFromID.getSelectedItemPosition()];
             savedDestination = locations[spinnerToID.getSelectedItemPosition()];
-//            savedPassengerText = sharedPreferences.getString("PASSENGER_TEXT", "");
             savedDateText = sharedPreferences.getString("DATE_TEXT", "");
 
             if (savedDepartureName.equals(savedDestination)) {
@@ -201,7 +157,6 @@ public class HomeFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), TicketListActivity.class);
                 intent.putExtra("bookingFromID", savedDepartureName);
                 intent.putExtra("bookingToID", savedDestination);
-//                    intent.putExtra("passenger", savedPassengerText);
                 intent.putExtra("date", savedDateText);
                 startActivity(intent);
             }, 2000);
@@ -241,14 +196,6 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private boolean checkVi() {
-        String check = (String) btnFindTrain.getText();
-        if (check.equals("Tìm kiếm")) {
-            return true;
-        }
-        return false;
-    }
-
     private void rotateImg(ImageView imageView) {
         Drawable originalDrawable = imageView.getDrawable();
         Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
@@ -260,23 +207,6 @@ public class HomeFragment extends Fragment {
         imageView.setImageDrawable(rotatedDrawable);
     }
 
-
-    private void showTypeOfUser() {
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.search_type, items);
-//        spinnerType.setAdapter(adapter);
-        spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-                tvType.setText((String) parent.getItemAtPosition(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-            }
-        });
-    }
 
     private void showSpinnerOptions(Spinner spinner, String[] options) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, options);

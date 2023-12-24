@@ -19,21 +19,17 @@ public class BookingActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_choose_seat);
 
-
         tv_bookingFromID = findViewById(R.id.tv_bookingFromID);
         tv_bookingToID = findViewById(R.id.tv_bookingToID);
         tv_bookingDateID = findViewById(R.id.tv_bookingDateID);
-//        tv_bookingPassID = findViewById(R.id.tv_bookingPassID);
 
         int savedDeparture = getIntent().getIntExtra("departure", 0);
         int savedDestination = getIntent().getIntExtra("destination", 0);
-//        String savedPassenger = getIntent().getStringExtra("passenger");
         String savedDate = getIntent().getStringExtra("date");
 
         // Set the saved values to the text views
-        tv_bookingFromID.setText(savedDeparture); // replace with actual data
-        tv_bookingToID.setText(savedDestination); // replace with actual data
-//        tv_bookingPassID.setText(savedPassenger);
+        tv_bookingFromID.setText(savedDeparture);
+        tv_bookingToID.setText(savedDestination);
         tv_bookingDateID.setText(savedDate);
 
 

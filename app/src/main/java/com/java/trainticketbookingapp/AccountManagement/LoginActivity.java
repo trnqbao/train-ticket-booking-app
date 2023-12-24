@@ -22,7 +22,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.java.trainticketbookingapp.R;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
@@ -74,11 +73,9 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // If the EditText is not empty, show the eye icon
                 if (s.length() > 0) {
                     ivEye.setVisibility(View.VISIBLE);
                 } else {
-                    // Otherwise, hide the eye icon and reset its state
                     ivEye.setVisibility(View.GONE);
                     ivEye.setSelected(false);
                     etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -86,12 +83,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         ivEye.setOnClickListener(v -> {
-            // If the eye icon is not selected, show the password and change the icon to open eye
             if (!ivEye.isSelected()) {
                 ivEye.setSelected(true);
                 etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             } else {
-                // Otherwise, hide the password and change the icon to closed eye
                 ivEye.setSelected(false);
                 etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
@@ -106,7 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        //Check Remember me is checked or not
         SharedPreferences loginPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         boolean remember = loginPreferences.getBoolean("remember", false);
         if (remember) {
@@ -130,7 +124,6 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-           //Put email into a login
             boolean remember1 = rememberMe.isChecked();
             SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
             if (remember1) {
@@ -148,12 +141,10 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 if (user.isEmailVerified()) {
-                                    // Email is verified, proceed to main activity
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    // Email is not verified, display message and sign out
                                     Toast.makeText(LoginActivity.this, "Email is not verified. Please verify your email.", Toast.LENGTH_SHORT).show();
                                     mAuth.signOut();
                                 }

@@ -26,7 +26,6 @@ public class ConfirmEmail extends AppCompatActivity {
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +74,6 @@ public class ConfirmEmail extends AppCompatActivity {
                                     }
                                 });
                     } else {
-                        // The email does not exist
                         Toast.makeText(ConfirmEmail.this, "Email does not exist.", Toast.LENGTH_SHORT).show();
                     }
                 });

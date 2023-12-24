@@ -86,7 +86,6 @@ public class InboxFragment extends Fragment {
         spinnerPreExistingMessages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Set edt_message when an item is selected in the spinner
                 String selectedMessage = spinnerPreExistingMessages.getSelectedItem().toString();
                 edt_message.setText(selectedMessage);
             }
@@ -108,15 +107,11 @@ public class InboxFragment extends Fragment {
                     userMessage = selectedMessage;
                     edt_message.setText(userMessage);
                 } else {
-                    // If no pre-existing message is selected, use the entered message
                     userMessage = edt_message.getText().toString();
                 }
 
-                // Check if the message is one of the pre-existing messages
                 if (preExistingAnswers.containsKey(userMessage)) {
-                    // Get the pre-existing answer
                     String autoReply = preExistingAnswers.get(userMessage);
-                    // Display user message and auto-reply in the chat
                     tvAutoReply.setText("Auto-reply: " + autoReply);
                     edt_message.getText().clear();
 
@@ -159,7 +154,6 @@ public class InboxFragment extends Fragment {
     }
 
     private void loadChatMessages() {
-
             // Add pre-existing chat messages to the list
             chatMessages.add(getString(R.string.how_to_use_ticket));
             preExistingAnswers.put(getString(R.string.how_to_use_ticket), getString(R.string.answer_use_ticket));
@@ -172,7 +166,6 @@ public class InboxFragment extends Fragment {
 
             chatMessages.add(getString(R.string.how_to_update_profile));
             preExistingAnswers.put(getString(R.string.how_to_update_profile), getString(R.string.answer_update_profile));
-
     }
 
 }

@@ -1,6 +1,8 @@
 package com.java.trainticketbookingapp.TicketManagement;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.java.trainticketbookingapp.Adapter.TicketAdapter;
 import com.java.trainticketbookingapp.Model.Ticket;
+import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,24 +40,24 @@ import java.util.List;
 public class TicketListActivity extends AppCompatActivity {
 
     static final String TAG = "TicketList";
-    private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID, tv_bookingPassID;
+    private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID;
     private RecyclerView recyclerView;
     private TicketAdapter ticketAdapter;
     private List<Ticket> ticketList;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private LinearLayout recyLayout;
+    FirebaseUser user;
+    FirebaseAuth auth;
+    private int point = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        long currentTimeMillis = System.currentTimeMillis();
-        Date currentDate = new Date(currentTimeMillis);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        String currentTime = sdf.format(currentDate);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Tickets");
@@ -59,34 +65,32 @@ public class TicketListActivity extends AppCompatActivity {
         tv_bookingFromID = findViewById(R.id.tv_bookingFromID);
         tv_bookingToID = findViewById(R.id.tv_bookingToID);
         tv_bookingDateID = findViewById(R.id.tv_bookingDateID);
-//        tv_bookingPassID = findViewById(R.id.tv_bookingPassID);
 
         recyLayout = findViewById(R.id.recy_layout);
 
         String savedDepartureName = getIntent().getStringExtra("bookingFromID");
         String savedDestination = getIntent().getStringExtra("bookingToID");
-//        String savedPassenger = getIntent().getStringExtra("passenger");
         String savedDate = getIntent().getStringExtra("date");
 
         tv_bookingFromID.setText(String.valueOf(savedDepartureName));
         tv_bookingToID.setText(String.valueOf(savedDestination));
-//        tv_bookingPassID.setText(savedPassenger);
         tv_bookingDateID.setText(savedDate);
 
         ImageButton btnBack = findViewById(R.id.btn_back_to_home);
         btnBack.setOnClickListener(v -> onBackPressed());
 
-
         recyclerView = findViewById(R.id.recy_tripID);
         ticketList = new ArrayList<>();
+        point = getUserPoint(user);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
                 ticketList.clear();
 
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                    // Create a new Ticket object
                     Ticket ticket = new Ticket();
 
                     String departureTime = childSnapshot.child("departureTime").getValue(String.class);
@@ -96,15 +100,26 @@ public class TicketListActivity extends AppCompatActivity {
                     String formattedDepartureTime = convertDepartureTime(departureTime);
 
                     if (!isDeparted(formattedDepartureTime) && savedDepartureName.equals(ticketStart) && savedDestination.equals(ticketDestination)) {
-//
+
                         ticket.setId(Integer.parseInt(childSnapshot.getKey().substring("ticket".length())));
                         ticket.setStart(childSnapshot.child("start").getValue(String.class));
                         ticket.setDestination(childSnapshot.child("destination").getValue(String.class));
-                        if (childSnapshot.child("prices").getValue() instanceof Long) {
-                            long priceLong = (long) childSnapshot.child("prices").getValue();
-                            ticket.setPrice(String.valueOf(priceLong)); // Store as String
+                        if (point == 0) {
+                            if (childSnapshot.child("prices").getValue() instanceof Long) {
+                                long priceLong = (long) childSnapshot.child("prices").getValue();
+                                ticket.setPrice(String.valueOf(priceLong));
+                            } else {
+                                ticket.setPrice(childSnapshot.child("prices").getValue(String.class));
+                            }
                         } else {
-                            ticket.setPrice(childSnapshot.child("prices").getValue(String.class));
+                            point = point * 100000;
+                            if (childSnapshot.child("prices").getValue() instanceof Long) {
+                                long priceLong = (long) childSnapshot.child("prices").getValue();
+                                priceLong = priceLong - point;
+                                ticket.setPrice(String.valueOf(priceLong));
+                            } else {
+                                ticket.setPrice(childSnapshot.child("prices").getValue(String.class));
+                            }
                         }
                         ticket.setTotalTime(childSnapshot.child("totalTime").getValue(String.class));
                         ticket.setDepartureTime(childSnapshot.child("departureTime").getValue(String.class));
@@ -113,50 +128,21 @@ public class TicketListActivity extends AppCompatActivity {
                         ticket.setDate(childSnapshot.child("date").getValue(String.class));
 
                         ticketList.add(ticket);
-
-                        Log.e(TAG, "onDataChange: " + String.valueOf(ticket.toString()));
                     }
                 }
                 ticketAdapter.notifyDataSetChanged();
 
-                // nếu ko có vé thì hiện giao diện ko có vé
                 if (ticketAdapter.getItemCount() == 0) {
                     startNoTicketView(savedDepartureName, savedDestination, savedDate);
-//                    recyLayout.setVisibility(View.GONE);
-//
-//                    // Lấy vị trí của recyLayout trong LinearLayout cha
-//                    int index = -1;
-//                    ViewGroup parentLayout = null;
-//                    if (recyLayout.getParent() instanceof ViewGroup) {
-//                        parentLayout = (ViewGroup) recyLayout.getParent();
-//                        index = parentLayout.indexOfChild(recyLayout);
-//                    }
-//
-//// Ẩn recyLayout nếu tìm thấy và có LinearLayout cha
-//                    if (recyLayout != null && index != -1 && parentLayout != null) {
-//                        recyLayout.setVisibility(View.GONE);
-//
-//                        // Inflate layout mới
-//                        View newComponentView = getLayoutInflater().inflate(R.layout.activity_no_ticket_result, null);
-//
-//                        // Thêm newComponent vào vị trí cũ của recyLayout
-//                        parentLayout.addView(newComponentView, index + 1);
-//                    }
                 }
 
             }
-
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("TAG", "Error reading data", error.toException());
             }
         });
-
-//        Log.d("TAG", "onCreate: " + String.valueOf(ticketAdapter.getItemCount()));
-
-
 
         ticketAdapter = new TicketAdapter(ticketList);
         recyclerView.setAdapter(ticketAdapter);
@@ -168,10 +154,10 @@ public class TicketListActivity extends AppCompatActivity {
                 startPaymentActivity(ticket);
             }
         });
-
     }
 
-    private void startNoTicketView(String start, String des, String date) {
+    private void startNoTicketView(String start, String des, String date)
+    {
         Intent intent = new Intent(TicketListActivity.this, NoTicketActivity.class);
         intent.putExtra("start", start);
         intent.putExtra("des", des);
@@ -183,53 +169,43 @@ public class TicketListActivity extends AppCompatActivity {
     private String convertDepartureTime(String originalDepartureTime)
     {
         try {
-            // Define the format for parsing the original string
             SimpleDateFormat originalFormat = new SimpleDateFormat("HH'h'MM");
 
-            // Parse the original string into a Date object
             Date parsedDate = originalFormat.parse(originalDepartureTime);
 
-            // Define the format for formatting the Date object
             SimpleDateFormat targetFormat = new SimpleDateFormat("HH:mm");
 
-            // Format the Date object into the desired output format
             return targetFormat.format(parsedDate);
 
         } catch (ParseException e) {
-            // Handle parsing exception
             e.printStackTrace();
-            return originalDepartureTime; // Return the original string in case of error
+            return originalDepartureTime;
         }
     }
 
     // Compare departure time with current time
-    private boolean isDeparted(String departureTime) {
+    private boolean isDeparted(String departureTime)
+    {
         try {
-            // Define the format for parsing the original string
             SimpleDateFormat originalFormat = new SimpleDateFormat("HH:mm");
 
-            // Parse the original string into a Date object
             Date parsedDepartureTime = originalFormat.parse(departureTime);
-
-            // Get the current time
             Date currentDate = new Date();
             String currentTime = originalFormat.format(currentDate);
 
-            // Parse the current time into a Date object
             Date parsedCurrentTime = originalFormat.parse(currentTime);
 
-            // Check if the current time is after the departure time
             return parsedCurrentTime.after(parsedDepartureTime);
 
         } catch (ParseException e) {
-            // Handle parsing exception
             e.printStackTrace();
-            return false; // Return false in case of error
+            return false;
         }
     }
 
     // Test with specific time
-    private boolean isDeparted(String departureTime, String fixedTime) {
+    private boolean isDeparted(String departureTime, String fixedTime)
+    {
         try {
             // Define the format for parsing the original string
             SimpleDateFormat originalFormat = new SimpleDateFormat("HH:mm");
@@ -248,7 +224,8 @@ public class TicketListActivity extends AppCompatActivity {
         }
     }
 
-    private void startPaymentActivity(Ticket selectedTicket) {
+    private void startPaymentActivity(Ticket selectedTicket)
+    {
         Intent paymentIntent = new Intent(TicketListActivity.this, PaymentActivity.class);
         paymentIntent.putExtra("ticket_id", selectedTicket.getId());
         paymentIntent.putExtra("ticket_destination", selectedTicket.getDestination());
@@ -261,7 +238,25 @@ public class TicketListActivity extends AppCompatActivity {
         paymentIntent.putExtra("ticket_date", selectedTicket.getDate());
 
         startActivity(paymentIntent);
-        // If you need a result from PaymentActivity, consider using startActivityForResult instead.
+    }
+
+    private int getUserPoint(FirebaseUser user)
+    {
+        String userID = user.getUid();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Registered user");
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserAccount userAccount = snapshot.getValue(UserAccount.class);
+                if (userAccount != null) {
+                    point = userAccount.getUserPoint();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return point;
     }
 
 }

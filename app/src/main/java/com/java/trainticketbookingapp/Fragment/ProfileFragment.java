@@ -36,7 +36,6 @@ import com.squareup.picasso.Picasso;
 
 
 public class ProfileFragment extends Fragment {
-
     private FirebaseAuth auth;
     private FirebaseUser user;
     private Button logout, btnChangeLanguage, update_profile;
@@ -45,7 +44,6 @@ public class ProfileFragment extends Fragment {
     private String name, phone, email;
     private int point;
 
-    boolean updateSuccessful;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,6 +87,7 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         //Log out button
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,17 +97,16 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         //Change language app
         btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titleOfButton = (String) btnChangeLanguage.getText();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                Log.e("TAG", "onClick: " + titleOfButton);
                 if (titleOfButton.equals("Change Language")) {
                     builder.setTitle("Select Language");
 
-                    // Set the list of options
                     builder.setItems(en_availableLanguages, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -127,7 +125,6 @@ public class ProfileFragment extends Fragment {
                 } else {
                     builder.setTitle("Chọn ngôn ngữ");
 
-                    // Set the list of options
                     builder.setItems(vi_availableLanguages, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -144,8 +141,6 @@ public class ProfileFragment extends Fragment {
                         }
                     });
                 }
-
-
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
@@ -176,7 +171,6 @@ public class ProfileFragment extends Fragment {
                         Picasso.with(getActivity()).load(uri).into(avatar);
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
