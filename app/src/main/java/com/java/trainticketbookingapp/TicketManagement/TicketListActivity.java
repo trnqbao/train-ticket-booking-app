@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -76,6 +77,9 @@ public class TicketListActivity extends AppCompatActivity {
         tv_bookingToID.setText(String.valueOf(savedDestination));
         tv_bookingDateID.setText(savedDate);
 
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View noTicketView = inflater.inflate(R.layout.activity_no_ticket_result, recyLayout, false);
+
         ImageButton btnBack = findViewById(R.id.btn_back_to_home);
         btnBack.setOnClickListener(v -> onBackPressed());
 
@@ -133,7 +137,9 @@ public class TicketListActivity extends AppCompatActivity {
                 ticketAdapter.notifyDataSetChanged();
 
                 if (ticketAdapter.getItemCount() == 0) {
-                    startNoTicketView(savedDepartureName, savedDestination, savedDate);
+                    showNoTicketResult(noTicketView);
+                } else {
+                    hideNoTicketResutl(noTicketView);
                 }
 
             }
@@ -156,13 +162,14 @@ public class TicketListActivity extends AppCompatActivity {
         });
     }
 
-    private void startNoTicketView(String start, String des, String date)
-    {
-        Intent intent = new Intent(TicketListActivity.this, NoTicketActivity.class);
-        intent.putExtra("start", start);
-        intent.putExtra("des", des);
-        intent.putExtra("date", date);
-        startActivity(intent);
+    private void showNoTicketResult(View noTicketView) {
+        recyclerView.setVisibility(View.GONE);
+        recyLayout.addView(noTicketView);
+    }
+
+    private void hideNoTicketResutl(View noTicket) {
+        recyLayout.removeView(noTicket);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     // Convert time format
