@@ -41,7 +41,7 @@
                         android:id="@+id/user_avatar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bao"
+                        android:background="@drawable/user"
                         android:scaleType="centerCrop" />
                 </androidx.cardview.widget.CardView>
 
