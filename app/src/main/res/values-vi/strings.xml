@@ -70,17 +70,28 @@
     <string name="how_to_change_language">Làm thế nào để tôi có thể thay đổi ngôn ngữ của ứng dụng?</string>
     <string name="how_to_update_profile">Làm thế nào để tôi có thể cập nhật thông tin cá nhân?</string>
 
-    <string name="answer_use_ticket">Sử dụng vé tàu như sau...</string>
-    <string name="answer_book_ticket">Để đặt vé tàu:...</string>
-    <string name="answer_change_language">Để thay đổi ngôn ngữ của ứng dụng:\n
+    <string name="answer_use_ticket">Để sử dụng vé tàu:\n
+        Bước 1: Chọn vào vé muốn sử dụng\n
+        Bước 2: Chọn dấu 3 chấm trên góc phải
+        Bước 3: Chọn mã QR
+    </string>
+    <string name="answer_book_ticket">Để đặt vé:\n
+        Bước 1: Chọn trang chủ\n
+        Bước 2: Chọn điểm đi, điểm đến và ngày xuất phát\n
+        Bước 3: Chọn "Tìm chuyến tàu"\n
+        Bước 4: Chọn vé phù hợp\n
+        Bước 5: Thanh toán theo chỉ dẫn và xác nhận
+    </string>    <string name="answer_change_language">Để thay đổi ngôn ngữ của ứng dụng:\n
     Bước 1: Di chuyển tới mục Thông tin\n
     Bước 2: Chọn nút "Thay đổi ngôn ngữ"\n
-    Bước 3: Chọn ngôn ngữ muốn chuyển đổi. Ngôn ngữ của ứng dụng sẽ thay đổi</string>
+    Bước 3: Chọn ngôn ngữ muốn chuyển đổi. Ngôn ngữ của ứng dụng sẽ thay đổi
+    </string>
     <string name="answer_update_profile">Để cập nhật thông tin cá nhân:\n
     Bước 1: Di chuyển tới mục Thông tin\n
     Bước 2: Chọn nút "Cập nhật thông tin"\n
     Bước 3: Thay đổi tên và số điện thoại phù hợp\n
-    Bước 4: Chọn nút "Cập nhât"</string>
+    Bước 4: Chọn nút "Cập nhât"
+    </string>
 
     <string name="pay_internet_banking">Thanh Toán Ngân Hàng</string>
     <string name="pay_cash">Tiền mặt</string>
@@ -96,7 +107,6 @@
     <string name="departureTime">Thời gian xuất phát: </string>
     <string name="shareTicket">Chia sẻ vé</string>
     <string name="ticketCode">Mã vé</string>
-
 
     <string name="companyName">Tên công ty: </string>
     <string name="bankName">Tên ngân hàng: </string>

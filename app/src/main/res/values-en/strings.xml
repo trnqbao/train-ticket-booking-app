@@ -71,16 +71,28 @@
     <string name="how_to_change_language">How can I change the app language?</string>
     <string name="how_to_update_profile">How can I update the profile?</string>
 
-    <string name="answer_use_ticket">You can use the ticket by...</string>
-    <string name="answer_book_ticket">To book a ticket, you need to...</string>
+    <string name="answer_use_ticket">To use the ticket:\n
+        Step1: Click on your ticket\n
+        Step2: Click "3 dots" symbol on the right corner\n
+        Step3: Click QR Code
+    </string>
+    <string name="answer_book_ticket">To book a ticket:\n
+        Step1: Choose Home\n
+        Step2: Select your start, destination and time travel\n
+        Step3: Click "Find train"\n
+        Step4: Choose suitable ticket\n
+        Step5: Payment then confirm the ticket
+    </string>
     <string name="answer_change_language">To change the app language:\n
-    Step1: Navigate to Profle\n
-    Step2: Click on "Change Language" button. Your app language will be changed</string>
+        Step1: Navigate to Profle\n
+        Step2: Click on "Change Language" button. Your app language will be changed
+    </string>
     <string name="answer_update_profile">To update your profile:\n
-    Step1: Navigate to Profile\n
-    Step2: Click on "Update Profile" button\n
-    Step3: Change your Fullname and Phonenumber\n
-    Step4: Click on "Update" button</string>
+        Step1: Navigate to Profile\n
+        Step2: Click on "Update Profile" button\n
+        Step3: Change your Fullname and Phonenumber\n
+        Step4: Click on "Update" button
+    </string>
 
     <string name="pay_internet_banking">Internet Banking</string>
     <string name="pay_cash">Cash</string>
