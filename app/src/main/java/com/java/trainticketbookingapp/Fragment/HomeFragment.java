@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser user;
     String name;
-    String[] locations;
+    String[] locations = new String[] {"Ha Noi", "Sai Gon", "Da Nang", "Nha Trang", "Hue"};
 
     private ProgressDialog loadingDialog;
     private LoadingActivity loadingActivity;
@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
 
         rotateImg(swap);
 
-        locations = getLocations();
+//        locations = getLocations();
 
         savedDepartureName = locations[sharedPreferences.getInt("SELECTED_POSITION", 0)];
         savedDestination = locations[sharedPreferences.getInt("SELECTED_POSITION_TO", 0)];

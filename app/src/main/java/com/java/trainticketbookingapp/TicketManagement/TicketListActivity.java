@@ -103,7 +103,7 @@ public class TicketListActivity extends AppCompatActivity {
 
                     String formattedDepartureTime = convertDepartureTime(departureTime);
 
-                    if (!isDeparted(formattedDepartureTime) && savedDepartureName.equals(ticketStart) && savedDestination.equals(ticketDestination)) {
+                    if (!isDeparted(formattedDepartureTime, "1h00") && savedDepartureName.equals(ticketStart) && savedDestination.equals(ticketDestination)) {
 
                         ticket.setId(Integer.parseInt(childSnapshot.getKey().substring("ticket".length())));
                         ticket.setStart(childSnapshot.child("start").getValue(String.class));
