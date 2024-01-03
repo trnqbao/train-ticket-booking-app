@@ -91,7 +91,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
 
         if (TextUtils.isEmpty(user_name) || TextUtils.isEmpty(user_phone)) {
-            Toast.makeText(UpdateProfileActivity.this, "Please fill the information", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateProfileActivity.this, getString(R.string.input_information), Toast.LENGTH_SHORT).show();
 
         } else {
 

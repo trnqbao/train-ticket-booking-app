@@ -168,7 +168,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                 } else {
-                                    Toast.makeText(LoginActivity.this, getString(R.string.verify_email), Toast.LENGTH_SHORT).show();
+                                    Snackbar sb = Snackbar.make(findViewById(android.R.id.content), getString(R.string.verify_email), Snackbar.LENGTH_SHORT);
+                                    sb.show();
                                     mAuth.signOut();
                                 }
                             }

@@ -103,7 +103,7 @@
     <string name="internet_companyName">QBao_VHip Train</string>
     <string name="internet_bankName">VVBank</string>
     <string name="internet_bankAccount">0817415159</string>
-    <string name="internet_transferContent">Họ tên + Số điện thoại + mã tàu lửa</string>
+    <string name="internet_transferContent">Họ tên + Số điện thoại + Mã tàu lửa</string>
     <string name="departureTime">Thời gian xuất phát: </string>
     <string name="shareTicket">Chia sẻ vé</string>
     <string name="ticketCode">Mã vé</string>
@@ -133,7 +133,7 @@
     <string name="cancel">Hủy</string>
     <string name="options">Tùy chọn</string>
     <string name="your_tickets">Vé của bạn</string>
-    <string name="loading">Đang tải...</string>
+    <string name="loading">Đang tải …</string>
     <string name="error_place">Điểm khởi hành và điểm đến không thể giống nhau</string>
     <string name="vui_l_ng_ch_n_ng_y_kh_c_ho_c_s_a_l_i_t_m_ki_m">Vui lòng chọn ngày khác hoặc sửa lại tìm kiếm</string>
     <string name="kh_ng_c_chuy_n_t_u">Không có chuyến tàu</string>
@@ -156,5 +156,22 @@
     <string name="danang">Đà Nẵng</string>
     <string name="nhatrang">Nha Trang</string>
     <string name="hue">Huế</string>
+    <string name="create_an_account">Tạo tài khoản</string>
+    <string name="error_name">Vui lòng nhập tên</string>
+    <string name="error_email">Vui lòng nhập email</string>
+    <string name="error_phone">Vui lòng nhập số điện thoại</string>
+    <string name="error_pwd">Vui lòng nhập mật khẩu</string>
+    <string name="error_cf_pwd">Mật khẩu xác nhận không khớp</string>
+    <string name="success_verify">Đăng kí thành công. Email xác nhận đã được gửi.</string>
+    <string name="fail_verify">Gửi email xác nhận thất bại</string>
+    <string name="fail_register">Đăng kí thất bại</string>
+    <string name="existed_email">Email đã được sử dụng</string>
+    <string name="invalid_format_email">Invalid email format</string>
+    <string name="verify_cf_email">Đường link đổi mật khẩu đã được gửi tới email của bạn</string>
+    <string name="fail_cf_email">Gửi link thất bại</string>
+    <string name="invalid_email">Email không tồn tại</string>
+    <string name="input_information">Vui lòng nhập thông tin</string>
+    <string name="close">Đóng</string>
+
 
 </resources>

@@ -135,7 +135,7 @@
     <string name="cancel">Cancel</string>
     <string name="options">Option</string>
     <string name="your_tickets">Your tickets</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading …</string>
     <string name="error_place">Departure and destination cannot be the same.</string>
     <string name="vui_l_ng_ch_n_ng_y_kh_c_ho_c_s_a_l_i_t_m_ki_m">Please select another date or revise your search.</string>
     <string name="kh_ng_c_chuy_n_t_u">There are no trains</string>
@@ -158,6 +158,23 @@
     <string name="danang">Da Nang</string>
     <string name="nhatrang">Nha Trang</string>
     <string name="hue">Hue</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="error_name">Please enter your name</string>
+    <string name="error_email">Please enter your email</string>
+    <string name="error_phone">Please enter your phone number</string>
+    <string name="error_pwd">Please enter your password</string>
+    <string name="error_cf_pwd">Password is not correct</string>
+    <string name="success_verify">Registration successful. Verification email has been sent.</string>
+    <string name="fail_verify">Failed to send verification email</string>
+    <string name="fail_register">Registration failed</string>
+    <string name="existed_email">Email has been used</string>
+    <string name="invalid_format_email">Invalid email format</string>
+    <string name="verify_cf_email">Verification link has been sent to your email</string>
+    <string name="fail_cf_email">Failed to send verification link</string>
+    <string name="invalid_email">Email does not exist</string>
+    <string name="input_information">Please fill the information</string>
+    <string name="service">A/C Sleeper (2+2)</string>
+    <string name="close">Close</string>
 
 
 </resources>

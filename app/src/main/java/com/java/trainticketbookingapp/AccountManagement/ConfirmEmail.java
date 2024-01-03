@@ -50,7 +50,7 @@ public class ConfirmEmail extends AppCompatActivity {
 
     private void checkEmail(String email) {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(ConfirmEmail.this, "Invalid email format.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConfirmEmail.this, getString(R.string.invalid_format_email), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -64,17 +64,17 @@ public class ConfirmEmail extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            Toast.makeText(ConfirmEmail.this, "Verification link has been sent to your email.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ConfirmEmail.this, getString(R.string.verify_cf_email), Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(ConfirmEmail.this, LoginActivity.class);
                                             intent.putExtra("email", email);
                                             startActivityForResult(intent, CODE);
                                         } else {
-                                            Toast.makeText(ConfirmEmail.this, "Failed to send verification link.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ConfirmEmail.this, getString(R.string.fail_cf_email), Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
                     } else {
-                        Toast.makeText(ConfirmEmail.this, "Email does not exist.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConfirmEmail.this, getString(R.string.invalid_email), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

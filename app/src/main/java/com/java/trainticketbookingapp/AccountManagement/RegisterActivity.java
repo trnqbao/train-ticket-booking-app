@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etName, etEmail, etPassword, etPasswordCf, etPhone;
     private Button btnSignUp;
     private TextView tvLogin;
+    private Snackbar snackbar;
     FirebaseAuth mAuth;
 
     @Override
@@ -70,27 +72,27 @@ public class RegisterActivity extends AppCompatActivity {
 
 
             if (TextUtils.isEmpty(name)) {
-                etName.setError("Please enter your name");
+                etName.setError(getString(R.string.error_name));
                 return;
             }
 
             if (TextUtils.isEmpty(email)) {
-                etEmail.setError("Please enter your email");
+                etEmail.setError(getString(R.string.error_email));
                 return;
             }
 
             if (TextUtils.isEmpty(phone)) {
-                etPhone.setError("Please enter your phone number");
+                etPhone.setError(getString(R.string.error_phone));
                 return;
             }
 
             if (TextUtils.isEmpty(password)) {
-                etPassword.setError("Please enter your password");
+                etPassword.setError(getString(R.string.error_pwd));
                 return;
             }
 
             if (!password.equals(passwordCf)) {
-                etPasswordCf.setError("Password is not correct");
+                etPasswordCf.setError(getString(R.string.error_cf_pwd));
                 return;
             }
 
@@ -126,29 +128,39 @@ public class RegisterActivity extends AppCompatActivity {
                                                                             @Override
                                                                             public void onComplete(@NonNull Task<Void> task) {
                                                                                 if (task.isSuccessful()) {
-                                                                                    Toast.makeText(RegisterActivity.this, "Registration successful. Verification email sent.", Toast.LENGTH_SHORT).show();
+//                                                                                    snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.success_verify), Snackbar.LENGTH_SHORT);
+//                                                                                    snackbar.show();
+                                                                                    Toast.makeText(RegisterActivity.this, getString(R.string.success_verify), Toast.LENGTH_SHORT).show();
                                                                                     mAuth.signOut(); // Sign out the user
                                                                                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                                                                     startActivity(intent);
                                                                                     finish();
                                                                                 } else {
-                                                                                    Toast.makeText(RegisterActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+//                                                                                    snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.fail_verify), Snackbar.LENGTH_SHORT);
+//                                                                                    snackbar.show();
+                                                                                    Toast.makeText(RegisterActivity.this, getString(R.string.fail_verify), Toast.LENGTH_SHORT).show();
                                                                                 }
                                                                             }
                                                                         });
                                                             }
                                                         } else {
-                                                            Toast.makeText(RegisterActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(RegisterActivity.this, getString(R.string.fail_register), Toast.LENGTH_SHORT).show();
+//                                                            snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.fail_register), Snackbar.LENGTH_SHORT);
+//                                                            snackbar.show();
                                                         }
                                                     }
                                                 });
                                             } else {
-                                                Toast.makeText(RegisterActivity.this, "Email has been used", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(RegisterActivity.this, getString(R.string.existed_email), Toast.LENGTH_SHORT).show();
+//                                                snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.existed_email), Snackbar.LENGTH_SHORT);
+//                                                snackbar.show();
                                             }
                                         }
                                     });
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, getString(R.string.fail_register), Toast.LENGTH_SHORT).show();
+//                            snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.fail_register), Snackbar.LENGTH_SHORT);
+//                            snackbar.show();
                         }
                     }
                 });

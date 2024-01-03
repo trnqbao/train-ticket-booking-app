@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
         // Find UI elements
         btnFindTrain = view.findViewById(R.id.btn_find_train);
         tvDate = view.findViewById(R.id.tv_date);
-        tvUser = view.findViewById(R.id.tv_user);
+//        tvUser = view.findViewById(R.id.tv_user);
         spinnerFromID = view.findViewById(R.id.spinnerFromID);
         spinnerToID = view.findViewById(R.id.spinnerToID);
         swap = view.findViewById(R.id.swap);
@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
         showSpinnerOptions(spinnerFromID, locations);
         showSpinnerOptions(spinnerToID, locations);
 
-        userName(user);
+//        userName(user);
 
         datePicker.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),

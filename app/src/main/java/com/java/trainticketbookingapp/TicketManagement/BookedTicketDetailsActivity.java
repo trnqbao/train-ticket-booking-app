@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -49,6 +50,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseAuth auth;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +113,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         start.setText(ticketStart);
         departuretime.setText(ticketDepartureTime);
         arrivaltime.setText(ticketArrivalTime);
-        price.setText(ticketPrice);
+        price.setText(ticketPrice + " VND");
         tvTotalTime.setText(ticketTotalTripTime);
         tvStartStation.setText(ticketStart + " Station");
         tvDesStation.setText(ticketDestination + " Station");
@@ -191,7 +193,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Ticket Information");
                 shareIntent.putExtra(Intent.EXTRA_TEXT, ticketInfo);
 
-                startActivity(Intent.createChooser(shareIntent, "Share Ticket"));
+                startActivity(Intent.createChooser(shareIntent, getString(R.string.share_ticket)));
     }
 
     private void showQRCode(String ticketInfo) {
@@ -200,9 +202,9 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(BookedTicketDetailsActivity.this);
             imageView.setImageBitmap(qrCode);
             new AlertDialog.Builder(BookedTicketDetailsActivity.this)
-                    .setTitle("Ticket QR Code")
+                    .setTitle(getString(R.string.qr_code))
                     .setView(imageView)
-                    .setPositiveButton("Close", null)
+                    .setPositiveButton(getString(R.string.close), null)
                     .show();
         } else {
             Toast.makeText(BookedTicketDetailsActivity.this, "Error generating QR code", Toast.LENGTH_SHORT).show();

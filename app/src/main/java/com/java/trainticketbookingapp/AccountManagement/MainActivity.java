@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot ticketSnapshot : snapshot.getChildren()) {
                     Ticket ticket = ticketSnapshot.getValue(Ticket.class);
                     if (ticket != null) {
-                        scheduleNotification(ticket.getDepartureTime(), "Your departure time is approaching!", "Departure Time: " + ticket.getDepartureTime());
+                        scheduleNotification(ticket.getDepartureTime(), "", getString(R.string.departureTime) + ticket.getDepartureTime());
                     }
                 }
             }
