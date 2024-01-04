@@ -27,6 +27,12 @@ import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
+
 public class PaymentActivity extends AppCompatActivity {
 
     TextView tv_ticketID, tv_ticketStart, tv_ticketDes, tv_ticketPrices;
@@ -34,6 +40,8 @@ public class PaymentActivity extends AppCompatActivity {
     RadioButton rb_internet_banking, rb_cash;
     Button btn_pay, btn_confirm;
     private int userPoint;
+    private String ticketCode;
+    private String data;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -175,8 +183,21 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 userPoint++;
                 reference.child(userID).child("userPoint").setValue(userPoint);
-                Ticket ticket = new Ticket(ticketId, ticketStart, ticketDestination, ticketPrice, ticket_totalTime, ticket_departureTime, ticket_arrivalTime, ticket_trainID, ticket_date, ""); // Populate your Ticket object
 
+
+                data = user.getDisplayName() + "-" +
+                        ticketId + "-" +
+                        ticketStart + "-" +
+                        ticketDestination + "-" +
+                        ticket_departureTime + "-" +
+                        ticket_arrivalTime + "-" +
+                        ticketPrice + " VND-" +
+                        ticket_totalTime + "-" +
+                        ticket_trainID;
+
+                ticketCode = generateRandomCodeFromInput(data, 7);
+
+                Ticket ticket = new Ticket(ticketId, ticketStart, ticketDestination, ticketPrice, ticket_totalTime, ticket_departureTime, ticket_arrivalTime, ticket_trainID, ticket_date, ticketCode);
                 reference.child(userID).child("tickets").push().setValue(ticket)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -198,10 +219,35 @@ public class PaymentActivity extends AppCompatActivity {
                     });
             }
         });
-
-
-
     }
 
+    private String generateRandomCodeFromInput(String input, int length) {
+        try {
+            byte[] inputBytes = input.getBytes(StandardCharsets.UTF_8);
+
+            // Generate a random salt
+            SecureRandom secureRandom = new SecureRandom();
+            byte[] salt = new byte[16];
+            secureRandom.nextBytes(salt);
+
+            // Append the salt to the input bytes
+            byte[] saltedInput = new byte[inputBytes.length + salt.length];
+            System.arraycopy(inputBytes, 0, saltedInput, 0, inputBytes.length);
+            System.arraycopy(salt, 0, saltedInput, inputBytes.length, salt.length);
+
+            // Hash the salted input using SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(saltedInput);
+
+            // Use base64 encoding to convert the hash to a string
+            String encodedHash = Base64.getEncoder().encodeToString(hash);
+
+            // Take the first 'length' characters from the encoded hash
+            return encodedHash.substring(0, length);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

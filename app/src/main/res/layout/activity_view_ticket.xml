@@ -233,7 +233,7 @@
                                         android:layout_height="match_parent"
                                         android:textSize="18sp"
                                         android:textStyle="bold"
-                                        android:text="Vietnam train: "
+                                        android:text="Vietnam Train - "
                                         tools:ignore="RtlHardcoded" />
 
                                     <TextView
@@ -320,7 +320,7 @@
                                                 android:id="@+id/tv_departure_date"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
-                                                android:gravity="center"
+                                                android:gravity="center|top"
                                                 android:text="d/m/y"
                                                 android:textColor="@color/gray" />
                                         </LinearLayout>
@@ -335,8 +335,11 @@
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:gravity="center"
-                                                android:text="total trip time"
-                                                android:textColor="@color/colorPrimary" />
+                                                android:layout_marginBottom="18dp"
+                                                android:textStyle="bold"
+                                                android:text="trip time"
+                                                android:textColor="@color/blue"
+                                                android:textSize="15sp"/>
                                         </LinearLayout>
 
                                         <LinearLayout
@@ -362,7 +365,7 @@
                                                 android:layout_height="match_parent"
                                                 android:text="d/m/y"
                                                 android:textColor="@color/gray"
-                                                android:gravity="center"/>
+                                                android:gravity="center|top"/>
                                         </LinearLayout>
 
                                     </LinearLayout>
@@ -426,7 +429,7 @@
                                                 android:id="@+id/tv_departure_station"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
-                                                android:gravity="center|left"
+                                                android:gravity="center|left|top"
                                                 android:text="Sai Gon Station"
                                                 android:textSize="16sp" />
 
@@ -463,7 +466,7 @@
                                                 android:id="@+id/tv_arrival_station"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
-                                                android:gravity="center|left"
+                                                android:gravity="center|left|top"
                                                 android:text="Ha Noi Station"
                                                 android:textSize="16sp" />
 

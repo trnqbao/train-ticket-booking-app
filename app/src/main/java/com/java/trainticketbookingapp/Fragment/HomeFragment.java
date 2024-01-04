@@ -209,28 +209,6 @@ public class HomeFragment extends Fragment {
         return locations = new String[]{hanoi, saigon, danang, nhatrang, hue};
     }
 
-//    private void showLoadingDialog() {
-//        if (loadingDialog == null) {
-//            loadingDialog = new ProgressDialog(getContext());
-//            loadingDialog.setMessage(getString(R.string.loading));
-//            loadingDialog.setCanceledOnTouchOutside(false);
-//            loadingDialog.setCancelable(false);
-//        }
-//        loadingDialog.show();
-//
-//        new Handler().postDelayed(() -> {
-//            if (loadingDialog != null && loadingDialog.isShowing()) {
-//                loadingDialog.dismiss();
-//            }
-//        }, 2000);
-//    }
-//
-//    private void dismissLoadingDialog() {
-//        if (loadingDialog != null && loadingDialog.isShowing()) {
-//            loadingDialog.dismiss();
-//        }
-//    }
-
     private void rotateImg(ImageView imageView) {
         Drawable originalDrawable = imageView.getDrawable();
         Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();

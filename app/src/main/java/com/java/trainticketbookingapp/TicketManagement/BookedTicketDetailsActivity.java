@@ -38,7 +38,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.java.trainticketbookingapp.Fragment.BookingFragment;
+import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 
 import java.nio.charset.StandardCharsets;
@@ -55,14 +57,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BookedTicketDetailsActivity extends AppCompatActivity {
-    final String TAG = "TicketDetails";
     TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation, arrivaltime, username, trainId, departtureDate, arrivalDate;
     TextView menuStart, menuDes;
     ImageButton imgBtnBack, imgBtnOption;
     FirebaseUser user;
     FirebaseAuth auth;
-    private String data;
-//    private String ticketCode = getIntent().getStringExtra("ticket_code");
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -111,7 +110,7 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
             });
         }
 
-        String ticketID = getIntent().getStringExtra(String.valueOf("ticket_ID"));
+        int ticketID = getIntent().getIntExtra(String.valueOf("ticket_ID"), 0);
         String ticketStart = getIntent().getStringExtra("ticket_start");
         String ticketDestination = getIntent().getStringExtra("ticket_destination");
         String ticketPrice = getIntent().getStringExtra("ticket_price");
@@ -121,12 +120,13 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         String ticketTrainID = getIntent().getStringExtra("ticket_train_id");
         String ticketDepartureDate = getIntent().getStringExtra("ticket_date");
         String ticketArrivalDate = calculateArrivalDate(ticketDepartureDate, ticketDepartureTime, ticketTotalTripTime);
-//        ticketCode = getIntent().getStringExtra("ticket_code");
+        String ticketCode = getIntent().getStringExtra("ticket_code");
 
+        Ticket ticket = new Ticket(ticketID, ticketStart, ticketDestination, ticketPrice, ticketTotalTripTime, ticketDepartureTime, ticketArrivalTime, ticketTrainID, ticketDepartureDate, ticketCode);
         menuStart.setText(ticketStart);
         menuDes.setText(ticketDestination);
 
-//        tvticketID.setText(String.valueOf(ticketID));
+        tvticketID.setText(String.valueOf(ticketCode));
         destination.setText(ticketDestination);
         start.setText(ticketStart);
         departuretime.setText(ticketDepartureTime);
@@ -137,88 +137,37 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         tvDesStation.setText(ticketDestination + " Station");
         trainId.setText(ticketTrainID);
         departtureDate.setText(ticketDepartureDate);
-//        Log.e(TAG, "onCreate: " + ticketDepartureDate );
         arrivalDate.setText(ticketArrivalDate);
-
-        data = user.getDisplayName() + "-" +
-                ticketID + "-" +
-                ticketStart + "-" +
-                ticketDestination + "-" +
-                ticketDepartureTime + "-" +
-                ticketArrivalTime + "-" +
-                ticketPrice + " VND-" +
-                ticketTotalTripTime + "-" +
-                ticketTrainID;
-
-
-
-        tvticketID.setText(ticketID);
 
         imgBtnBack.setOnClickListener(v -> replaceFragment(new BookingFragment()));
 
-        imgBtnOption.setOnClickListener(view -> showOptionsDialog(Integer.parseInt(ticketID), ticketStart, ticketDestination, ticketDepartureTime, ticketPrice, ticketTotalTripTime));
+        imgBtnOption.setOnClickListener(view -> showOptionsDialog(ticket));
 
     }
 
-    private Bitmap generateQRCode(String ticketInfo) {
-        try {
-            Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
-            hints.put(EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name());
-
-            QRCodeWriter writer = new QRCodeWriter();
-            BitMatrix matrix = writer.encode(ticketInfo, BarcodeFormat.QR_CODE, 500, 500, hints);
-
-            int width = matrix.getWidth();
-            int height = matrix.getHeight();
-            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            int[] pixels = new int[width * height];
-
-            for (int y = 0; y < height; y++) {
-                int offset = y * width;
-                for (int x = 0; x < width; x++) {
-                    pixels[offset + x] = matrix.get(x, y) ? Color.BLACK : Color.WHITE;
-                }
-            }
-
-            bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
-            return bitmap;
-        } catch (WriterException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private void showOptionsDialog(int ticketID, String ticketStart, String ticketDestination, String ticketDepartureTime, String ticketPrice, String totalTripTime) {
+    private void showOptionsDialog(Ticket ticket) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.options))
                 .setItems(new CharSequence[]{getString(R.string.share_ticket), getString(R.string.qr_code)}, (dialog, which) -> {
                     switch (which) {
                         case 0:
-                            shareTicket(ticketStart, ticketDestination, ticketDepartureTime, ticketPrice);
+                            shareTicket(ticket);
                             break;
                         case 1:
-                            showQRCode(data);
-                            Log.e(TAG, "showOptionsDialog: " + data);
+                            showQRCode(ticket.getTicketCode());
                     }
                 })
-                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.dismiss());
 
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-
-
-    private void shareTicket(String ticketStart, String ticketDestination, String ticketDepartureTime, String ticketPrice) {
-        String ticketInfo = "Start: " + ticketStart + "\n" +
-                        "Destination: " + ticketDestination + "\n" +
-                        "Departure Time: " + ticketDepartureTime + "\n" +
-                        "Price: " + ticketPrice;
+    private void shareTicket(Ticket ticket) {
+        String ticketInfo = "Start: " + ticket.getStart() + "\n" +
+                        "Destination: " + ticket.getDestination() + "\n" +
+                        "Departure Time: " + ticket.getDepartureTime() + "\n" +
+                        "Price: " + ticket.getPrice();
 
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
@@ -240,6 +189,43 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
                     .show();
         } else {
             Toast.makeText(BookedTicketDetailsActivity.this, "Error generating QR code", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private Bitmap generateQRCode(String ticketInfo) {
+        try {
+            Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
+            hints.put(EncodeHintType.CHARACTER_SET, StandardCharsets.US_ASCII.name());
+            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+
+            QRCodeWriter writer = new QRCodeWriter();
+            BitMatrix matrix = writer.encode(ticketInfo, BarcodeFormat.QR_CODE, 600, 600, hints);
+
+            int qrCodeWidth = matrix.getWidth();
+            int qrCodeHeight = matrix.getHeight();
+            int borderWidth = 10;
+
+            int width = qrCodeWidth + (2 * borderWidth);
+            int height = qrCodeHeight + (2 * borderWidth);
+
+            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+            int[] pixels = new int[width * height];
+
+            for (int i = 0; i < pixels.length; i++) {
+                pixels[i] = Color.WHITE;
+            }
+
+            for (int y = 0; y < qrCodeHeight; y++) {
+                for (int x = 0; x < qrCodeWidth; x++) {
+                    pixels[((y + borderWidth) * width) + (x + borderWidth)] = matrix.get(x, y) ? Color.BLACK : Color.WHITE;
+                }
+            }
+
+            bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+            return bitmap;
+        } catch (WriterException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

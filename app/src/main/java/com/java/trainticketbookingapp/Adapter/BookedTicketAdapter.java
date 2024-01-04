@@ -107,6 +107,14 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
                     getTicketData(view);
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    showTicketOptions(v);
+                    return false;
+                }
+            });
         }
 
 
@@ -115,7 +123,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             tvStart.setText(ticket.getStart());
             tvDestination.setText(ticket.getDestination());
             tvTrainId.setText(ticket.getTrainID());
-            tvDate.setText(ticket.getDate());
+            tvDate.setText(ticket.getDepartureDate());
         }
 
         private void getTicketData(View view) {
@@ -132,7 +140,9 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             ticketDepartureTime = ticket.getDepartureTime();
             String ticketTotalTripTime = ticket.getTotalTime();
             String ticketTrainID = ticket.getTrainID();
-            String ticketDate = ticket.getDate();
+            String ticketDate = ticket.getDepartureDate();
+            String ticketCode = ticket.getTicketCode();
+
 
             // Start the intent to BookedTicketDetailsActivity.class
             Intent intent = new Intent(view.getContext(), BookedTicketDetailsActivity.class);
@@ -147,7 +157,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             intent.putExtra("ticket_total_trip_time", ticketTotalTripTime);
             intent.putExtra("ticket_train_id", ticketTrainID);
             intent.putExtra("ticket_date", ticketDate);
-
+            intent.putExtra("ticket_code", ticketCode);
             view.getContext().startActivity(intent);
         }
 
