@@ -32,14 +32,28 @@ import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
 import com.squareup.picasso.Picasso;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import static com.java.trainticketbookingapp.Fragment.HomeFragment.check;
 
 public class TicketListActivity extends AppCompatActivity {
 
+    public static String formattedDate;
     static final String TAG = "TicketList";
     private TextView tv_bookingFromID, tv_bookingToID, tv_bookingDateID;
     private RecyclerView recyclerView;
@@ -51,6 +65,8 @@ public class TicketListActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseAuth auth;
     private int point = 0;
+    private String data;
+    private String ticketCode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,9 +89,12 @@ public class TicketListActivity extends AppCompatActivity {
         String savedDestination = getIntent().getStringExtra("bookingToID");
         String savedDate = getIntent().getStringExtra("date");
 
+        String formattedDate = formatDate(savedDate);
+
+
         tv_bookingFromID.setText(String.valueOf(savedDepartureName));
         tv_bookingToID.setText(String.valueOf(savedDestination));
-        tv_bookingDateID.setText(savedDate);
+        tv_bookingDateID.setText(formattedDate);
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View noTicketView = inflater.inflate(R.layout.activity_no_ticket_result, recyLayout, false);
@@ -129,7 +148,7 @@ public class TicketListActivity extends AppCompatActivity {
                         ticket.setDepartureTime(childSnapshot.child("departureTime").getValue(String.class));
                         ticket.setArrivalTime(childSnapshot.child("arrivalTime").getValue(String.class));
                         ticket.setTrainID(childSnapshot.child("trainID").getValue(String.class));
-                        ticket.setDate(childSnapshot.child("date").getValue(String.class));
+                        ticket.setDate(savedDate);
 
                         ticketList.add(ticket);
                     }
@@ -161,6 +180,16 @@ public class TicketListActivity extends AppCompatActivity {
             }
         });
     }
+
+    private String formatDateHelper(String date, Locale locale) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", locale);
+        LocalDate parsedDate = LocalDate.parse(date, inputFormatter);
+
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("EE, dd/MM/yyyy", locale);
+        return parsedDate.format(outputFormatter);
+    }
+
+
 
     private void showNoTicketResult(View noTicketView) {
         recyclerView.setVisibility(View.GONE);
@@ -244,6 +273,20 @@ public class TicketListActivity extends AppCompatActivity {
         paymentIntent.putExtra("ticket_trainID", selectedTicket.getTrainID());
         paymentIntent.putExtra("ticket_date", selectedTicket.getDate());
 
+        data = user.getDisplayName() + "-" +
+                selectedTicket.getId() + "-" +
+                selectedTicket.getStart() + "-" +
+                selectedTicket.getDestination() + "-" +
+                selectedTicket.getDepartureTime() + "-" +
+                selectedTicket.getArrivalTime() + "-" +
+                selectedTicket.getPrice() + " VND-" +
+                selectedTicket.getTotalTime() + "-" +
+                selectedTicket.getTrainID() + "-" +
+                selectedTicket.getDate();
+        Log.e(TAG, "startPaymentActivity: " + data );
+        ticketCode = generateRandomCodeFromInput(data, 10);
+        paymentIntent.putExtra("ticket_code", ticketCode);
+        Log.e(TAG, "startPaymentActivity: " + ticketCode);
         startActivity(paymentIntent);
     }
 
@@ -265,5 +308,48 @@ public class TicketListActivity extends AppCompatActivity {
         });
         return point;
     }
+
+    private boolean checkVi(String check) {
+        return !check.equals("Find Train");
+    }
+
+    private String formatDate(String date) {
+        if (checkVi(check)) {
+            Log.e(TAG, "formatDate: " + check);
+            Locale vietnameseLocale = new Locale("vi", "VN");
+            return formatDateHelper(date, vietnameseLocale);
+        }
+        return formatDateHelper(date, Locale.ENGLISH);
+    }
+
+    private String generateRandomCodeFromInput(String input, int length) {
+        try {
+            byte[] inputBytes = input.getBytes(StandardCharsets.UTF_8);
+
+            // Generate a random salt
+            SecureRandom secureRandom = new SecureRandom();
+            byte[] salt = new byte[16];
+            secureRandom.nextBytes(salt);
+
+            // Append the salt to the input bytes
+            byte[] saltedInput = new byte[inputBytes.length + salt.length];
+            System.arraycopy(inputBytes, 0, saltedInput, 0, inputBytes.length);
+            System.arraycopy(salt, 0, saltedInput, inputBytes.length, salt.length);
+
+            // Hash the salted input using SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(saltedInput);
+
+            // Use base64 encoding to convert the hash to a string
+            String encodedHash = Base64.getEncoder().encodeToString(hash);
+
+            // Take the first 'length' characters from the encoded hash
+            return encodedHash.substring(0, length);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

@@ -1,5 +1,8 @@
 package com.java.trainticketbookingapp.Adapter;
 
+import static com.java.trainticketbookingapp.TicketManagement.TicketListActivity.formattedDate;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,8 +31,10 @@ import com.java.trainticketbookingapp.Model.Ticket;
 import com.java.trainticketbookingapp.R;
 import com.java.trainticketbookingapp.TicketManagement.BookedTicketDetailsActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
 
 public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapter.ViewHolder> {
 
@@ -60,12 +65,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTripTime, tvTrainId;
-        private TextView tvStart;
-        private TextView tvDestination;
-        private TextView tvTotalTripTime;
-        private TextView tvTripPrice;
-        private TextView tvDepartureStation;
+        private TextView tvStartTime, tvTrainId, tvStart, tvDestination, tvTotalTripTime, tvTripPrice, tvDepartureStation, tvDate;
 
         private ImageView imgOption;
         String ticketDepartureTime;
@@ -78,11 +78,12 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvTripTime = itemView.findViewById(R.id.tv_trip_time);
+            tvStartTime = itemView.findViewById(R.id.tv_start_time);
             tvStart = itemView.findViewById(R.id.tv_trip_pick_up);
             tvDestination = itemView.findViewById(R.id.tv_trip_drop_off);
             tvTotalTripTime = itemView.findViewById(R.id.tv_total_trip_time);
             tvDepartureStation = itemView.findViewById(R.id.tv_departure_station);
+            tvDate = itemView.findViewById(R.id.tv_date);
             tvTrainId = itemView.findViewById(R.id.tv_train_id);
             imgOption = itemView.findViewById(R.id.img_options);
 
@@ -110,10 +111,11 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
 
 
         public void bind(Ticket ticket) {
-            tvTripTime.setText(ticket.getDepartureTime());
+            tvStartTime.setText(ticket.getDepartureTime());
             tvStart.setText(ticket.getStart());
             tvDestination.setText(ticket.getDestination());
             tvTrainId.setText(ticket.getTrainID());
+            tvDate.setText(ticket.getDate());
         }
 
         private void getTicketData(View view) {
@@ -132,7 +134,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             String ticketTrainID = ticket.getTrainID();
             String ticketDate = ticket.getDate();
 
-            // Start the intent to ViewTicket.class
+            // Start the intent to BookedTicketDetailsActivity.class
             Intent intent = new Intent(view.getContext(), BookedTicketDetailsActivity.class);
             intent.putExtra("ticket_ID", String.valueOf(ticketID));
             intent.putExtra("ticket_start", ticketStart);
@@ -144,6 +146,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             intent.putExtra("ticket_id", ticketID);
             intent.putExtra("ticket_total_trip_time", ticketTotalTripTime);
             intent.putExtra("ticket_train_id", ticketTrainID);
+            intent.putExtra("ticket_date", ticketDate);
 
             view.getContext().startActivity(intent);
         }
@@ -175,6 +178,18 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             popupMenu.show();
         }
 
+//        private String convertDateString(String inputDate) {
+//            @SuppressLint("SimpleDateFormat") SimpleDateFormat inputFormat = new SimpleDateFormat("EEE, dd/MM/yyyy");
+//            @SuppressLint("SimpleDateFormat") SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+//
+//            try {
+//                Date date = inputFormat.parse(inputDate);
+//                return outputFormat.format(date);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//                return null;
+//            }
+//        }
 
         private void deleteTicket() {
             AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());

@@ -1,5 +1,6 @@
 package com.java.trainticketbookingapp.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -45,8 +46,10 @@ import com.java.trainticketbookingapp.Model.UserAccount;
 import com.java.trainticketbookingapp.R;
 import com.java.trainticketbookingapp.TicketManagement.TicketListActivity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class HomeFragment extends Fragment {
     private Spinner spinnerFromID, spinnerToID;
@@ -55,6 +58,8 @@ public class HomeFragment extends Fragment {
     private ImageView swap;
     private SharedPreferences sharedPreferences;
     private String savedDepartureName, savedDestination, savedDateText;
+
+    public static String check;
     FirebaseAuth auth;
     FirebaseUser user;
     String name;
@@ -84,6 +89,8 @@ public class HomeFragment extends Fragment {
 
         rotateImg(swap);
 
+        check = btnFindTrain.getText().toString();
+
 //        locations = getLocations();
 
         savedDepartureName = locations[sharedPreferences.getInt("SELECTED_POSITION", 0)];
@@ -100,28 +107,46 @@ public class HomeFragment extends Fragment {
 //        userName(user);
 
         datePicker.setOnClickListener(v -> {
+            Calendar currentDate = Calendar.getInstance();
+            int currentYear = currentDate.get(Calendar.YEAR);
+            int currentMonth = currentDate.get(Calendar.MONTH);
+            int currentDayOfMonth = currentDate.get(Calendar.DAY_OF_MONTH);
+
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
                     (vi, year, month, dayOfMonth) -> {
                         Calendar selectedDate = Calendar.getInstance();
                         selectedDate.set(year, month, dayOfMonth);
-
-                        Calendar currentDate = Calendar.getInstance();
 
                         if (selectedDate.before(currentDate)) {
                             showNotification(getString(R.string.error_place));
                             return;
                         }
 
-                        SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
                         savedDateText = format.format(selectedDate.getTime());
 
                         tvDate.setText(savedDateText);
                         sharedPreferences.edit().putString("DATE_TEXT", savedDateText).apply();
                     },
-                    Calendar.getInstance().get(Calendar.YEAR),
-                    Calendar.getInstance().get(Calendar.MONTH),
-                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                    currentYear,
+                    currentMonth,
+                    currentDayOfMonth
             );
+
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                Date savedDate = format.parse(savedDateText);
+                if (savedDate != null) {
+                    Calendar savedCalendar = Calendar.getInstance();
+                    savedCalendar.setTime(savedDate);
+                    int savedYear = savedCalendar.get(Calendar.YEAR);
+                    int savedMonth = savedCalendar.get(Calendar.MONTH);
+                    int savedDayOfMonth = savedCalendar.get(Calendar.DAY_OF_MONTH);
+                    datePickerDialog.getDatePicker().updateDate(savedYear, savedMonth, savedDayOfMonth);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             datePickerDialog.show();

@@ -315,13 +315,14 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="0dp"
                                             android:layout_weight="2">
+
                                             <TextView
                                                 android:id="@+id/tv_departure_date"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
+                                                android:gravity="center"
                                                 android:text="d/m/y"
-                                                android:textColor="@color/gray"
-                                                android:gravity="center"/>
+                                                android:textColor="@color/gray" />
                                         </LinearLayout>
 
                                         <LinearLayout
@@ -335,7 +336,7 @@
                                                 android:layout_height="match_parent"
                                                 android:gravity="center"
                                                 android:text="total trip time"
-                                                android:textColor="@color/gray" />
+                                                android:textColor="@color/colorPrimary" />
                                         </LinearLayout>
 
                                         <LinearLayout

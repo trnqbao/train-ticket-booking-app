@@ -129,9 +129,10 @@
                         android:id="@+id/tv_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Wed, 20 Dec 2023"
+                        android:text="dd/mm/yyyy"
                         android:textColor="@color/gray"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        tools:ignore="RtlHardcoded" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -151,12 +152,13 @@
                     android:layout_weight="3.5"
                     android:layout_marginStart="8dp">
                     <TextView
-                        android:id="@+id/tv_trip_time"
+                        android:id="@+id/tv_start_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Time"
+                        android:layout_marginRight="10dp"
                         android:textColor="@color/gray"
-                        android:gravity="center|left"/>
+                        android:gravity="center"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -202,11 +204,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.4">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/dot"
-                    android:layout_gravity="center|top"/>
+
             </LinearLayout>
 
         </LinearLayout>

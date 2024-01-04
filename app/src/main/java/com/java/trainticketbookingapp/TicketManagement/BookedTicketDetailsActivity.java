@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -36,19 +37,32 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.java.trainticketbookingapp.Fragment.BookingFragment;
 import com.java.trainticketbookingapp.R;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BookedTicketDetailsActivity extends AppCompatActivity {
-
-    TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation, arrivaltime, username, trainId;
+    final String TAG = "TicketDetails";
+    TextView tvticketID, destination, start, departuretime, price, tvTotalTime, tvStartStation, tvDesStation, arrivaltime, username, trainId, departtureDate, arrivalDate;
     TextView menuStart, menuDes;
     ImageButton imgBtnBack, imgBtnOption;
     FirebaseUser user;
     FirebaseAuth auth;
+    private String data;
+//    private String ticketCode = getIntent().getStringExtra("ticket_code");
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -67,6 +81,8 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         arrivaltime = findViewById(R.id.tv_arrival_time);
         username = findViewById(R.id.tv_user_name);
         trainId = findViewById(R.id.tv_train_id);
+        departtureDate = findViewById(R.id.tv_departure_date);
+        arrivalDate = findViewById(R.id.tv_arrival_date);
 
         menuStart = findViewById(R.id.tv_start);
         menuDes = findViewById(R.id.tv_des);
@@ -103,12 +119,14 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         String ticketTotalTripTime = getIntent().getStringExtra("ticket_total_trip_time");
         String ticketArrivalTime = getIntent().getStringExtra("ticket_arrival_time");
         String ticketTrainID = getIntent().getStringExtra("ticket_train_id");
-
+        String ticketDepartureDate = getIntent().getStringExtra("ticket_date");
+        String ticketArrivalDate = calculateArrivalDate(ticketDepartureDate, ticketDepartureTime, ticketTotalTripTime);
+//        ticketCode = getIntent().getStringExtra("ticket_code");
 
         menuStart.setText(ticketStart);
         menuDes.setText(ticketDestination);
 
-        tvticketID.setText(String.valueOf(ticketID));
+//        tvticketID.setText(String.valueOf(ticketID));
         destination.setText(ticketDestination);
         start.setText(ticketStart);
         departuretime.setText(ticketDepartureTime);
@@ -118,38 +136,51 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         tvStartStation.setText(ticketStart + " Station");
         tvDesStation.setText(ticketDestination + " Station");
         trainId.setText(ticketTrainID);
+        departtureDate.setText(ticketDepartureDate);
+//        Log.e(TAG, "onCreate: " + ticketDepartureDate );
+        arrivalDate.setText(ticketArrivalDate);
 
-        imgBtnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new BookingFragment());
-            }
-        });
+        data = user.getDisplayName() + "-" +
+                ticketID + "-" +
+                ticketStart + "-" +
+                ticketDestination + "-" +
+                ticketDepartureTime + "-" +
+                ticketArrivalTime + "-" +
+                ticketPrice + " VND-" +
+                ticketTotalTripTime + "-" +
+                ticketTrainID;
 
-        imgBtnOption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showOptionsDialog(Integer.parseInt(ticketID), ticketStart, ticketDestination, ticketDepartureTime, ticketPrice, ticketTotalTripTime);
-            }
-        });
+
+
+        tvticketID.setText(ticketID);
+
+        imgBtnBack.setOnClickListener(v -> replaceFragment(new BookingFragment()));
+
+        imgBtnOption.setOnClickListener(view -> showOptionsDialog(Integer.parseInt(ticketID), ticketStart, ticketDestination, ticketDepartureTime, ticketPrice, ticketTotalTripTime));
 
     }
 
     private Bitmap generateQRCode(String ticketInfo) {
         try {
-            MultiFormatWriter writer = new MultiFormatWriter();
-            Map<EncodeHintType, Object> hints = new HashMap<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+            Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
+            hints.put(EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name());
+
+            QRCodeWriter writer = new QRCodeWriter();
             BitMatrix matrix = writer.encode(ticketInfo, BarcodeFormat.QR_CODE, 500, 500, hints);
 
             int width = matrix.getWidth();
             int height = matrix.getHeight();
             Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bitmap.setPixel(x, y, matrix.get(x, y) ? Color.BLACK : Color.WHITE);
+            int[] pixels = new int[width * height];
+
+            for (int y = 0; y < height; y++) {
+                int offset = y * width;
+                for (int x = 0; x < width; x++) {
+                    pixels[offset + x] = matrix.get(x, y) ? Color.BLACK : Color.WHITE;
                 }
             }
+
+            bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
             return bitmap;
         } catch (WriterException e) {
             e.printStackTrace();
@@ -166,7 +197,8 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
                             shareTicket(ticketStart, ticketDestination, ticketDepartureTime, ticketPrice);
                             break;
                         case 1:
-                            showQRCode(totalTripTime + String.valueOf(ticketID) + ticketDestination + tvStartStation + ticketStart);
+                            showQRCode(data);
+                            Log.e(TAG, "showOptionsDialog: " + data);
                     }
                 })
                 .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
@@ -218,6 +250,44 @@ public class BookedTicketDetailsActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
         finish();
+    }
+
+    private String calculateArrivalDate(String departureDate, String departureTime, String duration) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH'h'mm");
+
+        try {
+            Date departureDateTime = dateFormat.parse(departureDate);
+            Date departureTimeOnly = timeFormat.parse(departureTime);
+
+            int totalMinutes = parseDuration(duration);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(departureDateTime);
+            calendar.set(Calendar.HOUR_OF_DAY, departureTimeOnly.getHours());
+            calendar.set(Calendar.MINUTE, departureTimeOnly.getMinutes());
+
+            calendar.add(Calendar.MINUTE, totalMinutes);
+
+            Date arrivalDate = calendar.getTime();
+            return dateFormat.format(arrivalDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static int parseDuration(String duration) {
+        int hours = 0;
+        int minutes = 0;
+
+        String[] parts = duration.split("h|H|m|M");
+        if (parts.length >= 2) {
+            hours = Integer.parseInt(parts[0]);
+            minutes = Integer.parseInt(parts[1]);
+        }
+
+        return hours * 60 + minutes;
     }
 
 }

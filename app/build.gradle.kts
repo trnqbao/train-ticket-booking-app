@@ -48,6 +48,7 @@ android {
 dependencies {
 
     implementation ("com.google.zxing:core:3.5.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.2.0")
     implementation ("com.google.code.gson:gson:2.10")
     implementation ("com.sun.mail:android-mail:1.6.6")
     implementation ("com.sun.mail:android-activation:1.6.6")
