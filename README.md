@@ -1,3 +1,3 @@
-# TrainTicketBookingApp - HK1(23-24)
-Final Project | Mobile App | Java | Firebase |
+# Android Development (HK1 - 2324)
+Final Project | Firebase |
  
